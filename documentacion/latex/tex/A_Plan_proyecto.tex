@@ -1,0 +1,130 @@
+\apendice{Plan de Proyecto Software}
+
+\section{Introducción}
+
+La Universidad de Burgos, dentro del área de conocimiento de Ingeniería de Sistemas y Automática, dispone de un interfaz BCI (Brain Computer Interface) para la captación de señales cerebrales. 
+Empleando ese interfaz se han realizado diferentes experimentos que han permitido recoger información de la actividad cerebral mientras los usuarios ejecutaban diferentes tareas cotidianas. 
+
+Este Trabajo de Fin de Grado (TFG) tiene como objetivo el análisis de la información obtenida en esos experimentos. Se entrenarán diferentes algoritmos para clasificar la acción realizada por el usuario a partir de las señales generadas por el BCI. Con este propósito, se evaluarán diferentes algoritmos de procesado de señales y de machine/deep learning para la clasificación automática de señales.
+
+Los datos aportados son de tipo EEG (Electroencefalografía) para la realización del TFG son datos referentes a experimentos basados en pulsaciones sobre teclas de un teclado: arriba, abajo, izquierda, derecha.
+
+El análisis de estos datos y su evaluación en diferentes algoritmos esta basada en predecir qué teclas del teclado se han pulsado según las señales captadas con la interfaz BCI.
+
+Para esto no ha habido una planificación como tal registrada en Github, pero sí una progresión definida en los commits de código generados durante la composición del TFG.
+
+\section{Planificación temporal}
+
+
+En la reunión inicial con los tutores definimos utilizar Python para realizar el código y una serie de aprendizajes básicos para poder acometer el TFG sin problemas.
+
+En las siguientes reuniones se definieron algoritmos y experimentos a realizar con los datos EGG aportados.
+
+Desde el principio del proyecto debido a las circunstancias personales del alumno no se ha podido realizar metodología Scrum, pero sí se produjeron estas lineas temporales:
+
+\imagen{anexos/Commits1}{Commits realizados durante la realización del TFG}
+
+\imagen{anexos/Additions1}{Additions realizados durante la realización del TFG}
+
+\imagen{anexos/Deletions1.png}{Deletions realizados durante la realización del TFG}
+
+
+Se pueden dividir en 3 grandes etapas:
+
+\begin{itemize}
+\tightlist
+\item
+	\textbf{Etapa de estudio: (Febrero a Marzo)}   	
+\item
+ 	\textbf{Etapa de desarrollo: (Abril a Mayo)} 
+\item
+	\textbf{Etapa de desarrollo y optimización: (Junio a Julio)} 
+\end{itemize}
+
+
+
+
+
+\subsection{Etapa de estudio: (Febrero a Marzo)}
+
+
+\imagen{anexos/Commits-Etapa1}{Commits-Etapa 1}
+
+
+\textbf{- Realización de cursos online} propuestos por los tutores Bruno Baruque y Jesús Enrique Sierra.
+\href{https://www.kaggle.com/learn/pandas}{Tutorial de Inicio de Pandas}, \href{https://www.kaggle.com/learn/data-visualization}{Visualización de Datos}, \href{https://www.kaggle.com/learn/time-series}{Trabajo con series temporales}
+
+\textbf{- Análisis del conjunto de datos}, en archivo csv, proporcionado por los tutores.
+\textbf{- Creación esqueleto para la estructura el TFG en Github.}
+\textbf{- Definición y creación de los primeros notebooks, principalmente análisis del conjunto de datos.}
+\textbf{- Definición y creación de los primeros notebooks de machine learning}, al final de la etapa.
+\textbf{- Comentar código e imprimir comentarios en los notebooks.}
+
+Los principales problemas o obstáculos que me encontré fueron principalmente los siguientes:
+
+\textbf{- Tiempo invertido en la realización de los cursos.}
+\textbf{- Estructuración del código.} Me tomo mucho tiempo poder llegar a definir como quería mostrar el código, me decidí por un notebook principal que realizara llamadas al resto de notebooks con códigos mas específicos para cada modelo o experimento a realizar.
+\textbf{- Plotteos y definiciones básicas como normalizar o escalar el conjunto de datos.}
+
+
+
+\subsection{Etapa de desarrollo: (Abril a Mayo)}
+
+
+\imagen{anexos/Commits-Etapa2}{Commits-Etapa 2}
+
+\textbf{- Cambio de análisis del conjunto de datos, prepocessing.}
+
+\textbf{- Definición y creación notebooks de machine learning.}
+
+\textbf{- Definición y creación notebooks de deep learning.}
+
+
+Los problemas que me encontré en esta etapa fueron:
+
+\textbf{- Compilación modelos depp learning. }Al ejecutar los primeros modelos de deep learning los datos normalizados me proporcionaban errores de compilación con modelos SRNN o LSTM, cambiando a datos escalados y shapeando los modelos pudieron ejecutarse.
+
+\textbf{- Utilización de ventanas temporales en los modelos deep learning.} En esta etapa no supe identificar este requerimiento por parte de los tutores y estuve implementando varias formas de poder utilizar ventanas temporales en el código.
+
+\textbf{- Utilización de modelos deep learning y callbacks.} 
+
+\textbf{- Gráficas y definiciones básicas como normalizar o escalar el conjunto de datos.}
+
+
+\subsection{Etapa de desarrollo y optimización: (Junio a Julio)}
+
+
+\imagen{anexos/Commits-Etapa3}{Commits-Etapa 3}
+
+\textbf{- Añado nuevos gráficos} en análisis del conjunto de datos, prepocessing.
+
+\textbf{- Definición y creación ventanas temporales acordadas con Bruno Baruque.}
+
+\textbf{- Definición y creación nuevos notebooks de deep learning}
+
+\textbf{- Definición y creación nuevos datos sintéticos a través de el aplicativo smote.}
+
+\textbf{- Continuar con el comentado del código e imprimir comentarios en los notebooks.}
+
+
+En la última etapa los problemas que se han acontecido son:
+
+\textbf{- - Utilización de ventanas temporales en los modelos deep learning.} Después de varias algunas reuniones con Bruno Baruque se llego a la defincion correcta para las ventanas temporal en el conjunto de datos.
+
+\textbf{- Utilización de modelos deep learning y callbacks.}
+
+\textbf{- Utilización datos sintéticos.} Definir correctamente esta generacion de datos y poder utilizarlos en los modelos deep learning correctamente.
+
+
+
+
+\section{Estudio de viabilidad}
+
+
+
+
+\subsection{Viabilidad económica}
+
+\subsection{Viabilidad legal}
+
+

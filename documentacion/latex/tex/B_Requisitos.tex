@@ -1,0 +1,202 @@
+\apendice{Especificación de Requisitos}
+
+\section{Introducción}
+
+La Especificación de Requisitos tiene como objetivo definir de manera clara y detallada las necesidades y expectativas del proyecto que consta de un notebook Jupyter definido en Python, el cual invoca a otros notebooks Jupyter secundarios para realizar diversas tareas. 
+
+Este documento sirve para asegurar que todas las partes interesadas comprendan y acuerden los objetivos y funcionalidades del sistema a desarrollar.
+
+En un entorno de trabajo basado en notebooks Jupyter, es esencial contar con una especificación precisa que guíe el desarrollo, implementación y validación del sistema. Esto no solo facilita la colaboración y la comunicación entre los desarrolladores, analistas de datos y usuarios finales, sino que también ayuda a identificar posibles riesgos y desafíos durante el ciclo de vida del proyecto.
+
+
+\section{Objetivos generales}
+
+Los objetivos principales de este TFG son los siguientes:
+
+\begin{itemize}
+\tightlist
+\item
+	\textbf{Facilitar el procesamiento de datos EEG.} Generados en la universidad mediante el interfaz BCI.  	
+\item
+ 	\textbf{Automatizar tareas repetitivas.} Con la creacion de notebooks secundarios para poder ejecutar las tareas comunes y repetitivas relacionadas con los datos EGG. 
+\item
+	\textbf{Mejorar la tasa de acierto en los analisis de modelos} implementando modelos precisos y fiables. 
+\item
+	\textbf{Asegurar la accesibilidad y usabilidad en los notebooks.} Los notebooks son herramientas intuitivas y accessibles que aportan esa facilidad a la hora de interacturar.
+\item
+	\textbf{Integracion y extensibilidad.} Al utilizar llamadas a otros notebooks se asegura que se permita la integracion de nuevos notebooks y se asegura posibles nuevas mejoras en el codigo.
+		
+\end{itemize}
+
+
+
+\section{Catálogo de requisitos}
+
+Hay dos tipos de requisitos, los funcionales (qué debe hacer el código) y los no funcionales (cómo debe funcionar el código): 
+
+\subsection{Requisitos funcionales}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{RF-001 Iniciar notebook Main:}
+ 
+  \begin{itemize}
+  \tightlist
+  \item
+   \textbf{Descripción:} Los usuarios han de poder iniciar el notebook principal para poder comenzar con la ejecución del trabajo.
+  \item
+   \textbf{Prioridad:} Alta
+  \item
+   \textbf{Criterios de aceptación:} El notebook Main debe abrirse correctamente en menos de 5 segundos. 
+  \end{itemize}
+
+
+\item
+  \textbf{RF-002 Invocación de Notebooks Secundarios Preparatorios:}
+  
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Descripción:} Los usuarios han de poder invocar los notebook secundarios preparatorios para poder ejecutar con seguridad el resto de notebooks de preprocesado y modelados.
+  \item
+   \textbf{Prioridad:} Alta
+  \item
+   \textbf{Criterios de aceptación:} Los notebooks secundarios preparatorios se han de ejecutar correctamente y que la celda en la que se se llama al notebook secundario no devuelva errores. Los notebooks preparatorios. Su ejecucion no ha de ser mayor a 5 minutos.
+  \end{itemize}
+ 
+  
+\item
+  \textbf{RF-003 Invocación de Notebook Secundarios carga de archivo CSV:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Descripción:} Los usuarios han de poder invocar los notebook secundarios carga de archivo CSV, para la ejecucion de este notebook secundario se ha de subir un archivo csv con el conjunto de datos a analizar y una vez subido el archivo, se iluminara un botón con nombre 'Procesar datos' que procesara los datos una vez pulsado.
+  \item
+    \textbf{Prioridad:} Alta
+  \item
+    \textbf{Criterios de aceptación:} Si no se ejecuta correctamente la llamada a este notebook no se podrá seguir con la ejecución del resto de notebooks puesto que sin datos no se podrían realizar las siguientes acciones. 
+  \end{itemize}
+
+
+\item
+  \textbf{RF-004 Invocación de Notebooks Secundarios análisis y preprocessing:}
+  
+  \begin{itemize}
+  \tightlist
+  \item
+   \textbf{Descripción:} Los usuarios han de poder invocar los notebook secundarios análisis y preprocessing para poder proporcionar este procesado de datos antes de la ejecución de modelos machine o deep learning.
+  \item  
+   \textbf{Prioridad:} Alta
+  \item  
+   \textbf{Criterios de aceptación:} Si no se ejecuta correctamente la llamada a este notebook no se podrá seguir con la ejecución del resto de notebooks puesto que sin la realizacion del preprocessing de los datos no se generan los csv correcpondientes para poder seguir ejecutando los siguientes notebooks.
+  \end{itemize}
+
+
+\item
+  \textbf{RF-005 Invocación de Notebooks Secundarios para experimentos:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+   \textbf{Descripción:} Los usuarios han de poder invocar los notebook secundarios para experimentos y poder generar los datos sobre Tasa de acierto y generacion de matrices de confusión.
+  \item  
+   \textbf{Prioridad: Media}
+  \item  
+   \textbf{Criterios de aceptación:} Estos notebooks se puede ejecutar de manera individual o en el orden pre establecido. para realizar el análisis final lo ideal es ejecutar todos los notebooks de esta session.
+	\textbf{}
+  \end{itemize}
+
+\item
+  \textbf{RF-006 Invocación de Notebook Secundario resultados:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+   \textbf{Descripción:} Los usuarios han de poder invocar los notebook Secundario resultados y poder visualizar los resultados de las particiones test del conjunto de datos. Se han de haber ejecutado todos los notebooks de esta sección.
+  \item  
+   \textbf{Prioridad: Alta}
+  \item  
+   \textbf{Criterios de aceptación:} Sin la ejecución de este notebook no se obtendrian los resultados del trabajo y por lo tanto es critico este ultimo notebook para poder visualizar la tasa de acierto en datos que el modelo no conocía en la etapa de entrenamiento y validación.
+  \end{itemize}
+
+
+\end{itemize}
+
+
+\subsection{Requisitos no funcionales}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{RNF-001 Rendimiento:}
+ 
+  \begin{itemize}
+  \tightlist
+  \item
+   \textbf{Descripción:} El sistema donde se ejecuten los notebooks ha de poder manejar la ejecución sin causar demoras significativas.
+  \item
+   \textbf{Criterios de aceptación:} El tiempo de ejecución para la ejecución de cada notebook secundario no ha de ser superior a 15 minutos.
+  \end{itemize}
+
+
+\item
+  \textbf{RNF-002 Usabilidad:}
+  
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Descripción:} Los notebooks han de ser faciles de entender y usar por los usuarios.
+  \item
+   \textbf{Criterios de aceptación:} La interfaz de los notebooks ha de ser intuitiva y clara.
+  \end{itemize}
+ 
+  
+\item
+  \textbf{RNF-003 Escalabilidad:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Descripción:} En la configuración del notebooks principal se debe permitir la adhesión de nuevos notebooks y sus llamadas desde el notebook principal.
+  \item
+  \item
+    \textbf{Criterios de aceptación:} Poder seguir integrando nuevos notebooks para ser llamados desde el notebook principal sin afectar al funcionamiento del código. 
+  \end{itemize}
+
+\end{itemize}
+
+
+
+\section{Especificación de requisitos}
+
+
+% Caso de Uso 1 -> Consultar Experimentos.
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CU-1}    & \textbf{Ejemplo de caso de uso}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & José Luis Pérez Gómez \\
+		\textbf{Requisitos asociados} & RF-xx, RF-xx \\
+		\textbf{Descripción}          & La descripción del CU \\
+		\textbf{Precondición}         & Precondiciones (podría haber más de una) \\
+		\textbf{Acciones}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item Pasos del CU
+			\item Pasos del CU (añadir tantos como sean necesarios)
+		\end{enumerate}\\
+		\textbf{Postcondición}        & Postcondiciones (podría haber más de una) \\
+		\textbf{Excepciones}          & Excepciones \\
+		\textbf{Importancia}          & Alta o Media o Baja... \\
+		\bottomrule
+	\end{tabularx}
+	\caption{CU-1 Nombre del caso de uso.}
+\end{table}
+
+
