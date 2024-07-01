@@ -2,10 +2,67 @@
 
 \section{Introducción}
 
+La especificación de datos es un componente crítico en el desarrollo de sistemas de información, especialmente cuando se trabaja con conjuntos de datos complejos como los datos EEG. 
+
+Mediante BCI, sistema que permite mediante adquisición de señales EEG, se han podido interpretar las señales adquiridas a través de las señales EEG y poder transformarlas en un conjunto de datos para su posterior análisis.  
+
+
+
+\textbf{Descripción de los Datos:}
+
+El archivo datosEEGTotal.csv contiene los datos facilitados para poder realizar los experimentos para la ejecución del TFG.
+
+Su formato es de tipo CSV con un separador (;) entre los datos que lo componen.
+
+Las características recogidas en el archivo de los datos EEG son las siguientes:
+
+Timestamp, Attention, Meditation, Delta, Theta, LowAlpha, HighAlpha, LowBeta, HighBeta, LowGamma, HighGamma, Signal y Key.
+
+\textbf{Timestamp:} Registro de tiempo para los experimentos, medido en mili-segundos.
+
+\textbf{Attention:} Registra el grado de atención del participante que realiza el experimento.
+
+\textbf{Meditation:} Grado de calma que tendría el individuo.
+
+\textbf{Delta:} Son ondas de baja frecuencia (1 y 4 Hz), están presentes en etapas de sueño profundo, durante una meditación profunda y en pacientes con lesiones cerebrales o con TDAH severo.
+
+\textbf{Theta:} Ondas entre 4 y 8 Hz, se encuentran en estados de calma profunda y sueño R.E.M., están ligadas al aprendizaje, memoria y intuición.
+
+\textbf{Alpha:} Ondas entre 8 y 12 Hz, representan un estado de poca actividad cerebral y se asocian a un estado de calma mental. Divididas en dos señales LowAlpha y HighAplpha
+
+\textbf{Beta:} Se diferencian en LowBeta y HighBeta, su frecuencia esta entre 12 y 35Hz, asociadas a una alta actividad mental. 
+
+\textbf{Gamma:} En los datos se diferencia LowGamma y HighGamma, son ondas por encima de 30Hz y suelen aparecer cuando hay una alta concentración o atención
+
+\textbf{Signal:} Podría ser la señal de que aporta la interfaz BCI.
+
+\textbf{Key:} Valores target de lo que el individuo estaba pensando o visualizando durante el experimento.
+
+
+La transformación de datos o el preprocessing que se ha realizado para poder afrontar los experimentos del TFG han sido los siguientes:
+
+
+\textbf{Unificación de características Key:} El conjunto de datos tiene varios valores en Key que indican los mismo. LButton y Left.
+
+\imagen{anexos/Key}{Cantidad de elementos para la característica Key}
+
+\textbf{División del conjunto de datos:} El conjunto de datos tiene cuatro segmentos divididos por su Timestamp, superponiéndose entre ellos. Divido en estos cuatro segmentos para poder realizar experimentos y también dejo el conjunto de datos sin dividir para realizar experimentos conjuntos a los cuatro segmentos.
+
+\imagen{anexos/Timestamp}{Análisis característica Timestamp del conjunto de datos}
+
+\textbf{Eliminación de características:} Elimino las características Signal por no aportar nada significativo en el conjunto de datos y Timestamp porque no quiero que los datos aportados puedan tener una patrón temporal que haga que los experimentos no sean reales.
+
+
+\textbf{Escalado de datos:} He utilizado la opción de escalar los datos ya que no son datos normales puesto que no tienen una distribución gaussiana en sus datos. 
+
 \section{Diseño de datos}
+
+
+
 
 \section{Diseño procedimental}
 
-\section{Diseño arquitectónico}
 
+
+\section{Diseño arquitectónico}
 

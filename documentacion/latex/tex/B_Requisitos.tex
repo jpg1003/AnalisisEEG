@@ -161,42 +161,226 @@ Hay dos tipos de requisitos, los funcionales (qué debe hacer el código) y los 
   \item
     \textbf{Descripción:} En la configuración del notebooks principal se debe permitir la adhesión de nuevos notebooks y sus llamadas desde el notebook principal.
   \item
-  \item
     \textbf{Criterios de aceptación:} Poder seguir integrando nuevos notebooks para ser llamados desde el notebook principal sin afectar al funcionamiento del código. 
   \end{itemize}
 
 \end{itemize}
 
 
+\subsection{Restricciones}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{R-001:} El sistema debe operar en un entorno Jupyter Notebook.
+ 
+\item
+  \textbf{R-002:} Todos los notebooks secundarios deben estar disponibles en el mismo entorno de ejecución que el notebook principal.
+
+\item
+  \textbf{R-003:} El procesamiento y análisis de datos debe realizarse utilizando bibliotecas compatibles con Python 3.x.
+
+\end{itemize}
+
+
+
 
 \section{Especificación de requisitos}
 
+Voy a describir cada caso de uso identificado:
 
-% Caso de Uso 1 -> Consultar Experimentos.
+
 \begin{table}[p]
 	\centering
 	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
 		\toprule
-		\textbf{CU-1}    & \textbf{Ejemplo de caso de uso}\\
+		\textbf{CU-001}    & \textbf{Iniciar notebook principal (Main)}\\
 		\toprule
 		\textbf{Versión}              & 1.0    \\
 		\textbf{Autor}                & José Luis Pérez Gómez \\
-		\textbf{Requisitos asociados} & RF-xx, RF-xx \\
-		\textbf{Descripción}          & La descripción del CU \\
-		\textbf{Precondición}         & Precondiciones (podría haber más de una) \\
+		\textbf{Requisitos asociados} & RF-001 \\
+		\textbf{Descripción}          & El notebook principal necesita ser ejecutado para iniciar el análisis del conjunto de datos. \\
+		\textbf{Precondición}         & R-001, R-002, R-003\\
 		\textbf{Acciones}             &
 		\begin{enumerate}
 			\def\labelenumi{\arabic{enumi}.}
 			\tightlist
-			\item Pasos del CU
-			\item Pasos del CU (añadir tantos como sean necesarios)
+			\item Acceder a la carpeta donde se encuentren los notebooks.
+			\item Seleccionar el notebook '1.Main.ipynb' y hacer doble clic sobre el archivo.
 		\end{enumerate}\\
-		\textbf{Postcondición}        & Postcondiciones (podría haber más de una) \\
-		\textbf{Excepciones}          & Excepciones \\
-		\textbf{Importancia}          & Alta o Media o Baja... \\
+		\textbf{Postcondición}        & El usuario podra visualizar el codigo del notebook principal\\
+		\textbf{Excepciones}          &  \\
+		\textbf{Importancia}          & Alta \\
 		\bottomrule
 	\end{tabularx}
-	\caption{CU-1 Nombre del caso de uso.}
+	\caption{CU-001 Iniciar notebook principal (Main).}
 \end{table}
 
 
+
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CU-002}    & \textbf{Ejecución celda 1. Crear un entorno virtual.}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & José Luis Pérez Gómez \\
+		\textbf{Requisitos asociados} & RF-002 \\
+		\textbf{Descripción}          & Desde el notebook principal se ejecuta la primera celda que llama a un notebook secundario. \\
+		\textbf{Precondición}         & R-001, R-002, R-003 y Haber inciciado correctamente el notebook principal (Main). \\
+		\textbf{Acciones}             & Pulsar Run en la celda ejecutable desde el notebook principal (1. Crear un entorno virtual)\\
+		\textbf{Postcondición}        & La salida de la ejecución no de ningún error\\
+		\textbf{Excepciones}          &  \\
+		\textbf{Importancia}          & Media \\
+		\bottomrule
+	\end{tabularx}
+	\caption{CU-002 Ejecución celda 1. Crear un entorno virtual.}
+\end{table}
+
+
+
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CU-003}    & \textbf{Ejecución celdas del notebook Main (Notebooks Preparatorios).}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & José Luis Pérez Gómez \\
+		\textbf{Requisitos asociados} & RF-002 \\
+		\textbf{Descripción}          & Desde el notebook principal se ejecutan las tres siguientes celdas ejecutables desde el notebook principal Main. \\
+		\textbf{Precondición}         & R-001, R-002, R-003 y Haber iniciado correctamente el notebook principal (Main)\\
+		\textbf{Acciones}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item Pulsar Run en la celda ejecutable "2. Instalación de bibliotecas."
+			\item Pulsar Run en la celda ejecutable "3. Importación de las bibliotecas instaladas."
+			\item Pulsar Run en la celda ejecutable "4. Asignación de valores a variables y creación de funciones."
+		\end{enumerate}\\
+		\textbf{Postcondición}        & La salida de la ejecución en las tres celdas no debe tener ningún error\\
+		\textbf{Excepciones}          &  \\
+		\textbf{Importancia}          & Alta \\
+		\bottomrule
+	\end{tabularx}
+	\caption{CU-003 Ejecución celdas (Notebooks Preparatorios).}
+\end{table}
+
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CU-004}    & \textbf{Ejecución celda del notebook Main carga de archivo CSV.}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & José Luis Pérez Gómez \\
+		\textbf{Requisitos asociados} & RF-003 \\
+		\textbf{Descripción}          & Desde el notebook principal se ejecutan las tres siguientes celdas ejecutables desde el notebook principal Main. \\
+		\textbf{Precondición}         & R-001, R-002, R-003, haber iniciado correctamente el notebook principal (Main) y haber ejecutado todas las celdas anteriores a esta celda\\
+		\textbf{Acciones}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item Pulsar Run en la celda ejecutable notebook carga de archivo CSV con el conjunto de datos a analizar:
+			\item Pulsar sobre el botón nuevo llamado "Upload".
+			\item Seleccionar el archivo de datos a analizar (para esta ejecución datosEEGTotal.csv)
+			\item Pulsar sobre el botón nuevo llamado "Procesar Datos".
+		\end{enumerate}\\
+		\textbf{Postcondición}        & La salida de la ejecución ha de imprimir por pantalla los datos a analizar.\\
+		\textbf{Excepciones}          &  \\
+		\textbf{Importancia}          & Alta \\
+		\bottomrule
+	\end{tabularx}
+	\caption{CU-004 Ejecución celdas cargar de archivo CSV.}
+\end{table}
+
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CU-005}    & \textbf{Ejecución celdas del notebook Main (Notebooks análisis y preprocessing)}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & José Luis Pérez Gómez \\
+		\textbf{Requisitos asociados} & RF-004 \\
+		\textbf{Descripción}          & Desde el notebook principal se ejecutan las dos siguientes celdas ejecutables desde el notebook principal Main debajo de Notebooks análisis y preprocessing de conjunto de datos\\
+		\textbf{Precondición}         & R-001, R-002, R-003, haber iniciado correctamente el notebook principal (Main) y haber ejecutado todas las celdas anteriores a esta celda\\
+		\textbf{Acciones}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item Pulsar Run en la celda ejecutable notebook carga de archivo CSV con el conjunto de datos a analizar
+			\item Pulsar Run en la celda ejecutable "5. Análisis de datos inicial."
+			\item Pulsar Run en la celda ejecutable "6. Preprocessing del conjunto de datos."
+		\end{enumerate}\\
+		\textbf{Postcondición}        & La salida de las ejecuciones ha de imprimir por pantalla los datos analizados y preprocesados del conjunto de datos sin errores.\\
+		\textbf{Excepciones}          &  \\
+		\textbf{Importancia}          & Alta \\
+		\bottomrule
+	\end{tabularx}
+	\caption{CU-005 Ejecución celdas (Notebooks análisis y preprocessing)}
+\end{table}
+
+
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CU-006}    & \textbf{Ejecución celdas del notebook Main (Notebooks experimentos)}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & José Luis Pérez Gómez \\
+		\textbf{Requisitos asociados} & RF-005 \\
+		\textbf{Descripción}          & Desde el notebook principal se ejecutan las dos siguientes celdas ejecutables desde el notebook principal Main debajo de Notebooks análisis y preprocessing de conjunto de datos\\
+		\textbf{Precondición}         & R-001, R-002, R-003, haber iniciado correctamente el notebook principal (Main) y haber ejecutado todas las celdas anteriores a esta celda\\
+		\textbf{Acciones}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item Pulsar Run en la celda ejecutable 7. Implementación modelos Machine Learning
+			\item Pulsar Run en la celda ejecutable 8.1 MLP
+			\item Pulsar Run en la celda ejecutable 8.2 SRNN
+			\item Pulsar Run en la celda ejecutable 8.3 LSTM
+			\item Pulsar Run en la celda ejecutable 8.4 SRNN Sliding Windows
+			\item Pulsar Run en la celda ejecutable 8.5 LSTM Sliding Windows
+			\item Pulsar Run en la celda ejecutable 9.1 Aumento de datos con SMOTE
+			\item Pulsar Run en la celda ejecutable 9.2 SRNN Sliding Windows
+			\item Pulsar Run en la celda ejecutable 9.3 LSTM Aumento de datos			
+			\item Pulsar Run en la celda ejecutable 9.4 SRNN Aumento de datos Sliding Windows
+			\item Pulsar Run en la celda ejecutable 9.5 LSTM Aumento de datos Sliding Windows
+			
+		\end{enumerate}\\
+		\textbf{Postcondición}        & La salida de las ejecuciones ha de imprimir por pantalla los datos Tasa de acierto y matrices de confusión.\\
+		\textbf{Excepciones}          &  \\
+		\textbf{Importancia}          & Alta \\
+		\bottomrule
+	\end{tabularx}
+	\caption{CU-006 Ejecución celdas (Notebooks experimentos)}
+\end{table}
+
+
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CU-007}    & \textbf{Ejecución celda del notebook Main (Notebook recopilado de resultados)}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & José Luis Pérez Gómez \\
+		\textbf{Requisitos asociados} & RF-006 \\
+		\textbf{Descripción}          & Desde el notebook principal se ejecutan las dos siguientes celdas ejecutables desde el notebook principal Main debajo de Notebooks análisis y preprocessing de conjunto de datos\\
+		\textbf{Precondición}         & R-001, R-002, R-003, haber iniciado correctamente el notebook principal (Main) y haber ejecutado todas las celdas anteriores a esta celda\\
+		\textbf{Acciones}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item Pulsar Run en la celda ejecutable Notebook recopilado de resultados			
+		\end{enumerate}\\
+		\textbf{Postcondición}        & La salida de las ejecuciones ha de imprimir por pantalla los datos Tasa de acierto para el conjunto de datos validación y test en todos los experimentos.\\
+		\textbf{Excepciones}          &  \\
+		\textbf{Importancia}          & Alta \\
+		\bottomrule
+	\end{tabularx}
+	\caption{CU-007 Ejecución celdas (Notebook resultados)}
+\end{table}
