@@ -52,17 +52,108 @@ La transformación de datos o el preprocessing que se ha realizado para poder af
 
 \textbf{Eliminación de características:} Elimino las características Signal por no aportar nada significativo en el conjunto de datos y Timestamp porque no quiero que los datos aportados puedan tener una patrón temporal que haga que los experimentos no sean reales.
 
+\textbf{Eliminación de outliners:} Elimino los outlines (datos atípicos) del conjunto de datos. Utilizo zcore con un umbral de 3. \href{https://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule}{Regla del 68–95–99.7}
+
 
 \textbf{Escalado de datos:} He utilizado la opción de escalar los datos ya que no son datos normales puesto que no tienen una distribución gaussiana en sus datos. 
 
 \section{Diseño de datos}
 
+En este trabajo con datos EEG, el diseño de datos consta de:
 
+\textbf{Diagramas entidad-relación (ERD)}
 
+\textbf{Relaciones y Dependencias:}
 
 \section{Diseño procedimental}
 
+En este trabajo he utilizado notebooks Jupyter para analizar el conjunto de datos EEG, por este motivo el diseño arquitectónico resultante ha sido el siguiente:
 
+
+\textbf{Arquitectura del Sistema:}
+
+La idea principal era que la ejecución de varios modelos de machine y deep learning se pudieran ejecutar de una manera eficiente y que fueran independientes sus ejecuciones. 
+Para esto, el diseño se compone de un notebook jupyer que llama celda a celda a diferentes notebooks en los cuales se desarrolla el código a ejecutar. 
+
+Los componentes principales son:
+
+  \begin{itemize}
+  \tightlist
+  \item
+   \textbf{Notebook principal}, desde el cual se orquesta todas las ejecuciones de los demás notebooks.
+  \item
+   \textbf{Notebooks secundarios preparatorios}, que como su nombre indica, preparan el entorno para que puedan ser ejecutados los experimentos.
+  \item
+   \textbf{Notebook subida datos en archivo CSV}, desde esta llamada se sube el archivo con el conjunto de datos a analizar.
+  \item
+   \textbf{Notebook secundarios para experimentos} donde se ejecutan los experimentos asociados al TFG.
+  \item
+   \textbf{Notebook de resultados} que imprime los resultados de tasa de acierto en los experimentos contra los datos de tipos test.
+  \end{itemize}
+  
+
+Las tecnologías y Herramientas utilizadas han sido las siguientes:
+
+  \textbf{Manejo de datos y preprocessing:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+   \textbf{Pandas:} Para la manipulación y análisis de datos estructurados en DataFrames.
+  \item
+   \textbf{NumPy:} Para operaciones numéricas eficientes en matrices, arrays y listas.
+  \item
+   \textbf{Scikit-learn y SciPy:} Para escalado de datos, transformación y técnicas de preprocesamiento como StandardScaler y z-score.
+  \end{itemize}
+
+  \textbf{Técnicas de validación:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+   \textbf{Holdout:} División de los datos en conjuntos de entrenamiento, validación y prueba para evaluación inicial.
+  \item
+   \textbf{K-Fold Cross-Validation:} Validación cruzada con KFold para evaluar la variabilidad del modelo.
+  \item
+   \textbf{Leave-One-Out:} Validación de eno en uno los datos dejando los demás fuera, así se evalúa la robustez del modelo. 
+  \end{itemize} 
+  
+  \textbf{Modelos de aprendizaje automático:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+   \textbf{K-Nearest Neighbors (KNN):} Clasificación basada en la proximidad de los puntos de los datos.
+  \item
+   \textbf{Árboles de decisión (Decision Tree):} Utiliza una estructura de árbol para realizar predicciones basadas en decisiones binarias.
+  \item
+   \textbf{Random Forest:} Mejora la precisión y reduce el sobreajuste utilizando múltiples árboles de decisión.
+  \end{itemize}   
+
+  \textbf{Redes Neuronales y Modelos Avanzados:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+   \textbf{Multi-Layer Perceptron (MLP):} Implementan redes neuronales feedforward. Esta arquitectura de red neuronal no tiene ciclos en sus conexiones neuronales sino que que los datos van en una dirección desde la capa de entrada a la capa de salida. Es el más básico.
+  \item
+   \textbf{Simple Recurrent Neural Network (SRNN):} Es un tipo básico de red neuronal que tiene conexiones recurrentes que le permite mantener y utilizar información previa en la secuencia de datos. Es muy parecida a MLP pero en este caso las conexiones entre neuronas si pueden ir hacia detrás.
+  \item
+   \textbf{Long Short-Term Memory (LSTM):} Es una red neuronal avanzada en comparación con la recurrente SRNN. La diferencia principal es que puede retener la información relevante durante mas tiempo que SRNN.
+  \end{itemize} 
+
+
+  \textbf{Técnicas para la creación de datos sintéticos:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+   \textbf{SMOTE (Synthetic Minority Over-sampling Technique):} Uso de la biblioteca imblearn para crear ejemplos sintéticos.
+  \end{itemize}   
+  
+
+
+Infraestructura utilizada?
 
 \section{Diseño arquitectónico}
 
