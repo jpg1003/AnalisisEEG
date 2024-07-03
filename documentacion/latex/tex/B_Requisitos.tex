@@ -39,86 +39,115 @@ Hay dos tipos de requisitos, los funcionales (qué debe hacer el código) y los 
 \begin{itemize}
 \tightlist
 \item
-  \textbf{RF-001 Iniciar notebook Main:}
+  \textbf{RF-001 Cargar archivos con datos EEG:}
  
   \begin{itemize}
   \tightlist
   \item
-   \textbf{Descripción:} Los usuarios han de poder iniciar el notebook principal para poder comenzar con la ejecución del trabajo.
+   \textbf{Descripción:} El sistema debe permitir cargar archivos de datos EEG para su posterior análisis.
   \item
    \textbf{Prioridad:} Alta
   \item
-   \textbf{Criterios de aceptación:} El notebook Main debe abrirse correctamente en menos de 5 segundos. 
+   \textbf{Criterios de aceptación:} El sistema debe permitir al usuario poder subir archivos con datos EEG manualmente. 
   \end{itemize}
 
 
 \item
-  \textbf{RF-002 Invocación de Notebooks Secundarios Preparatorios:}
+  \textbf{RF-002 Preprocesar datos:}
   
   \begin{itemize}
   \tightlist
   \item
-    \textbf{Descripción:} Los usuarios han de poder invocar los notebook secundarios preparatorios para poder ejecutar con seguridad el resto de notebooks de preprocesado y modelados.
+    \textbf{Descripción:} El sistema debe preprocesar los datos EEG cargados de manera manual, estandarizar, escalar, eliminar outliners,... para su posterior análisis.
+.
   \item
    \textbf{Prioridad:} Alta
   \item
-   \textbf{Criterios de aceptación:} Los notebooks secundarios preparatorios se han de ejecutar correctamente y que la celda en la que se se llama al notebook secundario no devuelva errores. Los notebooks preparatorios. Su ejecucion no ha de ser mayor a 5 minutos.
+   \textbf{Criterios de aceptación:} Se ha de poder comprobar que el sistema ha realizado el preprocesado de los datos EEG.
   \end{itemize}
  
   
 \item
-  \textbf{RF-003 Invocación de Notebook Secundarios carga de archivo CSV:}
+  \textbf{RF-003 Visualizar y analizar datos:}
 
   \begin{itemize}
   \tightlist
   \item
-    \textbf{Descripción:} Los usuarios han de poder invocar los notebook secundarios carga de archivo CSV, para la ejecucion de este notebook secundario se ha de subir un archivo csv con el conjunto de datos a analizar y una vez subido el archivo, se iluminara un botón con nombre 'Procesar datos' que procesara los datos una vez pulsado.
+    \textbf{Descripción:} El sistema debe permitir la visualización gráfica de las señales EEG antes y después de ser preprocesadas.
   \item
     \textbf{Prioridad:} Alta
   \item
-    \textbf{Criterios de aceptación:} Si no se ejecuta correctamente la llamada a este notebook no se podrá seguir con la ejecución del resto de notebooks puesto que sin datos no se podrían realizar las siguientes acciones. 
+    \textbf{Criterios de aceptación:} Se ha de poder comparar los datos EEG antes y después del preprocesado. 
   \end{itemize}
 
 
 \item
-  \textbf{RF-004 Invocación de Notebooks Secundarios análisis y preprocessing:}
+  \textbf{RF-004 Modelado y validación aprendizaje automático básico:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+   \textbf{Descripción:} El sistema debe permitir entrenar modelos de aprendizaje básicos (KNN, Arboles de decision, random forest) con diferentes técnicas de validación (Hold-Out,K-Fold, Cross-Validation, Leave-One-Out Cross-Validation) utilizando los datos EEG preprocesados.
+  \item  
+   \textbf{Prioridad: Alta}
+  \item  
+   \textbf{Criterios de aceptación:} .
+	\textbf{}
+  \end{itemize}
+
+
+\item
+  \textbf{RF-005 Modelado y validación aprendizaje automático neuronal:}
   
   \begin{itemize}
   \tightlist
   \item
-   \textbf{Descripción:} Los usuarios han de poder invocar los notebook secundarios análisis y preprocessing para poder proporcionar este procesado de datos antes de la ejecución de modelos machine o deep learning.
+   \textbf{Descripción:} El sistema debe permitir entrenar modelos de aprendizaje automático (MLP, SRNN, LSTM) utilizando los datos EEG preprocesados.
   \item  
    \textbf{Prioridad:} Alta
   \item  
-   \textbf{Criterios de aceptación:} Si no se ejecuta correctamente la llamada a este notebook no se podrá seguir con la ejecución del resto de notebooks puesto que sin la realizacion del preprocessing de los datos no se generan los csv correcpondientes para poder seguir ejecutando los siguientes notebooks.
+   \textbf{Criterios de aceptación:} .
   \end{itemize}
 
 
 \item
-  \textbf{RF-005 Invocación de Notebooks Secundarios para experimentos:}
+  \textbf{RF-006 Control de BCI:}
 
   \begin{itemize}
   \tightlist
   \item
-   \textbf{Descripción:} Los usuarios han de poder invocar los notebook secundarios para experimentos y poder generar los datos sobre Tasa de acierto y generacion de matrices de confusión.
-  \item  
-   \textbf{Prioridad: Media}
-  \item  
-   \textbf{Criterios de aceptación:} Estos notebooks se puede ejecutar de manera individual o en el orden pre establecido. para realizar el análisis final lo ideal es ejecutar todos los notebooks de esta session.
-	\textbf{}
-  \end{itemize}
-
-\item
-  \textbf{RF-006 Invocación de Notebook Secundario resultados:}
-
-  \begin{itemize}
-  \tightlist
-  \item
-   \textbf{Descripción:} Los usuarios han de poder invocar los notebook Secundario resultados y poder visualizar los resultados de las particiones test del conjunto de datos. Se han de haber ejecutado todos los notebooks de esta sección.
+   \textbf{Descripción:} El sistema debe ser capaz de identificar o clasificar con precisión las señales EEG que correspondan a una de las direcciones especificadas (arriba, abajo, izquierda, derecha).
   \item  
    \textbf{Prioridad: Alta}
   \item  
-   \textbf{Criterios de aceptación:} Sin la ejecución de este notebook no se obtendrian los resultados del trabajo y por lo tanto es critico este ultimo notebook para poder visualizar la tasa de acierto en datos que el modelo no conocía en la etapa de entrenamiento y validación.
+   \textbf{Criterios de aceptación:} .
+  \end{itemize}
+
+
+\item
+  \textbf{RF-007 Almacenamiento y recuperación de resultados:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+   \textbf{Descripción:} El sistema debe permitir almacenar los resultados de los experimentos y sus resultados.
+  \item  
+   \textbf{Prioridad: Alta}
+  \item  
+   \textbf{Criterios de aceptación:} .
+  \end{itemize}
+
+\item
+  \textbf{RF-008 Integración y Extensibilidad:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+   \textbf{Descripción:} El sistema debe permitir la integración de nuevos modelos de aprendizaje automático sin necesidad de reestructurar significativamente el código existente.
+  \item  
+   \textbf{Prioridad: Alta}
+  \item  
+   \textbf{Criterios de aceptación:} .
   \end{itemize}
 
 
@@ -147,7 +176,7 @@ Hay dos tipos de requisitos, los funcionales (qué debe hacer el código) y los 
   \begin{itemize}
   \tightlist
   \item
-    \textbf{Descripción:} Los notebooks han de ser faciles de entender y usar por los usuarios.
+    \textbf{Descripción:} Los notebooks han de ser fáciles de entender y usar por los usuarios.
   \item
    \textbf{Criterios de aceptación:} La interfaz de los notebooks ha de ser intuitiva y clara.
   \end{itemize}
@@ -194,26 +223,27 @@ Voy a describir cada caso de uso identificado:
 	\centering
 	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
 		\toprule
-		\textbf{CU-001}    & \textbf{Iniciar notebook principal (Main)}\\
-		\toprule
+		\textbf{CU-001}    & \textbf{Carga archivo con datos EEG}\\
+		\toprule		
+		\textbf{Actor}              & Investigador    \\ 
 		\textbf{Versión}              & 1.0    \\
 		\textbf{Autor}                & José Luis Pérez Gómez \\
 		\textbf{Requisitos asociados} & RF-001 \\
-		\textbf{Descripción}          & El notebook principal necesita ser ejecutado para iniciar el análisis del conjunto de datos. \\
+		\textbf{Descripción}          & El investigador carga el archivo de datos EEG para su posterior análisis. \\
 		\textbf{Precondición}         & R-001, R-002, R-003\\
 		\textbf{Acciones}             &
 		\begin{enumerate}
 			\def\labelenumi{\arabic{enumi}.}
 			\tightlist
-			\item Acceder a la carpeta donde se encuentren los notebooks.
-			\item Seleccionar el notebook '1.Main.ipynb' y hacer doble clic sobre el archivo.
+			\item El usuario siguiendo los pasos indicados desde el sistema, carga el archivo con datos EEG que quiere analizar.
+
 		\end{enumerate}\\
-		\textbf{Postcondición}        & El usuario podra visualizar el codigo del notebook principal\\
+		\textbf{Postcondición}        & El usuario podrá visualizar los datos cargados en el sistema\\
 		\textbf{Excepciones}          &  \\
 		\textbf{Importancia}          & Alta \\
 		\bottomrule
 	\end{tabularx}
-	\caption{CU-001 Iniciar notebook principal (Main).}
+	\caption{CU-001 Carga archivo con datos EEG.}
 \end{table}
 
 
@@ -222,141 +252,101 @@ Voy a describir cada caso de uso identificado:
 	\centering
 	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
 		\toprule
-		\textbf{CU-002}    & \textbf{Ejecución celda 1. Crear un entorno virtual.}\\
+		\textbf{CU-002}    & \textbf{Preprocesamiento de Datos EEG}\\
 		\toprule
+		\textbf{Actor}              & Investigador    \\ 
 		\textbf{Versión}              & 1.0    \\
 		\textbf{Autor}                & José Luis Pérez Gómez \\
 		\textbf{Requisitos asociados} & RF-002 \\
-		\textbf{Descripción}          & Desde el notebook principal se ejecuta la primera celda que llama a un notebook secundario. \\
-		\textbf{Precondición}         & R-001, R-002, R-003 y Haber inciciado correctamente el notebook principal (Main). \\
-		\textbf{Acciones}             & Pulsar Run en la celda ejecutable desde el notebook principal (1. Crear un entorno virtual)\\
-		\textbf{Postcondición}        & La salida de la ejecución no de ningún error\\
-		\textbf{Excepciones}          &  \\
-		\textbf{Importancia}          & Media \\
-		\bottomrule
-	\end{tabularx}
-	\caption{CU-002 Ejecución celda 1. Crear un entorno virtual.}
-\end{table}
-
-
-
-\begin{table}[p]
-	\centering
-	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
-		\toprule
-		\textbf{CU-003}    & \textbf{Ejecución celdas del notebook Main (Notebooks Preparatorios).}\\
-		\toprule
-		\textbf{Versión}              & 1.0    \\
-		\textbf{Autor}                & José Luis Pérez Gómez \\
-		\textbf{Requisitos asociados} & RF-002 \\
-		\textbf{Descripción}          & Desde el notebook principal se ejecutan las tres siguientes celdas ejecutables desde el notebook principal Main. \\
-		\textbf{Precondición}         & R-001, R-002, R-003 y Haber iniciado correctamente el notebook principal (Main)\\
-		\textbf{Acciones}             &
-		\begin{enumerate}
-			\def\labelenumi{\arabic{enumi}.}
-			\tightlist
-			\item Pulsar Run en la celda ejecutable "2. Instalación de bibliotecas."
-			\item Pulsar Run en la celda ejecutable "3. Importación de las bibliotecas instaladas."
-			\item Pulsar Run en la celda ejecutable "4. Asignación de valores a variables y creación de funciones."
-		\end{enumerate}\\
-		\textbf{Postcondición}        & La salida de la ejecución en las tres celdas no debe tener ningún error\\
+		\textbf{Descripción}          & El investigador ejecuta el preprocesado de los datos EEG. \\
+		\textbf{Precondición}         & R-001, R-002, R-003 \\
+		\textbf{Acciones}             & El sistema aplica técnicas de preprocesamiento para limpiar los datos, estandarizar, etc. \\
+		\textbf{Postcondición}        & La salida de la ejecución no tenga ningún error\\
 		\textbf{Excepciones}          &  \\
 		\textbf{Importancia}          & Alta \\
 		\bottomrule
 	\end{tabularx}
-	\caption{CU-003 Ejecución celdas (Notebooks Preparatorios).}
+	\caption{CU-002 Preprocesamiento de Datos EEG.}
 \end{table}
+
+
 
 \begin{table}[p]
 	\centering
 	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
 		\toprule
-		\textbf{CU-004}    & \textbf{Ejecución celda del notebook Main carga de archivo CSV.}\\
+		\textbf{Actor}              & Investigador    \\ 
+		\textbf{CU-003}    & \textbf{Visualización de datos.}\\
 		\toprule
 		\textbf{Versión}              & 1.0    \\
 		\textbf{Autor}                & José Luis Pérez Gómez \\
 		\textbf{Requisitos asociados} & RF-003 \\
-		\textbf{Descripción}          & Desde el notebook principal se ejecutan las tres siguientes celdas ejecutables desde el notebook principal Main. \\
-		\textbf{Precondición}         & R-001, R-002, R-003, haber iniciado correctamente el notebook principal (Main) y haber ejecutado todas las celdas anteriores a esta celda\\
+		\textbf{Descripción}          & El sistema genera visualizaciones gráficas de las señales EEG antes y después del preprocesado. \\
+		\textbf{Precondición}         & R-001, R-002, R-003\\
 		\textbf{Acciones}             &
 		\begin{enumerate}
 			\def\labelenumi{\arabic{enumi}.}
 			\tightlist
-			\item Pulsar Run en la celda ejecutable notebook carga de archivo CSV con el conjunto de datos a analizar:
-			\item Pulsar sobre el botón nuevo llamado "Upload".
-			\item Seleccionar el archivo de datos a analizar (para esta ejecución datosEEGTotal.csv)
-			\item Pulsar sobre el botón nuevo llamado "Procesar Datos".
+			\item El sistema aplica técnicas de impresión por pantalla de los datos a analizar."
 		\end{enumerate}\\
-		\textbf{Postcondición}        & La salida de la ejecución ha de imprimir por pantalla los datos a analizar.\\
+		\textbf{Postcondición}        & Visualizaciones gráficas de los datos EEG.\\
 		\textbf{Excepciones}          &  \\
 		\textbf{Importancia}          & Alta \\
 		\bottomrule
 	\end{tabularx}
-	\caption{CU-004 Ejecución celdas cargar de archivo CSV.}
+	\caption{CU-003 Visualización de datos.}
 \end{table}
 
 \begin{table}[p]
 	\centering
 	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
 		\toprule
-		\textbf{CU-005}    & \textbf{Ejecución celdas del notebook Main (Notebooks análisis y preprocessing)}\\
+		\textbf{CU-004}    & \textbf{Entrenamiento y validación de modelos de aprendizaje automático básico}\\
 		\toprule
+		\textbf{Actor}              & Investigador    \\ 
 		\textbf{Versión}              & 1.0    \\
 		\textbf{Autor}                & José Luis Pérez Gómez \\
 		\textbf{Requisitos asociados} & RF-004 \\
-		\textbf{Descripción}          & Desde el notebook principal se ejecutan las dos siguientes celdas ejecutables desde el notebook principal Main debajo de Notebooks análisis y preprocessing de conjunto de datos\\
-		\textbf{Precondición}         & R-001, R-002, R-003, haber iniciado correctamente el notebook principal (Main) y haber ejecutado todas las celdas anteriores a esta celda\\
+		\textbf{Descripción}          & El investigador entrena y valida modelos de aprendizaje automático básico utilizando diferentes técnicas de validación con los datos preprocesados EEG. \\
+		\textbf{Precondición}         & R-001, R-002, R-003\\
 		\textbf{Acciones}             &
 		\begin{enumerate}
 			\def\labelenumi{\arabic{enumi}.}
 			\tightlist
-			\item Pulsar Run en la celda ejecutable notebook carga de archivo CSV con el conjunto de datos a analizar
-			\item Pulsar Run en la celda ejecutable "5. Análisis de datos inicial."
-			\item Pulsar Run en la celda ejecutable "6. Preprocessing del conjunto de datos."
+			\item El sistema entrena y valida los modelos aprendizaje automático básico con los datos preprocesados EEG.
 		\end{enumerate}\\
-		\textbf{Postcondición}        & La salida de las ejecuciones ha de imprimir por pantalla los datos analizados y preprocesados del conjunto de datos sin errores.\\
+		\textbf{Postcondición}        & Modelos entrenados y validados con sus respectivas métricas de tasa de acierto y matrices de confusión.\\
 		\textbf{Excepciones}          &  \\
 		\textbf{Importancia}          & Alta \\
 		\bottomrule
 	\end{tabularx}
-	\caption{CU-005 Ejecución celdas (Notebooks análisis y preprocessing)}
+	\caption{CU-004 Entrenamiento y validación de modelos de aprendizaje automático básico.}
 \end{table}
-
 
 \begin{table}[p]
 	\centering
 	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
 		\toprule
-		\textbf{CU-006}    & \textbf{Ejecución celdas del notebook Main (Notebooks experimentos)}\\
+		\textbf{CU-005}    & \textbf{Entrenamiento y validación de modelos de aprendizaje automático neuronal}\\
 		\toprule
+		\textbf{Actor}              & Investigador    \\ 
 		\textbf{Versión}              & 1.0    \\
 		\textbf{Autor}                & José Luis Pérez Gómez \\
 		\textbf{Requisitos asociados} & RF-005 \\
-		\textbf{Descripción}          & Desde el notebook principal se ejecutan las dos siguientes celdas ejecutables desde el notebook principal Main debajo de Notebooks análisis y preprocessing de conjunto de datos\\
+		\textbf{Descripción}          & El investigador entrena y valida modelos de deep learning utilizando los datos EEG preprocesados.\\
 		\textbf{Precondición}         & R-001, R-002, R-003, haber iniciado correctamente el notebook principal (Main) y haber ejecutado todas las celdas anteriores a esta celda\\
 		\textbf{Acciones}             &
 		\begin{enumerate}
 			\def\labelenumi{\arabic{enumi}.}
 			\tightlist
-			\item Pulsar Run en la celda ejecutable 7. Implementación modelos Machine Learning
-			\item Pulsar Run en la celda ejecutable 8.1 MLP
-			\item Pulsar Run en la celda ejecutable 8.2 SRNN
-			\item Pulsar Run en la celda ejecutable 8.3 LSTM
-			\item Pulsar Run en la celda ejecutable 8.4 SRNN Sliding Windows
-			\item Pulsar Run en la celda ejecutable 8.5 LSTM Sliding Windows
-			\item Pulsar Run en la celda ejecutable 9.1 Aumento de datos con SMOTE
-			\item Pulsar Run en la celda ejecutable 9.2 SRNN Sliding Windows
-			\item Pulsar Run en la celda ejecutable 9.3 LSTM Aumento de datos			
-			\item Pulsar Run en la celda ejecutable 9.4 SRNN Aumento de datos Sliding Windows
-			\item Pulsar Run en la celda ejecutable 9.5 LSTM Aumento de datos Sliding Windows
-			
+			\item El sistema entrena y valida los modelos aprendizaje automático neuronal con los datos preprocesados EEG.
 		\end{enumerate}\\
-		\textbf{Postcondición}        & La salida de las ejecuciones ha de imprimir por pantalla los datos Tasa de acierto y matrices de confusión.\\
+		\textbf{Postcondición}        & Modelos entrenados y validados con sus respectivas métricas de tasa de acierto y matrices de confusión.\\
 		\textbf{Excepciones}          &  \\
 		\textbf{Importancia}          & Alta \\
 		\bottomrule
 	\end{tabularx}
-	\caption{CU-006 Ejecución celdas (Notebooks experimentos)}
+	\caption{CU-005 Entrenamiento y validación de modelos de aprendizaje automático neuronal}
 \end{table}
 
 
@@ -364,23 +354,83 @@ Voy a describir cada caso de uso identificado:
 	\centering
 	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
 		\toprule
-		\textbf{CU-007}    & \textbf{Ejecución celda del notebook Main (Notebook recopilado de resultados)}\\
+		\textbf{Actor}              & Investigador    \\
+		\textbf{CU-006}    & \textbf{Control de BCI}\\
 		\toprule
 		\textbf{Versión}              & 1.0    \\
 		\textbf{Autor}                & José Luis Pérez Gómez \\
 		\textbf{Requisitos asociados} & RF-006 \\
-		\textbf{Descripción}          & Desde el notebook principal se ejecutan las dos siguientes celdas ejecutables desde el notebook principal Main debajo de Notebooks análisis y preprocessing de conjunto de datos\\
-		\textbf{Precondición}         & R-001, R-002, R-003, haber iniciado correctamente el notebook principal (Main) y haber ejecutado todas las celdas anteriores a esta celda\\
+		\textbf{Descripción}          & El sistema debe clasificar las señales EEG para determinar la dirección de movimiento (arriba, abajo, izquierda, derecha).\\
+		\textbf{Precondición}         & R-001, R-002, R-003\\
 		\textbf{Acciones}             &
 		\begin{enumerate}
 			\def\labelenumi{\arabic{enumi}.}
 			\tightlist
-			\item Pulsar Run en la celda ejecutable Notebook recopilado de resultados			
+			\item El sistema tras el entrenamiento y validacion de los diferentes modelos debe ser capaz de identificar o clasificar con precisión las señales EEG que correspondan a una de las direcciones especificadas (arriba, abajo, izquierda, derecha)
+			
 		\end{enumerate}\\
-		\textbf{Postcondición}        & La salida de las ejecuciones ha de imprimir por pantalla los datos Tasa de acierto para el conjunto de datos validación y test en todos los experimentos.\\
+		\textbf{Postcondición}        & \\
 		\textbf{Excepciones}          &  \\
 		\textbf{Importancia}          & Alta \\
 		\bottomrule
 	\end{tabularx}
-	\caption{CU-007 Ejecución celdas (Notebook resultados)}
+	\caption{CU-006 Control de BCI}
 \end{table}
+
+
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{Actor}              & Investigador    \\
+		\textbf{CU-007}    & \textbf{Almacenamiento y Recuperación de Resultados de Experimentos}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & José Luis Pérez Gómez \\
+		\textbf{Requisitos asociados} & RF-007 \\
+		\textbf{Descripción}          & : El sistema almacena y recupera los resultados de los experimentos de análisis de datos EEG.\\
+		\textbf{Precondición}         & R-001, R-002, R-003\\
+		\textbf{Acciones}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El investigador solicita la recuperación de resultados de los experimentos realizados y el sistema muestra los resultados de los experimentos.
+			
+		\end{enumerate}\\
+		\textbf{Postcondición}        & Resultados de los experimentos almacenados y recuperados para análisis comparativo posterior.\\
+		\textbf{Excepciones}          &  \\
+		\textbf{Importancia}          & Alta \\
+		\bottomrule
+	\end{tabularx}
+	\caption{CU-007 Almacenamiento y Recuperación de Resultados de Experimentos}
+\end{table}
+
+
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{Actor}              & Desarrollador    \\
+		\textbf{CU-008}    & \textbf{Integración y Extensibilidad del sistema}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & José Luis Pérez Gómez \\
+		\textbf{Requisitos asociados} & RF-008 \\
+		\textbf{Descripción}          & : El desarrollador integra, modifica y extiende todos los modelos de aprendizaje automático en el sistema.\\
+		\textbf{Precondición}         & R-001, R-002, R-003\\
+		\textbf{Acciones}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El desarrollador accede al código fuente del sistema, implementa el modelos,  actualiza la interfaz de usuario para permitir la selección de los modelos.
+			
+		\end{enumerate}\\
+		\textbf{Postcondición}        & Modelos integrados y disponibles para experimentos de análisis de datos EEG.\\
+		\textbf{Excepciones}          &  \\
+		\textbf{Importancia}          & Alta \\
+		\bottomrule
+	\end{tabularx}
+	\caption{CU-008 Integración y Extensibilidad del sistema}
+\end{table}
+
+

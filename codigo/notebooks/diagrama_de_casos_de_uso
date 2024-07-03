@@ -1,0 +1,28 @@
+// Diagrama de Casos de Uso
+digraph {
+	I [label=Investigador shape=actor]
+	U [label="Usuario Final
+(Paciente)" shape=actor]
+	D [label=Desarrollador shape=actor]
+	CU1 [label="Preprocesamiento de Datos EEG" shape=ellipse]
+	CU2 [label="Visualización de Datos EEG" shape=ellipse]
+	CU3 [label="Entrenamiento y Validación de Modelos
+ de Aprendizaje Automático Básico" shape=ellipse]
+	CU4 [label="Entrenamiento y Validación de Modelos
+ de Aprendizaje Automático Neuronal" shape=ellipse]
+	CU5 [label="Clasificación de Señales EEG
+ para Control de BCI" shape=ellipse]
+	CU6 [label="Almacenamiento y Recuperación
+ de Resultados de Experimentos" shape=ellipse]
+	CU7 [label="Configuración de Parámetros de
+ Preprocesamiento y Modelado" shape=ellipse]
+	CU8 [label="Extensión del Sistema con Nuevos Modelos" shape=ellipse]
+	I -> CU1
+	I -> CU2
+	I -> CU3
+	I -> CU4
+	I -> CU6
+	I -> CU7
+	U -> CU5
+	D -> CU8
+}
