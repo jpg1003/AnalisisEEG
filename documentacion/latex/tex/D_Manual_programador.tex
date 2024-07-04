@@ -38,9 +38,136 @@ La estructura de los directorios del trabajo es la siguiente:
 
 Este manual sera utilizado principalmente por las personas involucradas en futuros cambios, mejoras o nuevos desarrollos en el código.
 
-Para ello, detallo las funciones de cada uno de los componentes :
+Para ello, detallo las funciones de cada uno de los componentes:
 
+  \begin{itemize}
+  \tightlist
+  \item
+   \textbf{Notebook Principal (1.Main.ipynb):} Crea y ejecuta un entorno virtual. Coordina la ejecución de los notebooks secundarios. Es el punto de entrada para la ejecución del sistema de análisis de datos EEG.
+  \item
+   \textbf{Notebooks secundarios:}
+   \begin{itemize}
+   \tightlist
+   \item
+    \textbf{2.Bibliotecas.ipynb:} En este notebooks están todas las instalaciones de bibliotecas necesarias para el sistema.
+   \item
+    \textbf{3.Importaciones.ipynb:} Importa las bibliotecas y configuraciones necesarias para el análisis futuro de los datos.
+   \item
+    \textbf{4.1.SubirCSV.ipynb:} Permite la subida de un archivo de datos al Notebook principal.
+   \item
+    \textbf{5.CargaDatos.ipynb:} Realiza un análisis de los datos cargados.
+   \item
+    \textbf{6.Preprocessing.ipynb:} Realiza la limpieza y preparación inicial de los datos EEG..
+   \item
+    \textbf{7.MachineLearning.ipynb:} : Implementa experimentos utilizando metodos como hold-ouy, k-fold cross validation ... para evaluar los modelos de aprendizaje automático básico.
+   \item
+    \textbf{8.1.DeepLearning-MLP.ipynb, 8.2.DeepLearning-SRNN.ipynb, 8.3.DeepLearning-LSTM.ipynb:} Realizan experimentos específicos con modelos de Perceptrón Multicapa, Red Neuronal Recurrente Simple y Memoria a Corto y Largo Plazo, respectivamente.
+   \item
+    \textbf{8.4.DeepLearning-SRNN(SlidingWindows).ipynb, 8.5.DeepLearning-LSTM(SlidingWindows).ipynb:} Realizan experimentos específicos con modelos de Perceptrón Multicapa, Red Neuronal Recurrente Simple y Memoria a Corto y Largo Plazo,respectivamente pero añadiendo ventanas deslizantes.
+   \item
+    \textbf{9.1.ProcesadoAumentoDatosSmote.ipynb:} Con smote aumenta y reparte con datos sinteticos la cantidad de datos para el analisis EEG. 
+   \item
+    \textbf{9.2.DeepLearning-SRNN(AumentoDatos).ipynb, 9.3.DeepLearning-LSTM(AumentoDatos).ipynb:} Implementa experimentos utilizando metodos como hold-ouy, k-fold cross validation ... pero con el aumento de la cantidad de datos con smote.
+   \item
+    \textbf{9.4.DeepLearning-SRNN(AumentoDatosSlidingWindows).ipynb, 9.5.DeepLearning-LSTM(AumentoDatosSlidingWindows).ipynb:} Realizan experimentos específicos con modelos de Perceptrón Multicapa, Red Neuronal Recurrente Simple y Memoria a Corto y Largo Plazo,respectivamente pero añadiendo ventanas deslizantes y aumento de la cantidad de datos con smote.
+   \item
+    \textbf{10.Resultadosconjuntodatostest.ipynb:} Recopila los resultados de los experimentos y los traslada a varias tablas.
+   \end{itemize} 
+  \end{itemize} 
+  
+  
+\textbf{Requisitos de Software:} 
+
+  \begin{itemize}
+   \tightlist
+   \item
+    \textbf{Anaconda}: Para el desarrollo del trabajo he utilizado la solución completa de Anaconda asi he evitado posibles dependencias a la hora de instalar Python o Jupyter Notebook deparados.
+  \end{itemize}
+  
+
+Anaconda incluye su propia distribución de Python, por lo que al instalar Anaconda en el sistema, automáticamente se tendrá una instalación de Python junto con una serie de paquetes adicionales útiles para el análisis de datos y la programación científica.
+
+En la ejecución del proyecto también se ejecuta un entorno virtual para evitar dependencias de bibliotecas.
+
+
+Para desarrollar este proyecto se ha utilizado la plataforma GitHub.
+La descarga del repositorio se realizara de la siguiente manera:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item Acceder al repositorio GitHub \href{https://github.com/jpg1003/GII_O_MA_23.37}{Acceso repositorio Github}
+\item Pulsar en Code. (Botón verde)
+\item Y a continuación pulsar en Download zip.
+
+\imagen{anexos/DownloadZip}{Descarga repositorio GitHub}
+
+\item Llevar el archivo zip descargado a la carpeta que se quiera utilizar para acceder al repositorio.
+\item Descomprimir el archivo zip con el nombre de carpeta que se desee.
+
+\end{enumerate}
 
 \section{Compilación, instalación y ejecución del proyecto}
 
+
+Una vez descargado el repositorio en la carpeta del sistema operativo utilizado se ha de proceder a la instalación del software requerido. 
+
+\textbf{Instalación de software requerido:} 
+  \begin{itemize}
+   \tightlist
+   \item
+    \textbf{Anaconda}: 
+    \begin{itemize}
+   \tightlist
+   \item
+    Ir al sitio web oficial de Anaconda en \href{https://www.anaconda.com/download/success}{Enlace url Anaconda}. 
+   \item
+    Descargar la versión más reciente de Python 3.x. para el sistema operativo compatible.
+   \item
+   Instalar el archivo descargado.
+   \end{itemize}
+  \end{itemize}  
+
+
+Una vez instalado el paquete de aplicaciones Anaconda, en el sistema operativo aparecerá una aplicación llamada \textbf{Jupyter Notebook}:
+
+Ejecutar la aplicación \textbf{Jupyter Notebook}, una vez iniciada, se abrirá un navegador de Internet (el que este predeterminado en el sistema operativo) y mostrara un explorador de archivos por el cual, tendrá que navegar hasta la carpeta descargada del repositorio Github, se debería ver algo parecido a esto:
+
+
+\imagen{anexos/Listado-Notebooks}{Listado de Notebooks en Jupyter Notebook}
+
+
+Para ejecutar el proyecto de estudio de datos EEG se puede hacer de dos maneras:
+
+  \begin{itemize}
+   \tightlist
+   \item
+    \textbf{Semiautomática}: 
+    \begin{itemize}
+   \tightlist
+   \item
+    Abrir el archivo 1.Main.ipynb a través de Jupyter Notebook y ejecutar una a una las celdas de este notebook.
+   \end{itemize}
+
+    \textbf{Manual}: 
+    \begin{itemize}
+   \tightlist
+   \item
+    Abrir y ejecutar cada uno de los notebooks a través de Jupyter Notebook. 
+   \item
+    Se ha de seguir la numeración marcada por cada uno de los Notebooks, obviando el numero 1.Main.ipynb.
+   \item
+   \end{itemize}   
+   
+  \end{itemize}  
+
+Con la ejecución semiautomática los notebooks se ejecutaran en orden y se quedara toda la información en el mismo notebook.
+Si fuera de manera Manual, se tendría más control de lo que se esta ejecutando al estar dividido el código de cada notebook en varias celdas, pero toda la información estaría dividida en cada uno de los notebooks y no en un solo lugar.
+
+
+
 \section{Pruebas del sistema}
+
+No se han realizado test con ninguna herramienta porque habria que realizar transformaciones de los notebooks
+
+
