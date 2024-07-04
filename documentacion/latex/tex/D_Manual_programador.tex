@@ -43,35 +43,82 @@ Para ello, detallo las funciones de cada uno de los componentes:
   \begin{itemize}
   \tightlist
   \item
-   \textbf{Notebook Principal (1.Main.ipynb):} Crea y ejecuta un entorno virtual. Coordina la ejecución de los notebooks secundarios. Es el punto de entrada para la ejecución del sistema de análisis de datos EEG.
+   \textbf{Notebook Principal (1.Main.ipynb):}
+   
+   Crea y ejecuta un entorno virtual. Coordina la ejecución de los notebooks secundarios. Es el punto de entrada para la ejecución del sistema de análisis de datos EEG.
   \item
    \textbf{Notebooks secundarios:}
    \begin{itemize}
    \tightlist
    \item
-    \textbf{2.Bibliotecas.ipynb:} En este notebooks están todas las instalaciones de bibliotecas necesarias para el sistema.
+    \textbf{2.Bibliotecas.ipynb:} 
+    
+    En este notebooks están todas las instalaciones de bibliotecas necesarias para el sistema.
+    
    \item
-    \textbf{3.Importaciones.ipynb:} Importa las bibliotecas y configuraciones necesarias para el análisis futuro de los datos.
+    \textbf{3.Importaciones.ipynb:} 
+   
+    Importa las bibliotecas y configuraciones necesarias para el análisis futuro de los datos.
+    
    \item
-    \textbf{4.1.SubirCSV.ipynb:} Permite la subida de un archivo de datos al Notebook principal.
+    \textbf{SubirCSV.ipynb:} 
+   
+    Permite la subida de un archivo de datos al Notebook principal.
+    
    \item
-    \textbf{5.CargaDatos.ipynb:} Realiza un análisis de los datos cargados.
+    \textbf{5.CargaDatos.ipynb:} 
+   
+    Realiza un análisis de los datos cargados.
+    
    \item
-    \textbf{6.Preprocessing.ipynb:} Realiza la limpieza y preparación inicial de los datos EEG..
+    \textbf{6.Preprocessing.ipynb:} 
+   
+    Realiza la limpieza y preparación inicial de los datos EEG..
+    
    \item
-    \textbf{7.MachineLearning.ipynb:} : Implementa experimentos utilizando metodos como hold-ouy, k-fold cross validation ... para evaluar los modelos de aprendizaje automático básico.
+    \textbf{7.MachineLearning.ipynb:} : 
+    
+    Implementa experimentos utilizando modelos KNN, Árboles de Decisión, Random Forest con validaciones como hold-ouy, k-fold cross validation ... para evaluar los modelos de aprendizaje automático básico.
+    
    \item
-    \textbf{8.1.DeepLearning-MLP.ipynb, 8.2.DeepLearning-SRNN.ipynb, 8.3.DeepLearning-LSTM.ipynb:} Realizan experimentos específicos con modelos de Perceptrón Multicapa, Red Neuronal Recurrente Simple y Memoria a Corto y Largo Plazo, respectivamente.
+    \textbf{8.1.DeepLearning-MLP.ipynb}
    \item
-    \textbf{8.4.DeepLearning-SRNN(SlidingWindows).ipynb, 8.5.DeepLearning-LSTM(SlidingWindows).ipynb:} Realizan experimentos específicos con modelos de Perceptrón Multicapa, Red Neuronal Recurrente Simple y Memoria a Corto y Largo Plazo,respectivamente pero añadiendo ventanas deslizantes.
+    \textbf{8.2.DeepLearning-SRNN.ipynb} 
    \item
-    \textbf{9.1.ProcesadoAumentoDatosSmote.ipynb:} Con smote aumenta y reparte con datos sinteticos la cantidad de datos para el analisis EEG. 
+    \textbf{8.3.DeepLearning-LSTM.ipynb:}      
+
+    Realizan experimentos específicos con modelos de Perceptrón Multicapa, Red Neuronal Recurrente Simple y Memoria a Corto y Largo Plazo, respectivamente.
+    
    \item
-    \textbf{9.2.DeepLearning-SRNN(AumentoDatos).ipynb, 9.3.DeepLearning-LSTM(AumentoDatos).ipynb:} Implementa experimentos utilizando metodos como hold-ouy, k-fold cross validation ... pero con el aumento de la cantidad de datos con smote.
+    \textbf{8.4.DeepLearning-SRNN(SlidingWindows).ipynb}
    \item
-    \textbf{9.4.DeepLearning-SRNN(AumentoDatosSlidingWindows).ipynb, 9.5.DeepLearning-LSTM(AumentoDatosSlidingWindows).ipynb:} Realizan experimentos específicos con modelos de Perceptrón Multicapa, Red Neuronal Recurrente Simple y Memoria a Corto y Largo Plazo,respectivamente pero añadiendo ventanas deslizantes y aumento de la cantidad de datos con smote.
+    \textbf{8.5.DeepLearning-LSTM(SlidingWindows).ipynb:}
+    
+    Realizan experimentos específicos con modelos de Perceptrón Multicapa, Red Neuronal Recurrente Simple y Memoria a Corto y Largo Plazo,respectivamente pero añadiendo ventanas deslizantes.
+    
    \item
-    \textbf{10.Resultadosconjuntodatostest.ipynb:} Recopila los resultados de los experimentos y los traslada a varias tablas.
+    \textbf{9.1.ProcesadoAumentoDatosSmote.ipynb:} 
+    
+    Con smote aumenta y reparte con datos sinteticos la cantidad de datos para el analisis EEG. 
+    
+   \item
+    \textbf{9.2.DeepLearning-SRNN(AumentoDatos).ipynb}
+   \item
+    \textbf{9.3.DeepLearning-LSTM(AumentoDatos).ipynb:}
+    
+    Implementa experimentos utilizando modelos KNN, Árboles de Decisión, Random Forest con validaciones como hold-ouy, k-fold cross validation ... pero con el aumento de la cantidad de datos con smote.
+    
+   \item
+    \textbf{9.4.DeepLearning-SRNN(AumentoDatosSlidingWindows).ipynb}
+   \item
+   \textbf{ 9.5.DeepLearning-LSTM(AumentoDatosSlidingWindows).ipynb:} 
+    
+    Realizan experimentos específicos con modelos de Perceptrón Multicapa, Red Neuronal Recurrente Simple y Memoria a Corto y Largo Plazo,respectivamente pero añadiendo ventanas deslizantes y aumento de la cantidad de datos con smote.
+    
+   \item
+    \textbf{10.Resultadosconjuntodatostest.ipynb:} 
+    
+    Recopila los resultados de los experimentos y los traslada a varias tablas.
    \end{itemize} 
   \end{itemize} 
   
@@ -87,7 +134,18 @@ Para ello, detallo las funciones de cada uno de los componentes:
 
 Anaconda incluye su propia distribución de Python, por lo que al instalar Anaconda en el sistema, automáticamente se tendrá una instalación de Python junto con una serie de paquetes adicionales útiles para el análisis de datos y la programación científica.
 
-En la ejecución del proyecto también se ejecuta un entorno virtual para evitar dependencias de bibliotecas.
+En la ejecución del proyecto también se ejecuta un entorno virtual, al crear y activar un entorno virtual en el proyecto se obtienes los siguientes beneficios:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item Aislo dependencias: Puedo instalar bibliotecas y paquetes especificos para el proyecto evitando conflictos entre versiones de paquetes.
+
+\item Reproducibilidad: Se puede reproducir el entorno del proyecto en diferentes ordenadores sin pensar en las dependencias asociadas a los paquetes.
+
+\item Facilidad de gestión: Se puede instalar, actualizar o eliminar paquetes sin afectar a otros proyectos o al sistema de Notebooks de Python.
+
+\end{enumerate}
 
 
 Para desarrollar este proyecto se ha utilizado la plataforma GitHub.
@@ -142,11 +200,11 @@ Para ejecutar el proyecto de estudio de datos EEG se puede hacer de dos maneras:
   \begin{itemize}
    \tightlist
    \item
-    \textbf{Semiautomática}: 
+    \textbf{Automática}: 
     \begin{itemize}
    \tightlist
    \item
-    Abrir el archivo 1.Main.ipynb a través de Jupyter Notebook y ejecutar una a una las celdas de este notebook.
+    Abrir el archivo 1.Main.ipynb a través de Jupyter Notebook y ejecutar una a una las celdas de este notebook. No se deben ejecutar todas a la vez porque se necesita la interacción con el usuario para subir los datos de tipoEEG a analizar.
    \end{itemize}
 
     \textbf{Manual}: 
@@ -155,13 +213,12 @@ Para ejecutar el proyecto de estudio de datos EEG se puede hacer de dos maneras:
    \item
     Abrir y ejecutar cada uno de los notebooks a través de Jupyter Notebook. 
    \item
-    Se ha de seguir la numeración marcada por cada uno de los Notebooks, obviando el numero 1.Main.ipynb.
-   \item
+    Se ha de seguir la numeración marcada por cada uno de los Notebooks, obviando los notebooks 1.Main.ipynb y los que no tengan numeración.
    \end{itemize}   
    
   \end{itemize}  
 
-Con la ejecución semiautomática los notebooks se ejecutaran en orden y se quedara toda la información en el mismo notebook.
+Con la ejecución Automática los notebooks se ejecutaran en orden y se quedara toda la información en el mismo notebook.
 Si fuera de manera Manual, se tendría más control de lo que se esta ejecutando al estar dividido el código de cada notebook en varias celdas, pero toda la información estaría dividida en cada uno de los notebooks y no en un solo lugar.
 
 

@@ -2,10 +2,391 @@
 
 \section{Introducción}
 
+
+Con este manual se pretende ayudar al usuario a poder ejecutar correctamente el proyecto de análisis de datos EEG. A continuación, se describirán los requisitos de usuarios, como instalar el software para su ejecución y un manual de usuario mas detallado.
+
+
 \section{Requisitos de usuarios}
+
+
+Los requisitos de los usuarios que podrían aprovechar y utilizar este proyecto serian:
+
+\textbf{Usuarios potenciales:} 
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item Doctores, Ingenieros y  Estudiantes en Ciencias de Datos.
+  \begin{itemize}
+   \tightlist
+   \item
+    \textbf{Descripción:} Individuos avanzados en técnicas de análisis de datos y aprendizaje automático.
+   \item
+   \textbf{Utilización:}
+   \end{itemize}   
+\item Investigadores en Neurociencia.
+  \begin{itemize}
+   \tightlist
+   \item
+    \textbf{Descripción:} Profesionales que estudian el cerebro y su actividad.
+   \item
+   \textbf{Utilización:} Análisis de datos EEG para investigar patrones cerebrales relacionados con movimientos específicos y desarrollar aplicaciones BCI.
+   \end{itemize}
+ \item Desarrolladores de Interfaces Cerebro-Computadora (BCI).
+  \begin{itemize}
+   \tightlist
+   \item
+    \textbf{Descripción:} Ingenieros y desarrolladores que crean sistemas que permiten la comunicación directa entre el cerebro y dispositivos externos.
+   \item
+   \textbf{Utilización:} Análisis de datos EEG para mejorar la precisión y eficiencia de las interfaces cerebro-computadora enfocadas en el control direccional.
+   \end{itemize}  
+ \item Desarrolladores de Videojuegos.
+  \begin{itemize}
+   \tightlist
+   \item
+    \textbf{Descripción:} Profesionales que desarrollan videojuegos controlados por la mente.
+   \item
+   \textbf{Utilización:} Implementación de sistemas de control mediante EEG para crear experiencias de juego inmersivas y accesibles para personas con discapacidad.
+   \end{itemize}   
+ \item Diseñadores de Dispositivos de Asistencia
+  \begin{itemize}
+   \tightlist
+   \item
+    \textbf{Descripción:} Ingenieros que diseñan sillas de ruedas y otros dispositivos controlados por EEG.
+   \item
+   \textbf{Utilización:} Creación de sistemas de control direccional basados en EEG para mejorar la movilidad e independencia de personas con discapacidades motoras.
+   \end{itemize}      
+\end{enumerate}
+
+
+\textbf{Requisitos Educativos:} 
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item Conocimientos Básicos.
+  \begin{itemize}
+   \tightlist
+   \item
+    \textbf{Programación:} Conocimiento de Python y experiencia con Jupyter Notebooks.
+   \item
+   \textbf{Matemáticas y Estadística: } Conceptos básicos de álgebra lineal, cálculo, y estadística.
+   \item
+   \textbf{Neurociencia Básica: }  Conocimientos generales sobre la actividad cerebral y los principios de la electroencefalografía (EEG).
+  \end{itemize}
+\item Conocimientos Avanzados.
+  \begin{itemize}
+   \tightlist
+   \item
+    \textbf{Ciencia de Datos:} Experiencia en manejo y análisis de conjunto de datos.
+   \item
+   \textbf{Aprendizaje Automático:  } Conocimiento práctico de técnicas de machine learning y su implementación.
+  \end{itemize}
+\end{enumerate} 
+Con estos conocimientos y habilidades, los usuarios podrán utilizar efectivamente el entorno desarrollado para el análisis y clasificación de datos EEG.    
+   
+
 
 \section{Instalación}
 
+\textbf{Instalación de software requerido:} 
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item Acceder al repositorio GitHub \href{https://github.com/jpg1003/GII_O_MA_23.37}{Acceso repositorio Github}
+\item Pulsar en Code. (Botón verde)
+\item Y a continuación pulsar en Download zip.
+
+\imagen{anexos/DownloadZip}{Descarga repositorio GitHub}
+
+\item Llevar el archivo zip descargado a la carpeta que se quiera utilizar para acceder al repositorio.
+\item Descomprimir el archivo zip con el nombre de carpeta que se desee.
+
+\end{enumerate}
+
+Una vez descargado el repositorio en la carpeta del sistema operativo utilizado se ha de proceder a la instalación del software requerido. 
+
+\textbf{Instalación de software requerido:} 
+  \begin{itemize}
+   \tightlist
+   \item
+    \textbf{Anaconda}: 
+    \begin{itemize}
+   \tightlist
+   \item
+    Ir al sitio web oficial de Anaconda en \href{https://www.anaconda.com/download/success}{Enlace url Anaconda}. 
+   \item
+    Descargar la versión más reciente de Python 3.x. para el sistema operativo compatible.
+   \item
+   Instalar el archivo descargado.
+   \end{itemize}
+  \end{itemize}  
+
+
+Una vez instalado el paquete de aplicaciones Anaconda, en el sistema operativo aparecerá una aplicación llamada \textbf{Jupyter Notebook}:
+
+
+
+
+
 \section{Manual del usuario}
 
+
+Después de la instalación del software necesario para la ejecución del proyecto se detallarán las diferentes partes del código y como llegar a ellas:
+
+
+\textbf{Iniciar proyecto análisis de datos EEG:}
+
+Ejecutar la aplicación \textbf{Jupyter Notebook}, una vez iniciada, se abrirá un navegador de Internet (el que este predeterminado en el sistema operativo) y mostrara un explorador de archivos por el cual, tendrá que navegar hasta la carpeta descargada del repositorio Github, se debería ver algo parecido a esto:
+
+
+\imagen{anexos/Listado-Notebooks}{Listado de Notebooks en Jupyter Notebook}
+
+
+Para ejecutar el proyecto de estudio de datos EEG se puede hacer de dos maneras:
+
+  \begin{itemize}
+   \tightlist
+   \item
+    \textbf{Automática}: 
+    \begin{itemize}
+
+   \tightlist
+   \item
+    Abrir el archivo 1.Main.ipynb a través de Jupyter Notebook y ejecutar una a una las celdas de este Notebook. No se deben ejecutar todas a la vez porque se necesita la interacción con el usuario para subir los datos de tipoEEG a analizar.
+   \end{itemize}
+
+    \textbf{Manual}: 
+  \begin{itemize}
+   \tightlist
+   \item
+    Abrir y ejecutar cada uno de los notebooks a través de Jupyter Notebook. 
+   \item
+    Se ha de seguir la numeración marcada por cada uno de los Notebooks, obviando los notebooks 1.Main.ipynb y los que no tengan numeración.
+   \end{itemize}   
+  \end{itemize} 
+ 
+
+Con la ejecución semiautomática los notebooks se ejecutaran en orden y se quedara toda la información en el mismo notebook.
+Si fuera la ejecución fuera de manera Manual, se tendría más control de lo que se esta ejecutando al estar dividido el código de cada notebook en varias celdas, pero toda la información estaría dividida en cada uno de los notebooks y no como en la ejecución automática en un solo.
+
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item \textbf{Ejecución automática:}
+  \begin{itemize}
+   \tightlist
+   \item
+    \textbf{Abrir Notebook principal:} Desde Jupyter Notebook, seleccionar el archivo 1.Main.ipynb y hacer doble click sobre el archivo. Este seria el notebook ya abierto:
+    
+    \imagen{anexos/Main}{Ejemplo Notebook Main}
+   \item
+   \textbf{Ejecución celdas preparatorias del entorno: }
+	\begin{enumerate}
+	\def\labelenumi{\arabic{enumi}.}
+	\tightlist
+	\item 
+	\textbf{Celda ejecutable 1. Crear un entorno virtual: }
+	
+	En esta celda se crea un entorno virtual para las ejecuciones posteriores.
+	\item 
+	\textbf{Celda ejecutable 2. Instalación de bibliotecas:}
+	
+	Desde esta celda la llamada al Notebook secundario 2.Bibliotecas.ipynb instalaría las bibliotecas necesarias para el proyecto.
+	\item 
+	\textbf{Celda ejecutable 3.Importación de las bibliotecas instaladas:}
+	
+	Esta celda se ejecuta llamando al Notebook secundario 3.Importaciones.ipynb que se ocupa de la declaracion de las importaciones de las bibliotecas instaladas en el paso anterior.
+	
+	\item 
+	\textbf{Celda ejecutable 4. Asignación de valores a variables y creación de funciones:}
+	
+	Celda con llamada al Notebook secundario 4.VariablesClases.ipynb. Este Notebook asigna valores a variables que se utilizaran en cualquier momento durante el analisis de datos EEG.
+	
+	\item 
+	\textbf{Celda ejecutable para la carga de archivo CSV con el conjunto de datos a analizar:}
+	
+	Celda que necesita la interacción con el usuario. Solo podra subirse un archivo en formato csv. Cuando se ejecuta la celda aparecerán dos botones, Upload(0) (activo) y Procesar datos (sin activar):
+	
+	\imagen{anexos/Upload1}{Botón Upload}
+	
+	Se selecciona el archivo a subir con un explorar de archivos y el botón Upload reflejaría entre paréntesis que tiene un archivo subido (1) y si el archivo ha sido subido con éxito mediante texto. El botón Procesar Datos ahora aparecerá activo. Si el archivo no se ha podido subir aparecerá un error en la subida del archivo.
+	
+	\imagen{anexos/Upload2}{Subida correcta de archivo csv.}
+	
+	A continuación se pulsa sobre el botón Procesar Datos y se imprimirá por pantalla el archivo que se ha subido al entorno
+	
+	\imagen{anexos/Upload3}{Datos después de subirlos al entorno correctamente.}
+	\end{enumerate} 
+	
+   \item
+   \textbf{Ejecución celdas para análisis y preprocesado del conjunto de datos: } 
+	\begin{enumerate}
+	\def\labelenumi{\arabic{enumi}.}
+	\tightlist
+	\item 
+	\textbf{Celda ejecutable 5. Análisis de datos inicial: }
+	
+	Celda con llamada al Notebook secundario 5.CargaDatos.ipynb para realizar un análisis del tipo y forma del conjunto de datos.
+	\item 
+	\textbf{Celda ejecutable 6. Preprocesado del conjunto de datos:}
+	
+	Celda con llamada al Notebook secundario 6.Preprocessing.ipynb para realizar la estandarización, eliminación de outliers, rellenar datos perdidos en filas del conjunto de datos, ...
+	\end{enumerate} 
+	
+   \item
+   \textbf{Ejecución celdas para experimentos de varios modelos de aprendizaje automático: } 
+	\begin{enumerate}
+	\def\labelenumi{\arabic{enumi}.}
+	\tightlist
+	\item 
+	\textbf{Celda ejecutable 7. Implementación modelos Machine Learning: }
+	
+	La llamada al Notebook secundario 7.MachineLearning.ipynb activa el primer experimento para realizar un análisis de los datos con modelos KNN(K-Nearest Neighbors), Árboles de Decisión, Random Forest con validaciones como holdout, k-fols cross validation y leave-one-out. 
+	\item 
+	\textbf{8.1 MLP:}
+	
+	Llamada a Notebook secundario 8.1.DeepLearning-MLP.ipynb que inicia un experimento para realizar un análisis de los datos con modelo MLP (Multi-Layer Perceptron).
+	\item 
+	\textbf{8.2 SRNN:}
+	
+	Llamada a Notebook secundario 8.2.DeepLearning-SRNN.ipynb que inicia un experimento para realizar un análisis de los datos con modelo SRNN (Simple Recurrent Neural Network).	
+	
+	\item 
+	\textbf{8.3 LSTM:}
+	
+	Llamada a Notebook secundario 8.3.DeepLearning-LSTM.ipynb que inicia un experimento para realizar un análisis de los datos con modelo LSTM (Long Short-Term Memory).	
+	
+	\item 
+	\textbf{8.4 SRNN Sliding Windows:}
+	
+	Llamada a Notebook secundario 8.4.DeepLearning-SRNN(SlidingWindows).ipynb que inicia un experimento para realizar un análisis de los datos con modelo SRNN y implementación de ventanas deslizantes.			
+	
+	\item 
+	\textbf{8.5 LSTM Sliding Windows:}
+	
+	Llamada a Notebook secundario 8.5.DeepLearning-LSTM(SlidingWindows).ipynb que inicia un experimento para realizar un análisis de los datos con modelo LSTM e implementación de ventanas deslizantes.		
+	
+	\item 
+	\textbf{9.1 Aumento de datos con SMOTE:}
+	
+	Llamada a Notebook secundario 9.1.ProcesadoAumentoDatosSmote.ipynb que utiliza smote para poder crear datos sintéticos y distribuir los datos equitativamente según los targets que se le indiquen.
+	\item 
+	\textbf{9.2 SRNN Aumento de datos:}
+	
+	Llamada a Notebook secundario 9.2.DeepLearning-SRNN(AumentoDatos).ipynb que inicia un experimento para realizar un análisis de los datos con modelo SRNN y con datos sintéticos.	
+	
+	\item 
+	\textbf{9.3 LSTM Aumento de datos:}
+	
+	Llamada a Notebook secundario 9.3.DeepLearning-LSTM(AumentoDatos).ipynb que inicia un experimento para realizar un análisis de los datos con modelo LSTM y con datos sintéticos.	
+	
+	\item 
+	\textbf{9.4 SRNN Aumento de datos Sliding Windows:}
+	
+	Llamada a Notebook secundario 9.4.DeepLearning-SRNN(AumentoDatosSlidingWindows).ipynb que inicia un experimento para realizar un análisis de los datos con modelo SRNN ventanas deslizantes y con datos sintéticos.			
+	
+	\item 
+	\textbf{9.5 LSTM Aumento de datos Sliding Windows:}
+	
+	Llamada a Notebook secundario 9.5.DeepLearning-LSTM(AumentoDatosSlidingWindows).ipynb que inicia un experimento para realizar un análisis de los datos con modelo LSTM ventanas deslizantes y con datos sintéticos.	
+	\end{enumerate} 
+	
+   \item
+   \textbf{Ejecución celda 10. Recopilado de resultados: } 	
+	Realiza la ultima llamada a Notebooks secundarios. El Notebook 10.Resultadosconjuntodatostest.ipynb recopila e imprime por pantalla todos los resultados de los datos de validación y test.
+
+
+	
+  \end{itemize}
+  
+  
+  
+ \item \textbf{Ejecución manual:}
+ 
+ Para la ejecución manual se ha de seguir el orden preestablecido con la numeración de los archivos ipynb, empezando por el numero 2 y terminando por el numero 10 de uno en uno. 
+ 
+Algo en común con todos los Notebooks que no sean el principal (1.Main) a partir del numero 4, es que se ha de modificar su ejecución de AUTOMATICA A MANUAL, cada vez que se abra un Notebook secundario se tendrá que realizar esta acción antes de su ejecución:
+
+\imagen{anexos/EjecucionManual1}{Ejemplo instalación automática}
+
+Y se debe cambiar a MANUAL:
+
+\imagen{anexos/EjecucionManual2}{Ejemplo instalación manual}
+ 
+IMPORTANTE: Si se quisiera ejecutar el proyecto en manera AUTOMATICA habría que cambiar la ejecucion de nuevo a MANUAL en los Notebooks anteriormente cambiados.
+ 
+	\begin{enumerate}
+	\def\labelenumi{\arabic{enumi}.}
+	\tightlist
+	\item 
+	\textbf{Abrir y ejecutar Notebook 2.Bibliotecas.ipynb:} 
+    
+    Desde Jupyter Notebook, seleccionar el archivo 2.Bibliotecas.ipynb y hacer doble clic sobre el archivo y después ejecutarlo.
+    
+     En este Notebook se pueden añadir mas bibliotecas a instalar si fuera necesario su uso por futuras integraciones. Este seria un ejemplo de las bibliotecas que se instalan:
+    
+    \imagen{anexos/Librerias}{Ejemplo instalación bibliotecas}
+    
+    
+   \item
+    \textbf{Abrir y ejecutar Notebook 3.Importaciones.ipynb:} 
+    
+    Desde Jupyter Notebook, seleccionar el archivo 3.Importaciones.ipynb y hacer doble clic sobre el archivo y después ejecutarlo.
+    
+    En este Notebook se pueden añadir mas declaraciones a importar de las bibliotecas instaladas en el Notebook anterior, se deberían definir las declaraciones necesarias si hubiera alguna futura integración. Este seria un ejemplo de las declaraciones que se declaran:
+    
+    \imagen{anexos/Importaciones}{Ejemplo declaraciones a importar bibliotecas}
+    
+   \item
+    \textbf{Abrir y ejecutar Notebook 4.VariablesClases.ipynb:} 
+    
+    Desde Jupyter Notebook, abrir 4.VariablesClases.ipynb y ejecutar. En este Notebook se pueden añadir mas variables o funciones si hubiera alguna futura integración.
+    Si el usuario dispone de conocimiento para modificar el valor de las variables definidas, cambiaría el alcance de los experimentos ejecutados puesto que estas variables se usan en cualquier ejecución posterior en los experimentos:
+    
+    \imagen{anexos/Variables}{Ejemplo variables declaradas} 
+    
+    \item
+    \textbf{Abrir y ejecutar Notebook 5.CargaDatos.ipynb:} 
+    
+    Desde Jupyter Notebook, abrir 5.CargaDatos.ipynb y ejecutar. Este Notebook realiza un análisis mediante gráficas o impresiones por texto del conjunto de  datos aportado:
+    
+    \imagen{anexos/Analisis}{Ejemplo gráfica en análisis de datos}    
+    
+     \item
+    \textbf{Abrir y ejecutar Notebook 6.Preprocessing.ipynb:} 
+    
+    Desde Jupyter Notebook, abrir 6.Preprocessing.ipynb y ejecutar. En este Notebook se realiza el preprocesado del conjunto de datos, para ello realiza varias acciones como rellenado de datos missing, eliminacion de outliners, estandarizacion de datos.
+    Si el usuario dispone de conocimiento para modificar este codigo pero afectaría al resto de ejecuciones posteriores, concretamente los experimentos
+    
+ 
+    \item
+    \textbf{Abrir y ejecutar Notebook del 7 al 8.5 :} 
+    
+    Desde Jupyter Notebook, abrir y ejecutar los notebooks indicados.
+    Estos notebooks contienen los experimentos para Machine y Deep Learning, no deberían ser modificados si no se tiene suficiente conocimiento de estos modelos. Lo ideal seria consultar con el desarrollador.
+    
+    Los resultados que se imprimirán son resultados de tipo tasa de acierto, comparandola con diferentes ejecuciones, y matrices de confusión.
+    
+    Ejemplo de Matrices de confusión y de comparativa en tasa de acierto por modelo:
+    
+    \imagen{anexos/TasaAcierto}{Ejemplo tabla comparativa de tasa de acierto entre modelos} 
+    \imagen{anexos/Matriz}{Ejemplo matriz de confusión para un modelo} 
+    
+    
+   \item
+    \textbf{Abrir y ejecutar Notebook 10.Resultadosconjuntodatostest.ipynb:} 
+    
+    Desde Jupyter Notebook, abrir y ejecutar el Notebooks 10.Resultadosconjuntodatostest.ipynb.
+    Este notebook recopila todos los datos referentes a tasa de acierto en los modelos ejecutados tanto para los datos de validación y test.
+    
+    Ejemplo de tabla comparativa en tasa de acierto en este notebook:
+    
+    \imagen{anexos/Resultado}{Ejemplo tabla comparativa de resultados}     
+    
+	\end{enumerate}  
+
+\end{enumerate} 
 
