@@ -198,17 +198,17 @@ Si fuera la ejecución fuera de manera Manual, se tendría más control de lo qu
 	\item 
 	\textbf{Celda ejecutable 3.Importación de las bibliotecas instaladas:}
 	
-	Esta celda se ejecuta llamando al Notebook secundario 3.Importaciones.ipynb que se ocupa de la declaracion de las importaciones de las bibliotecas instaladas en el paso anterior.
+	Esta celda se ejecuta llamando al Notebook secundario 3.Importaciones.ipynb que se ocupa de la declaración de las importaciones de las bibliotecas instaladas en el paso anterior.
 	
 	\item 
 	\textbf{Celda ejecutable 4. Asignación de valores a variables y creación de funciones:}
 	
-	Celda con llamada al Notebook secundario 4.VariablesClases.ipynb. Este Notebook asigna valores a variables que se utilizaran en cualquier momento durante el analisis de datos EEG.
+	Celda con llamada al Notebook secundario 4.VariablesClases.ipynb. Este Notebook asigna valores a variables que se utilizaran en cualquier momento durante el análisis de datos EEG.
 	
 	\item 
 	\textbf{Celda ejecutable para la carga de archivo CSV con el conjunto de datos a analizar:}
 	
-	Celda que necesita la interacción con el usuario. Solo podra subirse un archivo en formato csv. Cuando se ejecuta la celda aparecerán dos botones, Upload(0) (activo) y Procesar datos (sin activar):
+	Celda que necesita la interacción con el usuario. Solo podrá subirse un archivo en formato csv. Cuando se ejecuta la celda aparecerán dos botones, Upload(0) (activo) y Procesar datos (sin activar):
 	
 	\imagen{anexos/Upload1}{Botón Upload}
 	
@@ -244,7 +244,7 @@ Si fuera la ejecución fuera de manera Manual, se tendría más control de lo qu
 	\item 
 	\textbf{Celda ejecutable 7. Implementación modelos Machine Learning: }
 	
-	La llamada al Notebook secundario 7.MachineLearning.ipynb activa el primer experimento para realizar un análisis de los datos con modelos KNN(K-Nearest Neighbors), Árboles de Decisión, Random Forest con validaciones como holdout, k-fols cross validation y leave-one-out. 
+	La llamada al Notebook secundario 7.MachineLearning.ipynb activa el primer experimento para realizar un análisis de los datos con modelos KNN(K-Nearest Neighbors), Árboles de Decisión, Random Forest con validaciones como holdout, k-fold cross validation y leave-one-out. 
 	\item 
 	\textbf{8.1 MLP:}
 	
@@ -316,7 +316,7 @@ Y se debe cambiar a MANUAL:
 
 \imagen{anexos/EjecucionManual2}{Ejemplo instalación manual}
  
-IMPORTANTE: Si se quisiera ejecutar el proyecto en manera AUTOMATICA habría que cambiar la ejecucion de nuevo a MANUAL en los Notebooks anteriormente cambiados.
+IMPORTANTE: Si se quisiera ejecutar el proyecto en manera AUTOMATICA habría que cambiar la ejecución de nuevo a MANUAL en los Notebooks anteriormente cambiados.
  
 	\begin{enumerate}
 	\def\labelenumi{\arabic{enumi}.}
@@ -358,8 +358,8 @@ IMPORTANTE: Si se quisiera ejecutar el proyecto en manera AUTOMATICA habría que
      \item
     \textbf{Abrir y ejecutar Notebook 6.Preprocessing.ipynb:} 
     
-    Desde Jupyter Notebook, abrir 6.Preprocessing.ipynb y ejecutar. En este Notebook se realiza el preprocesado del conjunto de datos, para ello realiza varias acciones como rellenado de datos missing, eliminacion de outliners, estandarizacion de datos.
-    Si el usuario dispone de conocimiento para modificar este codigo pero afectaría al resto de ejecuciones posteriores, concretamente los experimentos
+    Desde Jupyter Notebook, abrir 6.Preprocessing.ipynb y ejecutar. En este Notebook se realiza el preprocesado del conjunto de datos, para ello realiza varias acciones como rellenado de datos missing, eliminación de outliners, estandarización de datos.
+    Si el usuario dispone de conocimiento para modificar este código pero afectaría al resto de ejecuciones posteriores, concretamente los experimentos
     
  
     \item
@@ -368,7 +368,7 @@ IMPORTANTE: Si se quisiera ejecutar el proyecto en manera AUTOMATICA habría que
     Desde Jupyter Notebook, abrir y ejecutar los notebooks indicados.
     Estos notebooks contienen los experimentos para Machine y Deep Learning, no deberían ser modificados si no se tiene suficiente conocimiento de estos modelos. Lo ideal seria consultar con el desarrollador.
     
-    Los resultados que se imprimirán son resultados de tipo tasa de acierto, comparandola con diferentes ejecuciones, y matrices de confusión.
+    Los resultados que se imprimirán son resultados de tipo tasa de acierto, comparándola con diferentes ejecuciones, y matrices de confusión.
     
     Ejemplo de Matrices de confusión y de comparativa en tasa de acierto por modelo:
     
@@ -387,6 +387,8 @@ IMPORTANTE: Si se quisiera ejecutar el proyecto en manera AUTOMATICA habría que
     \imagen{anexos/Resultado}{Ejemplo tabla comparativa de resultados}     
     
 	\end{enumerate}  
+	
+	Después de la ejecución automática o manual se ha de realizar la interpretación de los datos obtenidos por el usuario.
 
 \end{enumerate} 
 

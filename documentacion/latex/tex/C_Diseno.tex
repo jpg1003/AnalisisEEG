@@ -7,7 +7,12 @@ La especificación de datos es un componente crítico en el desarrollo de sistem
 Mediante BCI, sistema que permite mediante adquisición de señales EEG, se han podido interpretar las señales adquiridas a través de las señales EEG y poder transformarlas en un conjunto de datos para su posterior análisis.  
 
 
+\section{Diseño de datos}
 
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
 \textbf{Descripción de los Datos:}
 
 El archivo datosEEGTotal.csv contiene los datos facilitados para poder realizar los experimentos para la ejecución del TFG.
@@ -39,7 +44,7 @@ Timestamp, Attention, Meditation, Delta, Theta, LowAlpha, HighAlpha, LowBeta, Hi
 \textbf{Key:} Valores target de lo que el individuo estaba pensando o visualizando durante el experimento.
 
 
-La transformación de datos o el preprocessing que se ha realizado para poder afrontar los experimentos del TFG han sido los siguientes:
+La transformación de datos o el preprocesado que se ha realizado para poder afrontar los experimentos del TFG han sido los siguientes:
 
 
 \textbf{Unificación de características Key:} El conjunto de datos tiene varios valores en Key que indican los mismo. LButton y Left.
@@ -55,15 +60,65 @@ La transformación de datos o el preprocessing que se ha realizado para poder af
 \textbf{Eliminación de outliners:} Elimino los outlines (datos atípicos) del conjunto de datos. Utilizo zcore con un umbral de 3. \href{https://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule}{Regla del 68–95–99.7}
 
 
-\textbf{Escalado de datos:} He utilizado la opción de escalar los datos ya que no son datos normales puesto que no tienen una distribución gaussiana en sus datos. 
+\textbf{Escalado de datos:} He utilizado la opción de escalar los datos ya que no son datos normales puesto que no tienen una distribución gaussiana en sus datos. En este trabajo con datos EEG, el diseño de datos consta de:
 
-\section{Diseño de datos}
+\item 
+\textbf{Almacenamiento de datos:}
 
-En este trabajo con datos EEG, el diseño de datos consta de:
+\begin{itemize}
+   \tightlist
+   \item
+    \textbf{Almacenamiento temporal:}
+    
+    Durante el análisis, los DataFrames se almacenan en memoria.
+    \item
+    \textbf{Almacenamiento Permanente:}
+    
+    Los resultados intermedios o finales se guardan en archivos CSV o en otros formatos como keras para un acceso más eficiente.    
+\end{itemize}        
 
-\textbf{Diagramas entidad-relación (ERD)}
+\item 
+\textbf{Modelo Entidad-Relación (ERD):}
 
-\textbf{Relaciones y Dependencias:}
+\begin{itemize}
+   \tightlist
+   \item
+    \textbf{Entidad: Archivo CSV}.
+    
+    Representa el archivo CSV cargado al sistema.
+    
+    \item
+    \textbf{Entidad: Registro EEG.}
+    
+    Cada fila del CSV correspondiente a un registro de señales EEG que crearan el dataframe a analizar. 
+    
+    
+    
+    \item
+    \textbf{Entidad: Preprocesado.}
+    
+    Representa la transformación necesaria para la ejecución de los modelos. 
+    
+ 
+    \item
+    \textbf{Entidad Modelo:.}
+    
+    Representa cada modelo aplicado en el conjunto de datos.
+    
+    
+    \item
+    \textbf{Entidad Resultado:.}
+    
+    Almacena los resultados obtenidos de los modelos.  
+       
+\end{itemize}
+\end{enumerate}
+\imagen{anexos/ERD}{Diagrama Entidad Relación}
+
+
+
+
+
 
 \section{Diseño procedimental}
 
@@ -73,7 +128,7 @@ En este trabajo he utilizado notebooks Jupyter para analizar el conjunto de dato
 \textbf{Arquitectura del Sistema:}
 
 La idea principal era que la ejecución de varios modelos de machine y deep learning se pudieran ejecutar de una manera eficiente y que fueran independientes sus ejecuciones. 
-Para esto, el diseño se compone de un notebook jupyer que llama celda a celda a diferentes notebooks en los cuales se desarrolla el código a ejecutar. 
+Para esto, el diseño se compone de un notebook Jupyter que llama celda a celda a diferentes notebooks en los cuales se desarrolla el código a ejecutar. 
 
 Los componentes principales son:
 
@@ -94,7 +149,7 @@ Los componentes principales son:
 
 Las tecnologías y Herramientas utilizadas han sido las siguientes:
 
-  \textbf{Manejo de datos y preprocessing:}
+  \textbf{Manejo de datos y proprocesado:}
 
   \begin{itemize}
   \tightlist
@@ -115,7 +170,7 @@ Las tecnologías y Herramientas utilizadas han sido las siguientes:
   \item
    \textbf{K-Fold Cross-Validation:} Validación cruzada con KFold para evaluar la variabilidad del modelo.
   \item
-   \textbf{Leave-One-Out:} Validación de eno en uno los datos dejando los demás fuera, así se evalúa la robustez del modelo. 
+   \textbf{Leave-One-Out:} Validación de uno en uno los datos dejando los demás fuera, así se evalúa la robustez del modelo. 
   \end{itemize} 
   
   \textbf{Modelos de aprendizaje automático:}
@@ -153,7 +208,14 @@ Las tecnologías y Herramientas utilizadas han sido las siguientes:
   
 
 
-Infraestructura utilizada?
-
 \section{Diseño arquitectónico}
+
+El sistema está diseñado de manera modular, con notebooks secundarios encargados de tareas específicas. El notebook principal orquesta la ejecución de los demás notebooks, asegurando que cada etapa del proceso se complete antes de pasar a la siguiente. Los datos y resultados se almacenan de manera eficiente para facilitar su análisis y reutilización.
+
+Este diseño integral garantiza una gestión y análisis de datos estructurados y eficientes, facilitando el desarrollo y la evaluación de modelos predictivos para datos EEG. Además, cada notebook secundario puede ejecutarse de manera independiente siguiendo un orden predefinido, lo que ofrece flexibilidad en la realización de análisis específicos o la repetición de etapas del proceso según sea necesario.
+
+Esta adición enfatiza la versatilidad del sistema al permitir ejecuciones independientes de los notebooks secundarios, mientras se mantiene la integridad y la eficiencia del flujo de trabajo general.
+
+
+
 

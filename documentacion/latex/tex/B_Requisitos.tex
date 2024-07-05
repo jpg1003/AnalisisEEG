@@ -6,7 +6,6 @@ La Especificación de Requisitos tiene como objetivo definir de manera clara y d
 
 Este documento sirve para asegurar que todas las partes interesadas comprendan y acuerden los objetivos y funcionalidades del sistema a desarrollar.
 
-En un entorno de trabajo basado en notebooks Jupyter, es esencial contar con una especificación precisa que guíe el desarrollo t implementación. Esto facilita la colaboración y la comunicación entre los desarrolladores y usuarios finales.
 
 
 \section{Objetivos generales}
@@ -16,15 +15,15 @@ Los objetivos principales de este TFG son los siguientes:
 \begin{itemize}
 \tightlist
 \item
-	\textbf{Facilitar el procesamiento de datos EEG.} Generados en la universidad mediante el interfaz BCI.  	
+	\textbf{Facilitar el procesamiento de datos EEG.} Generados mediante un interfaz BCI.  	
 \item
- 	\textbf{Automatizar tareas repetitivas.} Con la creacion de notebooks secundarios para poder ejecutar las tareas comunes y repetitivas relacionadas con los datos EGG. 
+ 	\textbf{Automatizar tareas repetitivas.} Con la creación de notebooks secundarios para poder ejecutar las tareas comunes y repetitivas relacionadas con los datos EEG. 
 \item
-	\textbf{Mejorar la tasa de acierto en los analisis de modelos} implementando modelos precisos y fiables. 
+	\textbf{Mejorar la tasa de acierto en los análisis de modelos} implementando modelos precisos y fiables. 
 \item
-	\textbf{Asegurar la accesibilidad y usabilidad en los notebooks.} Los notebooks son herramientas intuitivas y accessibles que aportan esa facilidad a la hora de interacturar.
+	\textbf{Asegurar la accesibilidad y usabilidad en los notebooks.} Los notebooks son herramientas intuitivas y accesibles que aportan esa facilidad a la hora de interactuar.
 \item
-	\textbf{Integracion y extensibilidad.} Al utilizar llamadas a otros notebooks se asegura que se permita la integracion de nuevos notebooks y se asegura posibles nuevas mejoras en el codigo.
+	\textbf{Integración y extensibilidad.} Al utilizar llamadas a otros notebooks se asegura que se permita la integración de nuevos notebooks y se asegura posibles nuevas mejoras en el código.
 		
 \end{itemize}
 
@@ -87,7 +86,7 @@ Hay dos tipos de requisitos, los funcionales (qué debe hacer el código) y los 
   \begin{itemize}
   \tightlist
   \item
-   \textbf{Descripción:} El sistema debe permitir entrenar modelos de aprendizaje básicos (KNN, Arboles de decision, random forest) con diferentes técnicas de validación (Hold-Out,K-Fold, Cross-Validation, Leave-One-Out Cross-Validation) utilizando los datos EEG preprocesados.
+   \textbf{Descripción:} El sistema debe permitir entrenar modelos de aprendizaje básicos (KNN, Arboles de decisión, random forest) con diferentes técnicas de validación (Hold-Out,K-Fold, Cross-Validation, Leave-One-Out Cross-Validation) utilizando los datos EEG preprocesados.
   \item  
    \textbf{Prioridad: Alta}
   \item  
@@ -125,12 +124,12 @@ Hay dos tipos de requisitos, los funcionales (qué debe hacer el código) y los 
 
 
 \item
-  \textbf{RF-007 Almacenamiento y recuperación de resultados:}
+  \textbf{RF-007 Almacenamiento y recuperación de datos:}
 
   \begin{itemize}
   \tightlist
   \item
-   \textbf{Descripción:} El sistema debe permitir almacenar los resultados de los experimentos y sus resultados.
+   \textbf{Descripción:} El sistema debe permitir almacenar cada proceso tanto de manera temporal como permanente de los resultados experimentos y de la creación de archivos intermedios.
   \item  
    \textbf{Prioridad: Alta}
   \item  
@@ -216,7 +215,9 @@ Hay dos tipos de requisitos, los funcionales (qué debe hacer el código) y los 
 
 \section{Especificación de requisitos}
 
-Voy a describir cada caso de uso identificado:
+Voy a describir cada caso de uso identificado en el diagrama:
+
+\imagen{anexos/Diagrama_casos_uso}{Diagrama casos de uso}
 
 
 \begin{table}[p]
@@ -366,7 +367,7 @@ Voy a describir cada caso de uso identificado:
 		\begin{enumerate}
 			\def\labelenumi{\arabic{enumi}.}
 			\tightlist
-			\item El sistema tras el entrenamiento y validacion de los diferentes modelos debe ser capaz de identificar o clasificar con precisión las señales EEG que correspondan a una de las direcciones especificadas (arriba, abajo, izquierda, derecha)
+			\item El sistema tras el entrenamiento y validación de los diferentes modelos debe ser capaz de identificar o clasificar con precisión las señales EEG que correspondan a una de las direcciones especificadas (arriba, abajo, izquierda, derecha)
 			
 		\end{enumerate}\\
 		\textbf{Postcondición}        & \\
@@ -383,12 +384,12 @@ Voy a describir cada caso de uso identificado:
 	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
 		\toprule
 		\textbf{Actor}              & Investigador    \\
-		\textbf{CU-007}    & \textbf{Almacenamiento y Recuperación de Resultados de Experimentos}\\
+		\textbf{CU-007}    & \textbf{Almacenamiento y Recuperación datos}\\
 		\toprule
 		\textbf{Versión}              & 1.0    \\
 		\textbf{Autor}                & José Luis Pérez Gómez \\
 		\textbf{Requisitos asociados} & RF-007 \\
-		\textbf{Descripción}          & : El sistema almacena y recupera los resultados de los experimentos de análisis de datos EEG.\\
+		\textbf{Descripción}          & : El sistema almacena y recupera los archivos intermedios o resultados de los experimentos de análisis de datos EEG.\\
 		\textbf{Precondición}         & R-001, R-002, R-003\\
 		\textbf{Acciones}             &
 		\begin{enumerate}

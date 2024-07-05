@@ -4,7 +4,7 @@
 
 Este TFG de análisis de un conjunto de datos EEG se centra en la aplicación de técnicas avanzadas de aprendizaje automático utilizando notebooks Python. El objetivo principal es procesar y analizar datos EEG para identificar patrones y correlaciones significativas que puedan revelar comportamientos específicos en la actividad cerebral a la hora de realizar un experimento el individuo.
 
-El propósito fundamental es aplicar modelos de aprendizaje automático para mejorar la comprensión de las señales EEG, los datos aportados por la universidad de burgos constan de unos experimentos realizados con BCI y varios voluntarios es los que estos usuarios deben visualizar una serie de imagenes compuestas por direcciones, arriba, abajo, derecha e izquierda.
+El propósito fundamental es aplicar modelos de aprendizaje automático para mejorar la comprensión de las señales EEG, los datos aportados por la universidad de burgos constan de unos experimentos realizados con BCI y varios voluntarios es los que estos usuarios deben visualizar una serie de imágenes compuestas por direcciones, arriba, abajo, derecha e izquierda.
 
 Este trabajo podría tener aplicaciones importantes en tecnologías de interfaz cerebro-computadora (BCI) aplicadas a por ejemplo,  control de sillas de ruedas, control de dispositivos electrónicos, realidad virtual, videojuegos, control de robots, etc...
 
@@ -16,19 +16,19 @@ La estructura de los directorios del trabajo es la siguiente:
   \begin{itemize}
   \tightlist
   \item
-   \textbf{/documentacion/:} Esta carpeta contiene toda la documentación relacionada con el TFG.
+   \textbf{/documentación/:} Esta carpeta contiene toda la documentación relacionada con el TFG.
   \item
-   \textbf{/documentacion/imagenes/:} Archivo de imágenes para todo el proyecto, documentación y código.
+   \textbf{/documentación/imágenes/:} Archivo de imágenes para todo el proyecto, documentación y código.
   \item
-   \textbf{/documentacion/latex:} Documentación en formato latex y PDF.
+   \textbf{/documentación/latex:} Documentación en formato latex y PDF.
   \item
-   \textbf{/codigo:} Carpeta para archivar notebooks y datos para la ejecución del código.
+   \textbf{/código:} Carpeta para archivar notebooks y datos para la ejecución del código.
   \item
-   \textbf{/codigo/datos/:} Archivo datosEEGTotal.csv con el origen de datos.
+   \textbf{/código/datos/:} Archivo datosEEGTotal.csv con el origen de datos.
   \item
-   \textbf{/codigo/datos/csv/:} Archivos de datos csv auto generados tras las ejecuciones de algunos notebooks.
+   \textbf{/código/datos/csv/:} Archivos de datos csv auto generados tras las ejecuciones de algunos notebooks.
   \item
-   \textbf{/codigo/notebooks:} Contiene los notebooks Jupyter y por lo tanto, el código.
+   \textbf{/código/notebooks:} Contiene los notebooks Jupyter y por lo tanto, el código.
   \end{itemize} 
   
   
@@ -78,7 +78,7 @@ Para ello, detallo las funciones de cada uno de los componentes:
    \item
     \textbf{7.MachineLearning.ipynb:} : 
     
-    Implementa experimentos utilizando modelos KNN, Árboles de Decisión, Random Forest con validaciones como hold-ouy, k-fold cross validation ... para evaluar los modelos de aprendizaje automático básico.
+    Implementa experimentos utilizando modelos KNN, Árboles de Decisión, Random Forest con validaciones como hold-out, k-fold cross validation ... para evaluar los modelos de aprendizaje automático básico.
     
    \item
     \textbf{8.1.DeepLearning-MLP.ipynb}
@@ -99,14 +99,14 @@ Para ello, detallo las funciones de cada uno de los componentes:
    \item
     \textbf{9.1.ProcesadoAumentoDatosSmote.ipynb:} 
     
-    Con smote aumenta y reparte con datos sinteticos la cantidad de datos para el analisis EEG. 
+    Con smote aumenta y reparte con datos sintéticos la cantidad de datos para el análisis EEG. 
     
    \item
     \textbf{9.2.DeepLearning-SRNN(AumentoDatos).ipynb}
    \item
     \textbf{9.3.DeepLearning-LSTM(AumentoDatos).ipynb:}
     
-    Implementa experimentos utilizando modelos KNN, Árboles de Decisión, Random Forest con validaciones como hold-ouy, k-fold cross validation ... pero con el aumento de la cantidad de datos con smote.
+    Implementa experimentos utilizando modelos KNN, Árboles de Decisión, Random Forest con validaciones como hold-out, k-fold cross validation ... pero con el aumento de la cantidad de datos con smote.
     
    \item
     \textbf{9.4.DeepLearning-SRNN(AumentoDatosSlidingWindows).ipynb}
@@ -128,7 +128,7 @@ Para ello, detallo las funciones de cada uno de los componentes:
   \begin{itemize}
    \tightlist
    \item
-    \textbf{Anaconda}: Para el desarrollo del trabajo he utilizado la solución completa de Anaconda asi he evitado posibles dependencias a la hora de instalar Python o Jupyter Notebook deparados.
+    \textbf{Anaconda}: Para el desarrollo del trabajo he utilizado la solución completa de Anaconda así he evitado posibles dependencias a la hora de instalar Python o Jupyter Notebook deparados.
   \end{itemize}
   
 
@@ -139,7 +139,7 @@ En la ejecución del proyecto también se ejecuta un entorno virtual, al crear y
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
-\item Aislo dependencias: Puedo instalar bibliotecas y paquetes especificos para el proyecto evitando conflictos entre versiones de paquetes.
+\item Aíslo dependencias: Puedo instalar bibliotecas y paquetes específicos para el proyecto evitando conflictos entre versiones de paquetes.
 
 \item Reproducibilidad: Se puede reproducir el entorno del proyecto en diferentes ordenadores sin pensar en las dependencias asociadas a los paquetes.
 
@@ -225,6 +225,7 @@ Si fuera de manera Manual, se tendría más control de lo que se esta ejecutando
 
 \section{Pruebas del sistema}
 
-No se han realizado test con ninguna herramienta porque habria que realizar transformaciones de los notebooks
+No se han realizado test con ninguna herramienta porque habría que realizar transformaciones en los notebooks.
+
 
 

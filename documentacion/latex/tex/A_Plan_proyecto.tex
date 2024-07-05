@@ -7,7 +7,7 @@ Empleando ese interfaz se han realizado diferentes experimentos que han permitid
 
 Este Trabajo de Fin de Grado (TFG) tiene como objetivo el análisis de la información obtenida en esos experimentos. Se entrenarán diferentes algoritmos para clasificar la acción realizada por el usuario a partir de las señales generadas por el BCI. Con este propósito, se evaluarán diferentes algoritmos de procesado de señales y de machine/deep learning para la clasificación automática de señales.
 
-Los datos aportados son de tipo EEG (Electroencefalografía) para la realización del TFG son datos referentes a experimentos basados en pulsaciones sobre teclas de un teclado: arriba, abajo, izquierda, derecha.
+Los datos aportados son de tipo EEG (Electroencefalografía) para la realización del TFG son datos referentes a experimentos basados en acciones sobre teclas de un teclado: arriba, abajo, izquierda, derecha.
 
 El análisis de estos datos y su evaluación en diferentes algoritmos esta basada en predecir qué teclas del teclado se han pulsado según las señales captadas con la interfaz BCI.
 
@@ -18,7 +18,7 @@ Para esto no ha habido una planificación como tal registrada en Github, pero s�
 
 En la reunión inicial con los tutores definimos utilizar Python para realizar el código y una serie de aprendizajes básicos para poder acometer el TFG sin problemas.
 
-En las siguientes reuniones se definieron algoritmos y experimentos a realizar con los datos EGG aportados.
+En las siguientes reuniones se definieron algoritmos y experimentos a realizar con los datos EEG aportados.
 
 Desde el principio del proyecto debido a las circunstancias personales del alumno no se ha podido realizar metodología Scrum, pero sí se produjeron estas lineas temporales:
 
@@ -113,11 +113,11 @@ Los problemas que me encontré en esta etapa fueron:
 
 En la última etapa los problemas que se han acontecido son:
 
-\textbf{- - Utilización de ventanas temporales en los modelos deep learning.} Después de varias algunas reuniones con Bruno Baruque se llego a la defincion correcta para las ventanas temporal en el conjunto de datos.
+\textbf{- - Utilización de ventanas temporales en los modelos deep learning.} Después de varias algunas reuniones con Bruno Baruque se llego a la definición correcta para las ventanas temporal en el conjunto de datos.
 
 \textbf{- Utilización de modelos deep learning y callbacks.}
 
-\textbf{- Utilización datos sintéticos.} Definir correctamente esta generacion de datos y poder utilizarlos en los modelos deep learning correctamente.
+\textbf{- Utilización datos sintéticos.} Definir correctamente esta generación de datos y poder utilizarlos en los modelos deep learning correctamente.
 
 
 
@@ -125,10 +125,95 @@ En la última etapa los problemas que se han acontecido son:
 \section{Estudio de viabilidad}
 
 
-
-
 \subsection{Viabilidad económica}
+
+La viabilidad económica evalúa la posibilidad de generar ingresos y recuperar la inversión realizada a través del proyecto desarrollado. Se han de considerar las siguientes áreas:
+  \begin{itemize}
+   \tightlist
+   \item
+    \textbf{Potencial del proyecto para Otros BCIs:} 
+    
+    El código desarrollado para el análisis de señales EEG podría adaptarse y aplicarse a una variedad de sistemas BCI disponibles en el mercado. La flexibilidad del lenguaje de programación Python permite su integración con sistemas existentes, ampliando su potencial de mercado.
+    
+   \item
+    \textbf{Mercado Objetivo:} 
+    
+    Los fabricantes de sistemas BCI constituyen el mercado principal para la comercialización del software desarrollado. Ejemplos de fabricantes incluyen NeuroSky, Emotiv, Brain Products y otros proveedores de dispositivos de interfaz cerebro-ordenador utilizados en investigación, medicina y aplicaciones comerciales. En España destacan Starlab Barcelona, Bitbrain, Neuroelectrics y Starlab.
+    
+   \item
+    \textbf{Modelo de Negocio:} 
+    
+    Se propone un modelo de negocio basado en licencias de software. Los fabricantes de BCI podrían adquirir licencias comerciales del software para integrarlo en sus productos o servicios. Las licencias podrían estructurarse en diferentes niveles de funcionalidad y soporte, permitiendo adaptarse a las necesidades específicas de cada fabricante.
+    
+   \item
+    \textbf{Estrategia de Comercialización:}
+    
+    La estrategia de comercialización incluiría demostraciones técnicas, pruebas piloto y colaboraciones estratégicas con fabricantes de BCI. Se realizarían  participaciones y colaboraciones en conferencias y eventos de la industria, así como la utilización de plataformas online para promover el software y captar el interés de potenciales clientes.
+
+\end{itemize}
+
+
 
 \subsection{Viabilidad legal}
 
 
+Tipos de licencias para el sofware y bibliotecas instalado:
+
+\begin{itemize}
+ \tightlist
+  \item
+   \textbf{BSD (Berkeley Software Distribution):} 
+    
+    BSD es una licencia permisiva de código abierto que permite el uso, modificación y distribución del software con pocas restricciones. Requiere que se mantengan los avisos de copyright y las cláusulas de la licencia..
+    
+  \item
+   \textbf{ASF (Apache Software License):}
+    
+    ASF 2.0 permite el uso, modificación y distribución del software, otorgando derechos de patente explícitos. Requiere mantener los avisos de copyright y proporcionar una NOTIFICACIÓN de cambios significativos.
+    
+  \item
+   \textbf{Código abierto (Open source):}
+    
+    Las licencias de código abierto permiten el acceso, uso, modificación y distribución libre del software. Estas licencias fomentan la colaboración y la transparencia en el desarrollo de software, garantizando la libertad de uso y mejora.
+\end{itemize}
+
+
+
+El estudio de viabilidad ha demostrado que el desarrollo del software de análisis de datos EEG presenta una sólida oportunidad económica y cumple con los requisitos legales necesarios para su comercialización.
+
+La aplicación potencial del software a otros sistemas BCI y la flexibilidad del modelo de negocio basado en licencias ofrecen un camino claro hacia la monetización y la expansión del proyecto.
+
+  A continuación se presenta una tabla con algunas de las principales bibliotecas y herramientas de software utilizadas en el proyecto, junto con el tipo de licencia y las restricciones asociadas:
+ 
+
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.3\columnwidth} p{0.3\columnwidth} p{\columnwidth}}
+		\toprule
+		\textbf{Software}    & \textbf{Licencia} & \textbf{Restricciones} \\
+		\toprule		
+		\textbf{Anaconda}              & Gratuita    & Uso personal.  \\
+		\toprule	
+		\textbf{Jupyter Notebook}              & Libre    & Código abierto \\
+		\toprule			
+		\textbf{Python}              & Libre permisiva    & BSD \\
+		\toprule		
+		\textbf{Numpy}              & Libre permisiva    & BSD \\
+		\toprule		
+		\textbf{Scipy}              & Libre permisiva    & BSD \\
+		\toprule		
+		\textbf{Pandas}               & Libre permisiva    & BSD \\
+		\toprule		
+		\textbf{Matplotlib}              & Libre permisiva    & BSD \\
+		\toprule		
+		\textbf{Seaborn}              & Libre permisiva    & BSD \\
+		\toprule		
+		\textbf{Sklearn}               & Libre permisiva    & BSD \\
+		\toprule		
+		\textbf{Tensorflow}              & Libre permisiva    & ASF \\
+		\toprule		
+		\textbf{Ipywidgets}              & Libre    & Código abierto \\
+		\bottomrule
+	\end{tabularx}
+	\caption{Licencias Software}
+\end{table}
