@@ -1,83 +1,318 @@
 \capitulo{3}{Conceptos teóricos}
 
-En aquellos proyectos que necesiten para su comprensión y desarrollo de unos conceptos teóricos de una determinada materia o de un determinado dominio de conocimiento, debe existir un apartado que sintetice dichos conceptos.
-
-Algunos conceptos teóricos de \LaTeX{} \footnote{Créditos a los proyectos de Álvaro López Cantero: Configurador de Presupuestos y Roberto Izquierdo Amo: PLQuiz}.
-
-\section{Secciones}
-
-Las secciones se incluyen con el comando section.
-
-\subsection{Subsecciones}
-
-Además de secciones tenemos subsecciones.
-
-\subsubsection{Subsubsecciones}
-
-Y subsecciones. 
+El proyecto se enfoca en el análisis y clasificación de señales EEG (Electroencefalograma) para detectar intenciones de movimiento mediante técnicas avanzadas de machine learning y redes neuronales.
 
 
-\section{Referencias}
-
-Las referencias se incluyen en el texto usando cite~\cite{wiki:latex}. Para citar webs, artículos o libros~\cite{koza92}, si se desean citar más de uno en el mismo lugar~\cite{bortolot2005, koza92}.
+\section{Conceptos teóricos}
 
 
-\section{Imágenes}
+Para llevar a cabo este proyecto, es fundamental comprender y aplicar diversos conceptos teóricos que sustentan tanto la adquisición y procesamiento de datos EEG como el desarrollo de modelos predictivos eficientes y precisos.
 
-Se pueden incluir imágenes con los comandos standard de \LaTeX, pero esta plantilla dispone de comandos propios como por ejemplo el siguiente:
+\subsection{Electroencefalograma}
 
-\imagen{escudoInfor}{Autómata para una expresión vacía}{.5}
+El Electroencefalograma (EEG) es una técnica no invasiva utilizada para registrar la actividad eléctrica del cerebro. Las señales EEG son capturadas mediante electrodos colocados en la cabeza, que detectan los cambios en el potencial eléctrico generados por la actividad neuronal. Estas señales reflejan la actividad de gran cantidad de neuronas y son fundamentales para el estudio de diversas funciones cerebrales.
+
+\imagen{memoria/eeg}{Ejemplo colocación electrodos para EEG.~\cite{egg:pixabay}}{.5}
 
 
+Las principales señales EEG se componen de diferentes ondas que se clasifican según su frecuencia. Estas ondas reflejan distintos estados de actividad cerebral y son las que se utilizan para el análisis de datos de señales EEG.
 
-\section{Listas de items}
-
-Existen tres posibilidades:
 
 \begin{itemize}
-	\item primer item.
-	\item segundo item.
+
+	\item
+	\textbf{Ondas Delta:} 	
+	\begin{itemize}
+	
+	\item
+	\textbf{Frecuencia:} 0.5 - 4 Hz.
+	\item 
+	\textbf{Asociación:} Sueño profundo y estados de inconsciencia.
+	\end{itemize}
+	
+	\item
+	\textbf{Ondas Theta:}
+	\begin{itemize}
+	
+	\item
+	\textbf{Frecuencia:} 4 - 8 Hz
+	\item 
+	\textbf{Asociación:} Estados de somnolencia, meditación, y el sueño ligero.
+	\end{itemize}
+	
+	\item
+	\textbf{Ondas Alfa:}.
+	\begin{itemize}
+	
+	\item
+	\textbf{Frecuencia:} 8 - 13 Hz
+	\item 
+	\textbf{Asociación:} Estado de relajación y vigilia tranquila con los ojos cerrados.
+	\end{itemize}
+
+	\item
+	\textbf{Ondas Beta:}
+	\begin{itemize}
+	
+	\item
+	\textbf{Frecuencia:} 13 - 30 Hz
+	\item 
+	\textbf{Asociación:} Estados de alerta, concentración activa, y actividad mental intensa.
+	\end{itemize}
+	
+	\item
+	\textbf{Ondas Gamma:}
+	\begin{itemize}
+	
+	\item
+	\textbf{Frecuencia:} 30 - 100 Hz
+	\item 
+	\textbf{Asociación:} Procesos cognitivos complejos, como la percepción consciente y el procesamiento de la información sensorial.
+	\end{itemize}
 \end{itemize}
 
-\begin{enumerate}
-	\item primer item.
-	\item segundo item.
-\end{enumerate}
 
-\begin{description}
-	\item[Primer item] más información sobre el primer item.
-	\item[Segundo item] más información sobre el segundo item.
-\end{description}
+\subsection{Preprocesado de datos}
+
+El preprocesamiento de datos EEG es una fase crucial en el análisis de señales EEG, ya que asegura la calidad y la fiabilidad de los datos antes de su análisis y clasificación. A continuación se describen las técnicas específicas que se han aplicado en este proyecto para el preprocesamiento de los datos EEG:
+
+\begin{itemize}
+
+	\item
+	\textbf{Modificación datos targets por perdida o unificación:}	
+	
+	
+	Se ha realizado una unificación de los datos targets, para esto se han identificado que valores únicos tenia esta característica del conjunto de datos y una vez identificado unificar los que indican los mismo pero con otro valor. Como ejemplo: Left y LButton, son diferentes pero indican mismo valor.
+	
+	Los datos perdidos en target son aquellos que no indican ningún movimiento. Aunque no indiquen movimiento alguno se les ha de aplicar un valor para que  el análisis de los datos sea correcto. 
+
+
+	\item
+	\textbf{Eliminación de señales del conjunto de datos:}
+	
+	Se eliminan señales que no son necesarias para el análisis porque no aportan información relevante sobre la actividad cerebral
+
+	
+	\item
+	\textbf{Eliminación de outliners:}
+	
+	Los outliers son valores atípicos que pueden distorsionar los resultados del análisis de datos. En el contexto de EEG, los outliers pueden surgir debido a artefactos o errores en la adquisición de datos.
+	\begin{itemize}
+	
+	\item
+	\textbf{Detección de Outliers:}
+	
+	Se aplican técnicas estadísticas para identificar valores que se desvían significativamente del resto de los datos. 
+	
+	
+	El método utilizado ha sido z-core que mide la distancia de un valor desde la media del conjunto de datos en términos de desviación estándar.
+	
+	\begin{equation*}
+	zcore = (dato - media.datos) / desviacion.estándar
+	\end{equation*}
+
+	
+	Para la evaluación de que valores son outliners se ha utilizado la regla empírica o regla
+	68-95-99.7.~\cite{outliners:empirica}
+
+Usando esta regla, se consideran outliers los datos que tienen un z-score mayor a 3 o menor a -3, ya que caen fuera del rango en el que se encuentra el 99.7 por ciento de los datos.
+	\end{itemize}
+
+	\item
+	\textbf{Escalado del conjunto de datos:}	
+	Con el escalado de datos se prepararan los datos EEG antes de aplicar algoritmos o modelos de aprendizaje automático El objetivo es normalizar las amplitudes de las señales para que se encuentren dentro de un rango común, facilitando la comparación y el análisis.
+
+Se ha aplicado un escalado en rangos de -1 a 1 para que la escala sea uniforme.
+
+ 
+	\item
+	\textbf{Segmentación de Datos:}	
+	Se ha realizado segmentación de datos para dividir las señales EGG en ventanas temporales mas pequeñas asi se pueden identificar los experimentos a diferentes individuos realizados en el conjunto de datos.
+
+\end{itemize}
+
+\subsection{Machine Learning}
+
+El uso de técnicas de machine learning en el análisis de datos EEG permite la detección y clasificación precisa de patrones en las señales cerebrales. En este proyecto, se han implementado diversos métodos de validación y algoritmos de clasificación para garantizar la robustez y fiabilidad de los modelos predictivos. A continuación, se describen las técnicas y algoritmos utilizadas:
+
+
+\begin{itemize}
+
+\item
+\textbf{Técnicas de Validación:}
+
+	\begin{itemize}
+	
+	\item
+	\textbf{Holdout:}
+	
+	El método holdout implica dividir el conjunto de datos en dos partes: un conjunto de entrenamiento y un conjunto de prueba.
+	
+	Lo mas extendido suele ser dividir el 80 por ciento conjunto de entrenamiento y un 30 por ciento para conjunto de prueba.
+	
+	Esta técnica es simple y rápido, los datos han de estar distribuidos uniformemente entre las particiones.
+
+	\item
+	\textbf{K-Fold Cross-Validation:}
+	
+	
+	La validación cruzada k-fold divide el conjunto de datos en k subconjuntos (folds) de tamaño aproximadamente igual.
+	
+	El modelo se entrena k veces, utilizando k-1 folds para entrenamiento y uno para prueba en cada iteración.
+	
+	Este proceso se repite k veces, asegurando que cada fold se utilice como conjunto de prueba una vez.
+	
+	Esta técnica reduce el sesgo asociado con la partición de datos.	
+	
+	\item
+	\textbf{Leave-One-Out Cross-Validation:}
+	
+	Es una técnica de validación cruzada donde k es igual al número de muestras en el conjunto de datos.
+	
+	En cada iteración, una sola muestra se utiliza como conjunto de prueba, y el resto se utiliza para entrenamiento.
+	
+	Este método garantiza que cada muestra se evalúe como conjunto de prueba, proporcionando una evaluación precisa del modelo.
+	
+	Esta técnica puede ser computacionalmente costosa para conjuntos de datos grandes.
+		
+	\end{itemize}
+	
+	
+\item
+\textbf{Algoritmos de Clasificación:}	
+	
+	\begin{itemize}
+	
+	\item
+	\textbf{K-Nearest Neighbors (KNN):}
+	
+	KNN es un algoritmo de clasificación basado en instancias que asigna una clase a una muestra en función de la mayoría de sus k vecinos más cercanos.
+	
+	La distancia entre muestras se calcula utilizando la distancia euclidiana.
+
+	\item
+	\textbf{Árboles de Decisión:}	
+	
+	Los árboles de decisión son modelos de clasificación que dividen los datos en subconjuntos basados en valores de características, organizados en una estructura de árbol.
+	
+	Cada nodo del árbol representa una característica, cada rama una decisión, y cada hoja una clase.
+	
+
+	\item
+	\textbf{Random Forest:}	
+	
+	Random Forest es un conjunto de árboles de decisión que utiliza el bagging (bootstrap aggregating) para mejorar la precisión y reducir el sobreajuste.
+	
+	Cada árbol del bosque se entrena con una muestra aleatoria del conjunto de datos, y las predicciones se combinan para obtener el resultado final.
+
+	\end{itemize}
+\end{itemize}
+	
+
+\subsection{Redes neuronales}
+
+	
+	
+Las redes neuronales son modelos de aprendizaje profundo que simulan el funcionamiento del cerebro humano para reconocer patrones complejos en los datos.
+
+En este proyecto, se han utilizado varios tipos de redes neuronales para el análisis de datos EEG:		
 	
 \begin{itemize}
-\item 
+
+	\item
+	\textbf{Multilayer Perceptron (MLP):}
+
+	Un MLP es una red neuronal artificial feedforward con una o más capas ocultas entre la capa de entrada y la capa de salida.
+	
+	Consta de una capa de entrada, una o más capas ocultas y una capa de salida. Cada neurona en una capa está conectada a todas las neuronas de la siguiente capa. Las capas ocultas permiten al MLP aprender representaciones no lineales de los datos. Tienen solo una dirección de conexión entre capas, hacia delante.
+	
+	El MLP se entrena utilizando un algoritmo que ajusta los pesos de las conexiones neuronales para minimizar el error de predicción.
+	
+	
+
+	\imagen{memoria/MLP}{Red neuronal MLP.}{.5}	
+	
+
+	\item
+	\textbf{Recurrent Neural Network (RNN):}
+
+	Una SRNN es un tipo de red neuronal en la que las conexiones entre las neuronas forman un ciclo, lo que permite que la información se mantenga a lo largo del tiempo.  Las neuronas de diferentes capas están conectadas hacia adelante o hacia atrás.
+
+	Esta red tiene una capa de entrada, una o mas capas recurrentes ocultas y una capa de salida.
+	
+	
+	\imagen{memoria/RNN}{Red neuronal RNN.}{.5}	
+
+
+
+	\item
+	\textbf{Long Short-Term Memory (LSTM):}
+
+	Las LSTM son un tipo de red neuronal recurrente diseñada para aprender dependencias a largo plazo en datos secuenciales. Utilizan celdas de memoria que pueden mantener información durante largos períodos.
+	
+	La arquitectura de esta red consiste en una capa de entrada, una o más capas LSTM y una capa de salida. La red neuronal es muy parecida a la de las RNN pero las LSTM añaden las celdas de memoria que sirven para escribir, leer o guardar datos, esta celdas están controladas por las puestas, que se dividen en puestas de entra, de olvido y de salida que sirven para el control del flujo de datos, estas puertas regulan el estado de las celdas de memoria.
+
+
 \end{itemize}
 
-\section{Tablas}
 
-Igualmente se pueden usar los comandos específicos de \LaTeX o bien usar alguno de los comandos de la plantilla.
+\subsection{Ventana Deslizante}
 
-\tablaSmall{Herramientas y tecnologías utilizadas en cada parte del proyecto}{l c c c c}{herramientasportipodeuso}
-{ \multicolumn{1}{l}{Herramientas} & App AngularJS & API REST & BD & Memoria \\}{ 
-HTML5 & X & & &\\
-CSS3 & X & & &\\
-BOOTSTRAP & X & & &\\
-JavaScript & X & & &\\
-AngularJS & X & & &\\
-Bower & X & & &\\
-PHP & & X & &\\
-Karma + Jasmine & X & & &\\
-Slim framework & & X & &\\
-Idiorm & & X & &\\
-Composer & & X & &\\
-JSON & X & X & &\\
-PhpStorm & X & X & &\\
-MySQL & & & X &\\
-PhpMyAdmin & & & X &\\
-Git + BitBucket & X & X & X & X\\
-Mik\TeX{} & & & & X\\
-\TeX{}Maker & & & & X\\
-Astah & & & & X\\
-Balsamiq Mockups & X & & &\\
-VersionOne & X & X & X & X\\
-} 
+	
+La ventana deslizante es una técnica que consiste en tomar un subconjunto de datos de un conjunto mayor, moviéndose a través del conjunto de datos por pasos fijos. Este subconjunto se llama "ventana". Cada vez que la ventana se desliza, se incluye un nueva ventana de datos que analizar. Para este proyecto se han creado ventanas deslizantes unificando temporalmente los datos por cada target, Key u objetivo.
+
+Esto ayuda a manejar y analizar datos secuenciales, permitiendo al modelo enfocarse en patrones locales en los datos mientras mantiene la referencia a un target, Key u objetivo constante. Esto generara varios conjunto de ventanas, uno por cada objetivo.
+
+
+\imagen{memoria/ventanas}{Ejemplo ventanas temporales sobre targets.}{0.95}		
+	
+	
+\subsection{Generación de datos sintéticos}
+
+	La generación de datos sintéticos en un conjunto de datos se refiere al proceso de crear nuevos datos que imitan las características estadísticas y estructurales del conjunto de datos original. 
+	
+	Este enfoque es útil en diversas situaciones, como cuando se quiere aumentar el tamaño del conjunto de datos para entrenar modelos de aprendizaje automático o equilibrar clases desproporcionadas.
+	
+	El método utilizado es sobremuestreo (Oversampling), principalmente replica y ajusta datos existentes para crear nuevas muestras. No elimina las muestras los datos originales sino que crea nuevos datos.
+
+\subsection{Matriz de confusión}
+
+Una matriz de confusión es una herramienta en la evaluación de modelos de clasificación en aprendizaje automático. Proporciona una visualización de la calidad del rendimiento de un modelo al comparar las predicciones del modelo con los valores reales de los datos de prueba.
+
+\begin{itemize}
+
+	\item
+	\textbf{Verdaderos Positivos (VP):}
+	
+	Son los casos donde el modelo predijo correctamente la clase positiva.
+	
+	\item
+	\textbf{Falsos Negativos (FN):}
+	
+	Son los casos donde el modelo predijo incorrectamente la clase negativa cuando en realidad era positiva.
+	
+	\item
+	\textbf{Falsos Negativos (FP):}
+	
+	Son los casos donde el modelo predijo incorrectamente la clase positiva cuando en realidad era negativa.
+	
+	\item
+	\textbf{Verdaderos Negativos (VN):}
+	
+	Representan los casos donde el modelo predijo correctamente la clase negativa.
+
+\end{itemize}
+
+\imagen{memoria/matriz}{Matriz de confusión.}{0.6}	
+
+\subsection{Tasa de acierto}
+
+La tasa de acierto es una métrica que proporciona una visión general del rendimiento del modelo. Sin embargo, su interpretación debe realizarse con precaución, especialmente en casos donde las clases están desbalanceadas. Para este proyecto las clases están balanceadas.
+
+
+
+	\begin{equation*}
+	Tasa de acierto = (VP + VN) / VP + FN + FP + VN
+	\end{equation*}
+	
+	Tasa de acierto es el número de predicciones correctas entre número total de predicciones.

@@ -5,11 +5,11 @@
 La Universidad de Burgos, dentro del área de conocimiento de Ingeniería de Sistemas y Automática, dispone de un interfaz BCI (Brain Computer Interface) para la captación de señales cerebrales. 
 Empleando ese interfaz se han realizado diferentes experimentos que han permitido recoger información de la actividad cerebral mientras los usuarios ejecutaban diferentes tareas cotidianas. 
 
-Este Trabajo de Fin de Grado (TFG) tiene como objetivo el análisis de la información obtenida en esos experimentos. Se entrenarán diferentes algoritmos para clasificar la acción realizada por el usuario a partir de las señales generadas por el BCI. Con este propósito, se evaluarán diferentes algoritmos de procesado de señales y de machine/deep learning para la clasificación automática de señales.
+Este Trabajo de Fin de Grado (TFG) tiene como objetivo principal el análisis de la información obtenida en esos experimentos. Se entrenarán diferentes algoritmos para clasificar la acción realizada por el usuario a partir de las señales generadas por el BCI. Con este propósito, se evaluarán diferentes algoritmos de procesado de señales y de machine/deep learning para la clasificación automática de señales.
 
-Los datos aportados son de tipo EEG (Electroencefalografía) para la realización del TFG son datos referentes a experimentos basados en acciones sobre teclas de un teclado: arriba, abajo, izquierda, derecha.
+El conjunto de datos para la realización del TFG son de tipo EEG (Electroencefalografía) referentes a experimentos basados en acciones sobre teclas de un teclado: arriba, abajo, izquierda, derecha.
 
-El análisis de estos datos y su evaluación en diferentes algoritmos esta basada en predecir qué teclas del teclado se han pulsado según las señales captadas con la interfaz BCI.
+El análisis de estos datos y su evaluación en diferentes algoritmos está basada en predecir qué teclas del teclado se han pulsado según las señales captadas con la interfaz BCI.
 
 Para esto no ha habido una planificación como tal registrada en Github, pero sí una progresión definida en los commits de código generados durante la composición del TFG.
 
@@ -18,9 +18,9 @@ Para esto no ha habido una planificación como tal registrada en Github, pero s�
 
 En la reunión inicial con los tutores definimos utilizar Python para realizar el código y una serie de aprendizajes básicos para poder acometer el TFG sin problemas.
 
-En las siguientes reuniones se definieron algoritmos y experimentos a realizar con los datos EEG aportados.
+En las siguientes reuniones se definieron algoritmos y experimentos a realizar con los datos EEG recogidos.
 
-Desde el principio del proyecto debido a las circunstancias personales del alumno no se ha podido realizar metodología Scrum, pero sí se produjeron estas lineas temporales:
+Desde el principio del proyecto debido a las circunstancias personales que como alumno tenía, no se ha podido realizar metodología Scrum, pero sí se produjeron estas lineas temporales que se muestran a continuación:
 
 \imagen{anexos/Commits1}{Commits realizados durante la realización del TFG}
 
@@ -62,13 +62,15 @@ Se pueden dividir en 3 grandes etapas:
 
 \textbf{- Definición y creación de los primeros notebooks de machine learning}, al final de la etapa.
 
-\textbf{- Comentar código e imprimir comentarios en los notebooks.}
+\textbf{- Comentarios en el código e impresión  de comentarios en los notebooks.}
 
 Los principales problemas o obstáculos que me encontré fueron principalmente los siguientes:
 
 \textbf{- Tiempo invertido en la realización de los cursos.}
+
 \textbf{- Estructuración del código.} Me tomo mucho tiempo poder llegar a definir como quería mostrar el código, me decidí por un notebook principal que realizara llamadas al resto de notebooks con códigos mas específicos para cada modelo o experimento a realizar.
-\textbf{- Plotteos y definiciones básicas como normalizar o escalar el conjunto de datos.}
+
+\textbf{- Impresiones por pantalla y definiciones básicas como normalizar o escalar el conjunto de datos.}
 
 
 
@@ -84,7 +86,7 @@ Los principales problemas o obstáculos que me encontré fueron principalmente l
 \textbf{- Definición y creación notebooks de deep learning.}
 
 
-Los problemas que me encontré en esta etapa fueron:
+Las dificultades que me encontré en esta etapa fueron:
 
 \textbf{- Compilación modelos deep learning. }Al ejecutar los primeros modelos de deep learning los datos normalizados me proporcionaban errores de compilación con modelos SRNN o LSTM, cambiando a datos escalados y shapeando los modelos pudieron ejecutarse.
 
