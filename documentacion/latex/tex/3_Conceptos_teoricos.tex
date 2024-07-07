@@ -131,9 +131,110 @@ Se ha aplicado un escalado en rangos de -1 a 1 para que la escala sea uniforme.
 
 \end{itemize}
 
+
+\subsection{Partición de datos para el entrenamiento}
+
+En machine learning y redes neuronales, es fundamental dividir el conjunto de datos en tres subconjuntos: entrenamiento (train), validación (val) y prueba (test). Cada uno de estos subconjuntos tiene un propósito específico y ayuda a garantizar que el modelo generalice bien a datos nuevos y no vistos con anterioridad en la ejecución de los modelos. 
+
+Para lograr la división del conjunto de datos en subconjuntos he utilizado la función \textbf{train-test-split} de scikit-learn. Utilizándola en dos pasos.
+
+1. División del conjunto de datos en Test y Train-intermedio. 90 por ciento para Train-intermedio.
+2. División de Train-intermedio en Val y Train. 90 por ciento para Train.
+
+Quedando la división aproximada en tanto por ciento, de la siguiente manera:
+80 para Train, 10 para Val, 10 para Test
+
+\begin{itemize}
+	
+\item
+\textbf{Subconjunto de Entrenamiento (Train):}
+
+	El subconjunto de entrenamiento se utiliza para ajustar los parámetros del modelo. Durante el entrenamiento, el modelo aprende patrones y relaciones en los datos de este subconjunto. En los experimentos sera del 80 por ciento de los datos del conjunto de datos inicial.
+
+\item 
+\textbf{Subconjunto de Validación (Val):}
+
+	El subconjunto de validación se utiliza para ajustar los hiperparámetros del modelo y para evaluar su rendimiento durante el proceso de entrenamiento. Ayuda a prevenir el sobreajuste (overfitting). 
+	
+\item 
+\textbf{Subconjunto de Prueba (Test):}
+
+
+	El subconjunto de prueba se utiliza para evaluar el rendimiento final del modelo después de haber sido entrenado y ajustado utilizando los conjuntos de entrenamiento y validación. Se utilizan estos datos al final de la ejecucion del modelo.
+	
+	Este conjunto proporciona una medida final de la capacidad del modelo para generalizar a datos no vistos con anterioridad, lo cual es crucial para determinar si el modelo es apto para su implementación en un entorno real.
+	
+\end{itemize}
+
+
+
+\subsection{Sobreajuste (overfitting)}
+
+	El sobreajuste (overfitting) es un problema común en el aprendizaje automático y las redes neuronales, donde un modelo aprende demasiado bien los detalles y el ruido del conjunto de datos de entrenamiento, hasta el punto de que su rendimiento en datos nuevos y no vistos con anterioridad se deteriora. 
+	
+	El modelo se ajusta tan estrechamente a los datos de entrenamiento que pierde la capacidad de generalizar a otros conjuntos de datos.
+	
+
+\begin{itemize}	
+\item
+\textbf{Detección del sobreajuste:}
+
+	Una indicación clara de sobreajuste es cuando la tasa de acierto del modelo en el conjunto de entrenamiento sigue mejorando mientras que la precisión en el conjunto de validación se estanca o empeora.
+
+\textbf{Prevenir el sobreajuste:}
+
+	\begin{itemize}
+	\item
+	\textbf{Dropout:}
+	En redes neuronales, se desactivan algunas neuronas durante el entrenamiento para evitar que el modelo dependa demasiado de características específicas.
+	
+	Se utiliza después de las capas de entrada y capas ocultas de redes neuronales y los valores recomendados oscilan entre el 20 y 50 por ciento de neuronas desconectadas para que el aprendizaje no tienda al sobreajuste. Para este proyecto utilizare como valor, 30 por ciento.
+	
+	\item
+	\textbf{Aumento de datos:}
+	Generar nuevas muestras de datos a partir de las existentes mediante técnicas como la creación de ventanas deslizantes en series temporales o creación de nuevos datos sintéticos.
+	
+	\item
+	\textbf{Validaciones cruzadas:}
+	
+	Dividir los datos en subconjuntos y entrenar el modelo varias veces, utilizando subconjuntos para entrenamiento y validación en cada iteración.
+	
+	\item
+	\textbf{Uso de callbacks en redes neuronales:}
+	
+	Los callbacks permiten realizar acciones y monitorizar el entrenamiento en tiempo real, proporcionando una manera eficiente de controlar el modelo en su entrenamiento.
+	
+	Hay varios tipos de call back pero para el proyecto se utilizaran los siguientes:
+	
+		\begin{itemize}
+		\item
+		\textbf{EarlyStopping:}
+	
+	Detiene el entrenamiento cuando una métrica monitoreada deja de mejorar. En los modelos que se han implementado se utilizara la métrica \textbf{val-loss} (La pérdida (loss) es una medida de lo bien o mal que el modelo está haciendo sus predicciones en relación con los valores reales. Es una función matemática que calcula la discrepancia entre las predicciones del modelo y las etiquetas verdaderas.)
+	
+		\item
+		\textbf{ReduceLROnPlateau:}	
+	
+	Monitoriza la misma métrica \textbf{val-loss} y reduce la tasa de aprendizaje en un factor de 0.1 si no mejora después de 5 épocas. 
+	
+		\item
+		\textbf{ModelCheckpoint:}		
+	
+	Guarda el mejor rendimiento que ha tenido durante el entrenamiento, basado en la métrica \textbf{val-loss} y se guarda en un archivo .keras.
+	
+
+		\end{itemize}	
+	
+	\end{itemize}
+
+\end{itemize}
+
+
 \subsection{Machine Learning}
 
-El uso de técnicas de machine learning en el análisis de datos EEG permite la detección y clasificación precisa de patrones en las señales cerebrales. En este proyecto, se han implementado diversos métodos de validación y algoritmos de clasificación para garantizar la robustez y fiabilidad de los modelos predictivos. A continuación, se describen las técnicas y algoritmos utilizadas:
+El uso de técnicas de machine learning en el análisis de datos EEG permite la detección y clasificación precisa de patrones en las señales cerebrales. En este proyecto, se han implementado diversos métodos de validación y algoritmos de clasificación para garantizar la robustez y fiabilidad de los modelos predictivos. 
+
+A continuación, se describen las técnicas y algoritmos utilizadas:
 
 
 \begin{itemize}
@@ -146,11 +247,14 @@ El uso de técnicas de machine learning en el análisis de datos EEG permite la 
 	\item
 	\textbf{Holdout:}
 	
-	El método holdout implica dividir el conjunto de datos en dos partes: un conjunto de entrenamiento y un conjunto de prueba.
+	El método holdout implica dividir el conjunto de datos tal y como se ha descrito en la sección: "Partición de datos para el entrenamiento".
 	
-	Lo mas extendido suele ser dividir el 80 por ciento conjunto de entrenamiento y un 30 por ciento para conjunto de prueba.
 	
-	Esta técnica es simple y rápido, los datos han de estar distribuidos uniformemente entre las particiones.
+	Esta técnica es simple y rápida, los datos han de estar distribuidos uniformemente entre las particiones.
+	
+	Para que los datos estén distribuidos uniformemente dentro de los tres subconjuntos he utilizado el parámetro \textbf{stratify}, a este proceso se conoce como "estratificación" y asegura que el balanceo de los datos del conjunto original se mantenga en los subconjuntos de Train, Val y Test. Es importante porque permite que los modelos se entrenen y evalúen de manera más representativa.
+	
+	
 
 	\item
 	\textbf{K-Fold Cross-Validation:}
@@ -161,8 +265,6 @@ El uso de técnicas de machine learning en el análisis de datos EEG permite la 
 	El modelo se entrena k veces, utilizando k-1 folds para entrenamiento y uno para prueba en cada iteración.
 	
 	Este proceso se repite k veces, asegurando que cada fold se utilice como conjunto de prueba una vez.
-	
-	Esta técnica reduce el sesgo asociado con la partición de datos.	
 	
 	\item
 	\textbf{Leave-One-Out Cross-Validation:}
@@ -189,6 +291,10 @@ El uso de técnicas de machine learning en el análisis de datos EEG permite la 
 	KNN es un algoritmo de clasificación basado en instancias que asigna una clase a una muestra en función de la mayoría de sus k vecinos más cercanos.
 	
 	La distancia entre muestras se calcula utilizando la distancia euclidiana.
+	
+	\imagen{memoria/KNN}{Uso KNN.~\cite{knn:intuitivetutorial}}{.7}
+	
+	
 
 	\item
 	\textbf{Árboles de Decisión:}	
@@ -198,12 +304,19 @@ El uso de técnicas de machine learning en el análisis de datos EEG permite la 
 	Cada nodo del árbol representa una característica, cada rama una decisión, y cada hoja una clase.
 	
 
+	\imagen{memoria/TREE}{Uso arboles de decisión.~\cite{dibujos:visual}}{.5}	
+	
+	
+
 	\item
 	\textbf{Random Forest:}	
 	
 	Random Forest es un conjunto de árboles de decisión que utiliza el bagging (bootstrap aggregating) para mejorar la precisión y reducir el sobreajuste.
 	
 	Cada árbol del bosque se entrena con una muestra aleatoria del conjunto de datos, y las predicciones se combinan para obtener el resultado final.
+	
+	\imagen{memoria/RANDOM}{Uso random forest.~\cite{dibujos:visual}}{.5}	
+	
 
 	\end{itemize}
 \end{itemize}
@@ -230,7 +343,7 @@ En este proyecto, se han utilizado varios tipos de redes neuronales para el aná
 	
 	
 
-	\imagen{memoria/MLP}{Red neuronal MLP.}{.5}	
+	\imagen{memoria/MLP}{Red neuronal MLP.~\cite{dibujos:visual}}{.5}	
 	
 
 	\item
@@ -241,7 +354,7 @@ En este proyecto, se han utilizado varios tipos de redes neuronales para el aná
 	Esta red tiene una capa de entrada, una o mas capas recurrentes ocultas y una capa de salida.
 	
 	
-	\imagen{memoria/RNN}{Red neuronal RNN.}{.5}	
+	\imagen{memoria/RNN}{Red neuronal RNN.~\cite{dibujos:visual}}{.5}	
 
 
 
@@ -250,7 +363,13 @@ En este proyecto, se han utilizado varios tipos de redes neuronales para el aná
 
 	Las LSTM son un tipo de red neuronal recurrente diseñada para aprender dependencias a largo plazo en datos secuenciales. Utilizan celdas de memoria que pueden mantener información durante largos períodos.
 	
-	La arquitectura de esta red consiste en una capa de entrada, una o más capas LSTM y una capa de salida. La red neuronal es muy parecida a la de las RNN pero las LSTM añaden las celdas de memoria que sirven para escribir, leer o guardar datos, esta celdas están controladas por las puestas, que se dividen en puestas de entra, de olvido y de salida que sirven para el control del flujo de datos, estas puertas regulan el estado de las celdas de memoria.
+	La arquitectura de esta red consiste en una capa de entrada, una o más capas LSTM y una capa de salida. 
+	
+	La red neuronal es muy parecida a la de las RNN pero las LSTM añaden:
+	
+	\textbf{Celdas} de memoria que sirven para escribir, leer o guardar datos, estas celdas están controladas por las puertas.
+	
+	\textbf{Puertas} que se dividen en purstas de entrada, de olvido y de salida que sirven para el control del flujo de datos, estas puertas regulan el estado de las celdas de memoria.
 
 
 \end{itemize}
@@ -264,7 +383,7 @@ La ventana deslizante es una técnica que consiste en tomar un subconjunto de da
 Esto ayuda a manejar y analizar datos secuenciales, permitiendo al modelo enfocarse en patrones locales en los datos mientras mantiene la referencia a un target, Key u objetivo constante. Esto generara varios conjunto de ventanas, uno por cada objetivo.
 
 
-\imagen{memoria/ventanas}{Ejemplo ventanas temporales sobre targets.}{0.95}		
+\imagen{memoria/ventanas}{Ejemplo ventanas temporales sobre  targets.~\cite{dibujos:diagrams}}{0.95}		
 	
 	
 \subsection{Generación de datos sintéticos}
@@ -303,7 +422,7 @@ Una matriz de confusión es una herramienta en la evaluación de modelos de clas
 
 \end{itemize}
 
-\imagen{memoria/matriz}{Matriz de confusión.}{0.6}	
+\imagen{memoria/matriz}{Matriz de confusión.~\cite{dibujos:diagrams}}{0.6}	
 
 \subsection{Tasa de acierto}
 

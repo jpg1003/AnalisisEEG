@@ -1,11 +1,49 @@
 \capitulo{4}{Técnicas y herramientas}
 
 
----------------------------
-Esta parte de la memoria tiene como objetivo presentar las técnicas metodológicas y las herramientas de desarrollo que se han utilizado para llevar a cabo el proyecto. Si se han estudiado diferentes alternativas de metodologías, herramientas, bibliotecas se puede hacer un resumen de los aspectos más destacados de cada alternativa, incluyendo comparativas entre las distintas opciones y una justificación de las elecciones realizadas. 
-No se pretende que este apartado se convierta en un capítulo de un libro dedicado a cada una de las alternativas, sino comentar los aspectos más destacados de cada opción, con un repaso somero a los fundamentos esenciales y referencias bibliográficas para que el lector pueda ampliar su conocimiento sobre el tema.
+En esta sección de la memoria, además de detallar las técnicas metodológicas y las herramientas de desarrollo, se incluyen explicaciones sobre los diferentes experimentos realizados y las herramientas específicas utilizadas, como Jupyter Notebooks y Python. 
 
----------------------------------------------
+A continuación, se profundiza en estos aspectos:
+
+
+\subsection{Experimentos realizados}
+
+
+
+\subsubsection{Conjuntos de datos a analizar}
+
+Se han creado cuatro conjuntos de datos, cada uno conteniendo señales EEG capturadas de diferentes sesiones o condiciones experimentales.
+
+Estos conjuntos se han separado basándose en la característica TimeStamp dentro del conjunto de datos global.
+
+Estos conjuntos están etiquetados por Segmentos, numerados del 1 al 4 y organizados de acuerdo con las especificaciones individuales para cada participante en el estudio.
+
+
+Además de los conjuntos de datos individuales por sesión o condiciones experimentales, se han creado dos conjuntos de datos que combinan las señales EEG de todos las sesiones capturadas.
+
+El primer conjunto se crea después de haber sido escalados los segmentos individualmente y se llama All Segmentos after.
+
+El segundo conjunto se crea escalando todo el conjunto de datos sin haber separado los segmentos individualmente con anterioridad. All Segmentos before.
+
+
+Un primer enfoque que permite analizar las diferencias entre los modelos y como clasifican los datos por sesiones o condiciones experimentales individualmente.
+
+Y un segundo enfoque, mas atractivo, en un contexto unificado, proporcionando una visión generalizada de las clasificaciones de los modelos para varias sesiones o condiciones experimentales que aporta una visión mas real de estos análisis.
+
+Total 6 conjuntos de datos para experimentar. 
+
+4 para Segmentos individuales y 2 para conjuntos de datos "globales"
+
+
+\subsubsection{Experimento comparativo}
+
+En este experimento se compararon los modelos explicados en la sección Conceptos teóricos para modelos, machine learning y redes neuronales.
+
+Se llevaron a cabo ejecuciones utilizando holdout, k-fold cross-validation , leave-one-out cross-validation, MLP, RNN y LSTM para evaluar la robustez y la generalización de los modelos desarrollados.
+
+Se realizaron los experimentos con los 6 conjuntos de datos antes mencionados.
+
+
 
 
 
