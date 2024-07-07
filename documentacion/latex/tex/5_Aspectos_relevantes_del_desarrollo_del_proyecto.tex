@@ -6,10 +6,10 @@ El desarrollo de este proyecto siguió la metodología CRISP-DM (Cross Industry 
 A continuación, se detallan los aspectos más interesantes y relevantes de cada fase del ciclo de vida del proyecto según CRISP-DM.
 
 
-\begin{itemize}
-	
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}	
 \item
-\textbf{1.Comprensión del Negocio}
+\textbf{Comprensión del Negocio}
 
 El objetivo principal fue identificar los objetivos y requisitos del proyecto desde una perspectiva empresarial.
 
@@ -17,9 +17,11 @@ Se llevaron a cabo reuniones con los tutores para entender los objetivos especí
 
 Se establecieron metas claras y medibles para el sistema de análisis de señales EEG, incluyendo los modelos a utilizar.
 
+En esta fase se tomo la decisión de crear un modelo modular con un Notebook Principal que realizara llamadas al resto de Notebooks secundarios siguiendo los objetivos de negocio de poder ser escalables para futuras investigaciones.
+
 
 \item
-\textbf{2.Comprensión de los Datos}
+\textbf{Comprensión de los Datos}
 
 Unos de los objetivos principales fue familiarizarme con los datos disponibles y realizar un análisis preliminar.
 
@@ -29,73 +31,94 @@ Se hizo uso de herramientas y visualizaciones para identificar patrones y posibl
 
 Se identificaron valores atípicos (outliners) que podrían afectar negativamente el rendimiento de los modelos.
 
+Se realizaron cursos online básicos propuestos en las reuniones de seguimiento:
+Tutorial de Inicio de Pandas~\cite{curso:a}, Visualización de Datos~\cite{curso:b}, Trabajo con series temporales.~\cite{curso:c}
 
 \item
-\textbf{3.Preparación de los Datos}
+\textbf{Preparación de los Datos}
 
 El objetivo principal de esta fase es preprocesar y preparar los datos para su análisis en los diferentes modelos.
 
-En esta fase se crearon nuevos conjuntos de datos para luego realizar analisis sobre ellos. En total 6 como se ha descrito con anterioridad.
+En esta fase se crearon nuevos conjuntos de datos para luego realizar análisis sobre ellos. En total 6 como se ha descrito con anterioridad.
 
 Se aplicación de técnicas de normalización y escalado, como StandardScaler y Z-Score, para estandarizar las señales EEG.
 
-Creación y utilización de ventanas deslizantes, agrupandolas por cada uno de los tipos de datos de cada conjunto de datos generado.
+Creación y utilización de ventanas deslizantes, agrupándolas por cada uno de los tipos de datos de cada conjunto de datos generado.
 
 Al final de la fase se propuso la generación de Datos Sintéticos para aumentar la cantidad y diversidad del conjunto de datos y abordar el análisis de los modelos desde otra perspectiva.
 
 \item
-\textbf{4.Fase de Modelado}
+\textbf{Fase de Modelado}
 
 El objetivo en esta fase fue seleccionar y aplicar técnicas de modelado adecuadas. Los que se han utilizado para el proyecto son los siguientes:
 
-\begin{itemize}
+	\begin{itemize}
 	
+	\item
+	\textbf{Algoritmos de Machine Learning:}
+
+	K-Nearest Neighbors (KNN)
+	Árboles de Decisión
+	Random Forest
+
+	\textbf{Evaluación y Comparación:}
+	Uso de métricas como Tasa de acierto y loss para evaluar el rendimiento de estos modelos.
+
+	\textbf{Redes Neuronales:}
+	Multilayer Perceptron (MLP)
+	Redes Neuronales Recurrentes (RNN)
+	Long Short-Term Memory (LSTM)
+
+	\textbf{Optimización y Regularización:} 
+
+	Uso de técnicas como Dropout para mejorar la generalización de los modelos.
+	\end{itemize}
+
+
+Las dificultades que se encontraron en esta etapa fueron:
+
+\textbf{- Compilación de modelos de redes neuronales. }
+
+	Al ejecutar los primeros modelos de redes neuronales los datos normalizados me proporcionaban errores de compilación con modelos SRNN o LSTM, tuve que cambiar el escalado de los datos datos y shapear los modelos para que pudieran ejecutarse.
+
+\textbf{- Utilización de ventanas temporales en los modelos de redes neuronales.} 
+
+	En esta etapa no supe identificar este requerimiento por parte de los tutores y estuve implementando varias formas de poder utilizar ventanas temporales en el código, esto hizo que tuviera un gran retraso en la finalización y aceptación del codigo.
+
+\textbf{- Utilización de modelos de redes neuronales y callbacks.} 
+
+	El sobreajuste en los modelos predictivos era una constante y se implemento el uso de callbacks para evitar este sobreajuste.
+
+
+\textbf{- Gráficas y definiciones básicas como normalizar o escalar el conjunto de datos.}
+
+
+
 \item
-\textbf{Algoritmos de Machine Learning:}
-
-K-Nearest Neighbors (KNN)
-Árboles de Decisión
-Random Forest
-
-\textbf{Evaluación y Comparación:}
-Uso de métricas como Tasa de acierto y loss para evaluar el rendimiento de estos modelos.
-
-\textbf{Redes Neuronales:}
-Multilayer Perceptron (MLP)
-Redes Neuronales Recurrentes (RNN)
-Long Short-Term Memory (LSTM)
-
-\textbf{Optimización y Regularización:} 
-
-Uso de técnicas como Dropout para mejorar la generalización de los modelos.
-\end{itemize}
-
-
-\item
-\textbf{5.Evaluación}
+\textbf{Evaluación}
 
 
 En esta fase se trata de poder evaluar el modelo para asegurar que cumple con los objetivos del negocio. Para ellos se utilizaran las siguientes técnicas:
 
 
-\begin{itemize}
+	\begin{itemize}
 	
-\item
-\textbf{Métricas de Evaluación:}
+	\item
+	\textbf{Métricas de Evaluación:}
 
 Para todos los modelos se ha utilizado la evaluación mediante subconjuntos de datos de validación y prueba. (Val y Test)
 
-\item
-\textbf{Utilización de Callbacks y Técnicas de Monitorización:}
+	\item
+	\textbf{Utilización de Callbacks y Técnicas de Monitorización:}
 
  Se ha hecho uso de EarlyStopping, ReduceLROnPlateau y ModelCheckpoint para evitar el sobreajuste y guardar el mejor modelo durante el entrenamiento.
-\end{itemize}
+	\end{itemize}
 
 
 \item
-\textbf{6.Despliegue}
+\textbf{Despliegue}
 
-En esta fase el objetivo es la implementacion del proyecto, para ellos, describo a continuación las herramientas que se han utilizado:
+En esta fase el objetivo es la implementacion del proyecto y para ello se empezó con la definición y creación de los primeros Jupyter Notebooks.
 
 
 \textbf{Jupyter Notebooks.} 
@@ -107,4 +130,5 @@ La capacidad de crear, documentar y ejecutar celdas de código de manera interac
 La naturaleza modular de los Jupyter Notebooks ha permitido separar distintas fases del proceso, desde la carga y preprocesamiento de datos hasta el entrenamiento y evaluación del modelo. 
 
 Esta separación ha facilitado el mantenimiento y la actualización de cada componente sin afectar al resto del sistema.
-\end{itemize}
+
+\end{enumerate}
