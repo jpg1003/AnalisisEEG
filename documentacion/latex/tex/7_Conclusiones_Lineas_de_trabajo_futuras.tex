@@ -1,4 +1,60 @@
 \capitulo{7}{Conclusiones y Líneas de trabajo futuras}
 
-Todo proyecto debe incluir las conclusiones que se derivan de su desarrollo. Éstas pueden ser de diferente índole, dependiendo de la tipología del proyecto, pero normalmente van a estar presentes un conjunto de conclusiones relacionadas con los resultados del proyecto y un conjunto de conclusiones técnicas. 
-Además, resulta muy útil realizar un informe crítico indicando cómo se puede mejorar el proyecto, o cómo se puede continuar trabajando en la línea del proyecto realizado. 
+\subsection{Conclusiones}
+
+\begin{itemize}
+	
+	\item
+	\textbf{Impacto de la Cantidad de Datos:}
+	
+	Los resultados obtenidos muestran que la falta de datos puede ser una limitación significativa en la obtención de altas tasas de acierto en el análisis de señales EEG. La disponibilidad de conjuntos de datos más grandes y variados podría mejorar la capacidad de generalización de los modelos y, por lo tanto, aumentar la precisión de las predicciones.
+	
+\imagen{memoria/TEST_comparador}{Ejemplo resultados Tasa de acierto primer experimento comparativo para subconjunto Test}{.9}	
+
+
+	Se puede ver a simple vista que los resultados para la métrica Tasa de acierto no han sido buenos para cualquiera de los modelos comparados.
+
+	Teniendo Tasas de acierto de hasta el 69,23 en uno de los segmentos individuales y de 36,76 en uno de los conjunto de datos completos.
+
+
+	\item
+	\textbf{Impacto del aumento de datos:}
+	
+	La inclusión de datos sintéticos ha demostrado ser beneficioso para mejorar las tasas de acierto en comparación con el uso exclusivo de datos reales. 
+	
+	Este enfoque ha permitido aumentar la diversidad y la cantidad de datos disponibles para el entrenamiento, lo cual es crucial cuando los datos reales son limitados.
+	
+	
+\imagen{memoria/TEST_sinteticos}{Ejemplo resultados Tasa de acierto experimento con aumento de datos a Test}{.6}
+
+
+	Estos resultados en comparación con los anteriores son un 10 por ciento mayores pero aun no son buenos resultados para la métrica Tasa de acierto.
+	
+
+	\item
+	\textbf{Impacto de las ventanas temporales en los análisis:}
+	
+	Los datos recogidos tras utilizar las ventanas temporales con datos reales y con el aumento de datos sintéticos han sido los siguientes:
+	
+\imagen{memoria/TEST_SW}{Ejemplo resultados Tasa de acierto experimento ventanas temporales a Test}{.6}
+
+\imagen{memoria/TEST_SW_RS}{Ejemplo resultados Tasa de acierto experimento ventanas temporales con aumento de datos a Test}{.6}
+	
+	El impacto combinado de las dos tecnicas para el analisis hacer que el aumneto en el porcentaje de la tasa de acierto, para el conjunto de datos estandarizado por segmentos y luego unificado en un solo conjunto de datos, alcanza has el 83.64 por ciento.
+	
+	
+	\item
+	\textbf{Validación de datos Sintéticos contra datos Reales:}
+
+
+	La comparación directa entre conjuntos con aumento de datos y subconjuntos Test de exclusivamente datos reales ha llegado a mostrar que los resultados  pueden llegar a superar significativamente el rendimiento de Tasa de acierto que de los que solo eran datos reales. 
+	
+	Esto sugiere que los datos sintéticos pueden capturar mejor la variabilidad inherente en las señales EEG y mejorar la capacidad de generalización de los modelos.
+	
+	Unificando de nuevo las tecnicas de aumento de datos y ventanas deslizantes se ha llegado hasta el 64,17 por ciento en Tasa de Acierto, algo esperanzador para futuras lineas de investigación puesto que mejora en un casi 30 por ciento de Tasa de acierto con los modelos comparativos con solo datos reales.
+
+\imagen{memoria/TEST_real}{Ejemplo resultados Tasa de acierto experimento aumento de datos a datos reales Test}{.9}
+
+\end{itemize}
+
+\subsection{Líneas de trabajo futuras}

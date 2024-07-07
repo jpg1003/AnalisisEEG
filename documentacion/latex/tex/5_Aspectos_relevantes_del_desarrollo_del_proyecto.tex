@@ -1,7 +1,110 @@
 \capitulo{5}{Aspectos relevantes del desarrollo del proyecto}
 
-Este apartado pretende recoger los aspectos más interesantes del desarrollo del proyecto, comentados por los autores del mismo.
-Debe incluir desde la exposición del ciclo de vida utilizado, hasta los detalles de mayor relevancia de las fases de análisis, diseño e implementación.
-Se busca que no sea una mera operación de copiar y pegar diagramas y extractos del código fuente, sino que realmente se justifiquen los caminos de solución que se han tomado, especialmente aquellos que no sean triviales.
-Puede ser el lugar más adecuado para documentar los aspectos más interesantes del diseño y de la implementación, con un mayor hincapié en aspectos tales como el tipo de arquitectura elegido, los índices de las tablas de la base de datos, normalización y desnormalización, distribución en ficheros3, reglas de negocio dentro de las bases de datos (EDVHV GH GDWRV DFWLYDV), aspectos de desarrollo relacionados con el WWW...
-Este apartado, debe convertirse en el resumen de la experiencia práctica del proyecto, y por sí mismo justifica que la memoria se convierta en un documento útil, fuente de referencia para los autores, los tutores y futuros alumnos.
+
+El desarrollo de este proyecto siguió la metodología CRISP-DM (Cross Industry Standard Process for Data Mining) ~\cite{wiki:CRISP}, un enfoque estructurado y bien establecido para proyectos de minería de datos y análisis predictivo. 
+
+A continuación, se detallan los aspectos más interesantes y relevantes de cada fase del ciclo de vida del proyecto según CRISP-DM.
+
+
+\begin{itemize}
+	
+\item
+\textbf{1.Comprensión del Negocio}
+
+El objetivo principal fue identificar los objetivos y requisitos del proyecto desde una perspectiva empresarial.
+
+Se llevaron a cabo reuniones con los tutores para entender los objetivos específicos del proyecto, como la detección y clasificación de acciones de movimiento (arriba, abajo, derecha, izquierda).
+
+Se establecieron metas claras y medibles para el sistema de análisis de señales EEG, incluyendo los modelos a utilizar.
+
+
+\item
+\textbf{2.Comprensión de los Datos}
+
+Unos de los objetivos principales fue familiarizarme con los datos disponibles y realizar un análisis preliminar.
+
+Hubo una exploración inicial donde se exploro los conjuntos de datos EEG para comprender su estructura, características y distribución.
+
+Se hizo uso de herramientas y visualizaciones para identificar patrones y posibles anomalías en los datos.
+
+Se identificaron valores atípicos (outliners) que podrían afectar negativamente el rendimiento de los modelos.
+
+
+\item
+\textbf{3.Preparación de los Datos}
+
+El objetivo principal de esta fase es preprocesar y preparar los datos para su análisis en los diferentes modelos.
+
+En esta fase se crearon nuevos conjuntos de datos para luego realizar analisis sobre ellos. En total 6 como se ha descrito con anterioridad.
+
+Se aplicación de técnicas de normalización y escalado, como StandardScaler y Z-Score, para estandarizar las señales EEG.
+
+Creación y utilización de ventanas deslizantes, agrupandolas por cada uno de los tipos de datos de cada conjunto de datos generado.
+
+Al final de la fase se propuso la generación de Datos Sintéticos para aumentar la cantidad y diversidad del conjunto de datos y abordar el análisis de los modelos desde otra perspectiva.
+
+\item
+\textbf{4.Fase de Modelado}
+
+El objetivo en esta fase fue seleccionar y aplicar técnicas de modelado adecuadas. Los que se han utilizado para el proyecto son los siguientes:
+
+\begin{itemize}
+	
+\item
+\textbf{Algoritmos de Machine Learning:}
+
+K-Nearest Neighbors (KNN)
+Árboles de Decisión
+Random Forest
+
+\textbf{Evaluación y Comparación:}
+Uso de métricas como Tasa de acierto y loss para evaluar el rendimiento de estos modelos.
+
+\textbf{Redes Neuronales:}
+Multilayer Perceptron (MLP)
+Redes Neuronales Recurrentes (RNN)
+Long Short-Term Memory (LSTM)
+
+\textbf{Optimización y Regularización:} 
+
+Uso de técnicas como Dropout para mejorar la generalización de los modelos.
+\end{itemize}
+
+
+\item
+\textbf{5.Evaluación}
+
+
+En esta fase se trata de poder evaluar el modelo para asegurar que cumple con los objetivos del negocio. Para ellos se utilizaran las siguientes técnicas:
+
+
+\begin{itemize}
+	
+\item
+\textbf{Métricas de Evaluación:}
+
+Para todos los modelos se ha utilizado la evaluación mediante subconjuntos de datos de validación y prueba. (Val y Test)
+
+\item
+\textbf{Utilización de Callbacks y Técnicas de Monitorización:}
+
+ Se ha hecho uso de EarlyStopping, ReduceLROnPlateau y ModelCheckpoint para evitar el sobreajuste y guardar el mejor modelo durante el entrenamiento.
+\end{itemize}
+
+
+\item
+\textbf{6.Despliegue}
+
+En esta fase el objetivo es la implementacion del proyecto, para ellos, describo a continuación las herramientas que se han utilizado:
+
+
+\textbf{Jupyter Notebooks.} 
+
+Se han utilizado no solo para el desarrollo iterativo y la experimentación rápida, sino también para la implementación modular del proyecto. 
+
+La capacidad de crear, documentar y ejecutar celdas de código de manera interactiva permite a los usuarios finales poder ajustar y probar el proyecto en tiempo real, facilitando la depuración y el ajuste fino.
+
+La naturaleza modular de los Jupyter Notebooks ha permitido separar distintas fases del proceso, desde la carga y preprocesamiento de datos hasta el entrenamiento y evaluación del modelo. 
+
+Esta separación ha facilitado el mantenimiento y la actualización de cada componente sin afectar al resto del sistema.
+\end{itemize}

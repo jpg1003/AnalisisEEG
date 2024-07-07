@@ -1,12 +1,11 @@
 \capitulo{4}{Técnicas y herramientas}
 
-
 En esta sección de la memoria, además de detallar las técnicas metodológicas y las herramientas de desarrollo, se incluyen explicaciones sobre los diferentes experimentos realizados y las herramientas específicas utilizadas, como Jupyter Notebooks y Python. 
 
 A continuación, se profundiza en estos aspectos:
 
 
-\subsection{Experimentos realizados}
+\subsection{Técnicas metodológicas}
 
 
 
@@ -32,19 +31,106 @@ Y un segundo enfoque, mas atractivo, en un contexto unificado, proporcionando un
 
 Total 6 conjuntos de datos para experimentar. 
 
-4 para Segmentos individuales y 2 para conjuntos de datos "globales"
+4 para Segmentos individuales y 2 para conjuntos de datos totales.
 
 
 \subsubsection{Experimento comparativo}
 
-En este experimento se compararon los modelos explicados en la sección Conceptos teóricos para modelos, machine learning y redes neuronales.
+En este experimento se compararon los modelos explicados en la sección Conceptos teóricos, machine learning y redes neuronales.
 
 Se llevaron a cabo ejecuciones utilizando holdout, k-fold cross-validation , leave-one-out cross-validation, MLP, RNN y LSTM para evaluar la robustez y la generalización de los modelos desarrollados.
 
-Se realizaron los experimentos con los 6 conjuntos de datos antes mencionados.
+Se realizaron los experimentos con los 6 conjuntos de datos antes mencionados y se ha avaluado la tasa de acierto de los diferentes modelos.
+
+
+\subsubsection{Experimento con ventanas deslizantes}
+
+Este experimento solo se puede realizar con los dos conjuntos de datos totales puesto que en las particiones de datos asociadas a ventanas temporales influye la temporalidad y si se utilizan conjunto de datos de Segmentos individuales los datos no estarían balanceados y no estarían representados todos los datos en cada una de las particiones de datos.
+
+
+En este experimento se comparan los dos modelos mas complejos de redes neuronales RNN y LSTM y se avaluó la generalización para estos datos asociados a diferentes sesiones de captura de datos EEG.
+
+La evaluación de los modelos ha sido mediante tasa de acierto.
+
+
+\subsubsection{Experimento con creación de datos sintéticos}
+
+Este experimento solo se puede realizar con los dos conjuntos de datos totales puesto que en las particiones de datos asociadas a ventanas temporales influye la temporalidad y si se utilizan conjunto de datos de Segmentos individuales los datos no estarían balanceados y no estarían representados todos los datos en cada una de las particiones de datos.
+
+al igual que en el anterior experimento se comparan los modelos dos modelos mas complejos de redes neuronales RNN y LSTM y se avaluó la generalización para estos datos asociados a diferentes sesiones de captura de datos EEG.
+
+Este experimento se divide en tres:
+
+\begin{itemize}
+	
+	\item
+	\textbf{Experimentos con datos sintéticos :}
+	
+	Al tener mas datos en los conjuntos de datos, se tiene mas datos para realizar los entrenamientos durante mas tiempo sin llegar rápidamente a resultados que tiendan al al sobreajuste.
+
+	\item
+	\textbf{Experimentos con datos sintéticos y ventanas deslizantes :}
+	
+	Uniendo ventanas temporales al experimento aun se generan mas datos con los que realizar los entrenamientos.
+	
+		\item
+	\textbf{Experimentos con datos sintéticos pero partición test con datos reales:}
+	
+	En este experimento se han creado datos sintéticos a partir de los conjuntos de datos segmentos 2, 3 y 4, y con estos datos se ha generado el subconjunto Train y Val. Para el subconjunto de datos Test se han utilizado los datos del segmento 1.
+	
+\end{itemize}	
+	
+\subsection{Herramientas de desarrollo}
+
+
+Las herramientas utilizadas son las siguientes:
+
+\begin{itemize}
+	
+	\item
+	\textbf{Python y Bibliotecas:}
+
+
+Python: 
+
+Seleccionado por su versatilidad y la amplia disponibilidad de bibliotecas especializadas en machine learning, redes neuronales y procesamiento de datos.
+
+Scikit-learn: 
+Para algoritmos de machine learning tradicionales y técnicas de validación cruzada.
+
+TensorFlow y Keras: 
+Para el desarrollo e implementación de redes neuronales avanzadas.
+
+Numpy y Scipy: 
+
+Utilizado para manipulación y calculo numérico
+
+Pandas: 
+
+Para manipulación y preprocesamiento de datos.
+
+Matplotlib, Seaborn e Ipywidgets: 
+
+Para visualización de datos.
+
+	\item
+	\textbf{Entornos de Desarrollo:}
+
+Para el entorno de desarrollo del proyecto he utilizado Jupyter Notebooks que es una herramienta interactiva ampliamente utilizada en el análisis de datos, machine learning, redes neuronales.
+
+Permite combinar código, texto, visualizaciones y ecuaciones en un solo documento, lo que facilita la experimentación y documentación simultánea. 
+
+Su capacidad de ejecutar celdas de código de manera independiente permite un desarrollo iterativo y rápido. Además, soporta múltiples lenguajes de programación, pero el más usado es Python. 
+
+Las bibliotecas como pandas, numpy, matplotlib y seaborn se integran perfectamente, mejorando la eficiencia en la manipulación y visualización de datos.
 
 
 
+	\item
+	\textbf{Almacenamiento de datos:}
 
+Se ha llevado a cabo el almacenamiento de datos durante las ejecuciones de los modelos en Dataframes.
 
+Para almacenar y recuperar los datos de los resultados o de los Dataframes se han utilizado exportaciones e importaciones a archivos con formato CSV
 
+\end{itemize}	
