@@ -1,136 +1,136 @@
 \capitulo{4}{Técnicas y herramientas}
 
-En esta sección de la memoria, además de detallar las técnicas metodológicas y las herramientas de desarrollo, se incluyen explicaciones sobre los diferentes experimentos realizados y las herramientas específicas utilizadas, como Jupyter Notebooks y Python. 
-
-A continuación, se profundiza en estos aspectos:
 
 
-\subsection{Técnicas metodológicas}
+El desarrollo de este proyecto siguió la metodología CRISP-DM (Cross Industry Standard Process for Data Mining) ~\cite{wiki:CRISP}, un enfoque estructurado y bien establecido para proyectos de minería de datos y análisis predictivo. 
+
+A continuación, se detallan los aspectos más interesantes y relevantes de cada fase del ciclo de vida del proyecto según CRISP-DM.
 
 
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}	
+\item
+\textbf{Comprensión del Negocio}
 
-\subsubsection{Conjuntos de datos a analizar}
+El objetivo principal fue identificar los objetivos y requisitos del proyecto desde una perspectiva empresarial.
 
-Se han creado cuatro conjuntos de datos, cada uno conteniendo señales EEG capturadas de diferentes sesiones o condiciones experimentales.
+Se llevaron a cabo reuniones con los tutores para entender los objetivos específicos del proyecto, como la detección y clasificación de acciones de movimiento (arriba, abajo, derecha, izquierda).
 
-Estos conjuntos se han separado basándose en la característica TimeStamp dentro del conjunto de datos global.
+Se establecieron metas claras y medibles para el sistema de análisis de señales EEG, incluyendo los modelos a utilizar.
 
-Estos conjuntos están etiquetados por Segmentos, numerados del 1 al 4 y organizados de acuerdo con las especificaciones individuales para cada participante en el estudio.
-
-
-Además de los conjuntos de datos individuales por sesión o condiciones experimentales, se han creado dos conjuntos de datos que combinan las señales EEG de todos las sesiones capturadas.
-
-El primer conjunto se crea después de haber sido escalados los segmentos individualmente y se llama All Segmentos after.
-
-El segundo conjunto se crea escalando todo el conjunto de datos sin haber separado los segmentos individualmente con anterioridad. All Segmentos before.
+En esta fase se tomo la decisión de crear un modelo modular con un Notebook Principal que realizara llamadas al resto de Notebooks secundarios siguiendo los objetivos de negocio de poder ser escalables para futuras investigaciones.
 
 
-Un primer enfoque que permite analizar las diferencias entre los modelos y como clasifican los datos por sesiones o condiciones experimentales individualmente.
+\item
+\textbf{Comprensión de los Datos}
 
-Y un segundo enfoque, mas atractivo, en un contexto unificado, proporcionando una visión generalizada de las clasificaciones de los modelos para varias sesiones o condiciones experimentales que aporta una visión mas real de estos análisis.
+Unos de los objetivos principales fue familiarizarme con los datos disponibles y realizar un análisis preliminar.
 
-Total 6 conjuntos de datos para experimentar. 
+Se hizo una exploración inicial donde se exploraron los conjuntos de datos EEG para comprender su estructura, características y distribución.
 
-4 para Segmentos individuales y 2 para conjuntos de datos totales.
+Se ha hecho uso de herramientas y visualizaciones para identificar patrones y posibles anomalías en los datos.
 
+Se han identificado valores atípicos (outliners) que podrían afectar negativamente el rendimiento de los modelos.
 
-\subsubsection{Experimento comparativo}
+Se han realizado cursos online básicos propuestos en las reuniones de seguimiento:
+Tutorial de Inicio de Pandas~\cite{curso:a}, Visualización de Datos~\cite{curso:b}, Trabajo con series temporales.~\cite{curso:c}
 
-En este experimento se compararon los modelos explicados en la sección Conceptos teóricos, machine learning y redes neuronales.
+\item
+\textbf{Preparación de los Datos}
 
-Se llevaron a cabo ejecuciones utilizando holdout, k-fold cross-validation , leave-one-out cross-validation, MLP, RNN y LSTM para evaluar la robustez y la generalización de los modelos desarrollados.
+El objetivo principal de esta fase es preprocesar y preparar los datos para su análisis en los diferentes modelos.
 
-Se realizaron los experimentos con los 6 conjuntos de datos antes mencionados y se ha avaluado la tasa de acierto de los diferentes modelos.
+En esta fase se han creado nuevos conjuntos de datos para luego realizar análisis sobre ellos. En total 6 como se ha descrito con anterioridad.
 
+Se han aplicado técnicas de normalización y escalado, como StandardScaler y Z-Score, para estandarizar las señales EEG.
 
-\subsubsection{Experimento con ventanas deslizantes}
+Creación y utilización de ventanas deslizantes, agrupándolas por cada uno de los tipos de datos de cada conjunto de datos generado.
 
-Este experimento solo se puede realizar con los dos conjuntos de datos totales puesto que en las particiones de datos asociadas a ventanas temporales influye la temporalidad y si se utilizan conjunto de datos de Segmentos individuales los datos no estarían balanceados y no estarían representados todos los datos en cada una de las particiones de datos.
+Al final de la fase se propuso la generación de Datos Sintéticos para aumentar la cantidad y diversidad del conjunto de datos y abordar el análisis de los modelos desde otra perspectiva.
 
+\item
+\textbf{Fase de Modelado}
 
-En este experimento se comparan los dos modelos mas complejos de redes neuronales RNN y LSTM y se avaluó la generalización para estos datos asociados a diferentes sesiones de captura de datos EEG.
+El objetivo en esta fase fue seleccionar y aplicar técnicas de modelado adecuadas. Los que se han utilizado para el proyecto son los siguientes:
 
-La evaluación de los modelos ha sido mediante tasa de acierto.
-
-
-\subsubsection{Experimento con creación de datos sintéticos}
-
-Este experimento solo se puede realizar con los dos conjuntos de datos totales puesto que en las particiones de datos asociadas a ventanas temporales influye la temporalidad y si se utilizan conjunto de datos de Segmentos individuales los datos no estarían balanceados y no estarían representados todos los datos en cada una de las particiones de datos.
-
-al igual que en el anterior experimento se comparan los modelos dos modelos mas complejos de redes neuronales RNN y LSTM y se avaluó la generalización para estos datos asociados a diferentes sesiones de captura de datos EEG.
-
-Este experimento se divide en tres:
-
-\begin{itemize}
+	\begin{itemize}
 	
 	\item
-	\textbf{Experimentos con datos sintéticos :}
+	\textbf{Algoritmos de Machine Learning:}
+
+	K-Nearest Neighbors (KNN)
+	Árboles de Decisión
+	Random Forest
+
+	\textbf{Evaluación y Comparación:}
+	Uso de métricas como Tasa de acierto y loss para evaluar el rendimiento de estos modelos.
+
+	\textbf{Redes Neuronales:}
+	Multilayer Perceptron (MLP)
+	Redes Neuronales Recurrentes (RNN)
+	Long Short-Term Memory (LSTM)
+
+	\textbf{Optimización y Regularización:} 
+
+	Uso de técnicas como Dropout para mejorar la generalización de los modelos.
+	\end{itemize}
+
+
+Las dificultades que se encontraron en esta etapa fueron:
+
+\textbf{- Compilación de modelos de redes neuronales. }
+
+	Al ejecutar los primeros modelos de redes neuronales los datos normalizados me proporcionaban errores de compilación con modelos SRNN o LSTM, tuve que cambiar el escalado de los datos datos y shapear los modelos para que pudieran ejecutarse.
+
+\textbf{- Utilización de ventanas temporales en los modelos de redes neuronales.} 
+
+	En esta etapa no supe identificar este requerimiento por parte de los tutores y estuve implementando varias formas de poder utilizar ventanas temporales en el código, esto hizo que tuviera un gran retraso en la finalización y aceptación del código.
+
+\textbf{- Utilización de modelos de redes neuronales y callbacks.} 
+
+	El sobreajuste en los modelos predictivos era una constante y se implemento el uso de callbacks para evitar este sobreajuste.
+
+
+\textbf{- Gráficas y definiciones básicas como normalizar o escalar el conjunto de datos.}
+
+
+
+\item
+\textbf{Evaluación}
+
+
+En esta fase se trata de poder evaluar el modelo para asegurar que cumple con los objetivos del negocio. Para ellos se utilizaran las siguientes técnicas:
+
+
+	\begin{itemize}
 	
-	Al tener mas datos en los conjuntos de datos, se tiene mas datos para realizar los entrenamientos durante mas tiempo sin llegar rápidamente a resultados que tiendan al al sobreajuste.
+	\item
+	\textbf{Métricas de Evaluación:}
+
+Para todos los modelos se ha utilizado la evaluación mediante subconjuntos de datos de validación y prueba. (Val y Test)
 
 	\item
-	\textbf{Experimentos con datos sintéticos y ventanas deslizantes :}
-	
-	Uniendo ventanas temporales al experimento aun se generan mas datos con los que realizar los entrenamientos.
-	
-		\item
-	\textbf{Experimentos con datos sintéticos pero partición test con datos reales:}
-	
-	En este experimento se han creado datos sintéticos a partir de los conjuntos de datos segmentos 2, 3 y 4, y con estos datos se ha generado el subconjunto Train y Val. Para el subconjunto de datos Test se han utilizado los datos del segmento 1.
-	
-\end{itemize}	
-	
-\subsection{Herramientas de desarrollo}
+	\textbf{Utilización de Callbacks y Técnicas de Monitorización:}
+
+ Se ha hecho uso de EarlyStopping, ReduceLROnPlateau y ModelCheckpoint para evitar el sobreajuste y guardar el mejor modelo durante el entrenamiento.
+	\end{itemize}
 
 
-Las herramientas utilizadas son las siguientes:
+\item
+\textbf{Despliegue}
 
-\begin{itemize}
-	
-	\item
-	\textbf{Python y Bibliotecas:}
+En esta fase el objetivo es la implementación del proyecto y para ello se empezó con la definición y creación de los primeros Jupyter Notebooks.
 
 
-Python: 
+\textbf{Jupyter Notebooks.} 
 
-Seleccionado por su versatilidad y la amplia disponibilidad de bibliotecas especializadas en machine learning, redes neuronales y procesamiento de datos.
+Se han utilizado no solo para el desarrollo iterativo y la experimentación rápida, sino también para la implementación modular del proyecto. 
 
-Scikit-learn: 
-Para algoritmos de machine learning tradicionales y técnicas de validación cruzada.
+La capacidad de crear, documentar y ejecutar celdas de código de manera interactiva, permite a los usuarios finales poder ajustar y probar el proyecto en tiempo real, facilitando la depuración y el ajuste fino.
 
-TensorFlow y Keras: 
-Para el desarrollo e implementación de redes neuronales avanzadas.
+La naturaleza modular de los Jupyter Notebooks ha permitido separar distintas fases del proceso, desde la carga y preprocesamiento de datos hasta el entrenamiento y evaluación del modelo. 
 
-Numpy y Scipy: 
+Esta separación ha facilitado el mantenimiento y la actualización de cada componente sin afectar al resto del sistema.
 
-Utilizado para manipulación y calculo numérico
+\end{enumerate}
 
-Pandas: 
-
-Para manipulación y preprocesamiento de datos.
-
-Matplotlib, Seaborn e Ipywidgets: 
-
-Para visualización de datos.
-
-	\item
-	\textbf{Entornos de Desarrollo:}
-
-Para el entorno de desarrollo del proyecto he utilizado Jupyter Notebooks que es una herramienta interactiva ampliamente utilizada en el análisis de datos, machine learning, redes neuronales.
-
-Permite combinar código, texto, visualizaciones y ecuaciones en un solo documento, lo que facilita la experimentación y documentación simultánea. 
-
-Su capacidad de ejecutar celdas de código de manera independiente permite un desarrollo iterativo y rápido. Además, soporta múltiples lenguajes de programación, pero el más usado es Python. 
-
-Las bibliotecas como pandas, numpy, matplotlib y seaborn se integran perfectamente, mejorando la eficiencia en la manipulación y visualización de datos.
-
-
-
-	\item
-	\textbf{Almacenamiento de datos:}
-
-Se ha llevado a cabo el almacenamiento de datos durante las ejecuciones de los modelos en Dataframes.
-
-Para almacenar y recuperar los datos de los resultados o de los Dataframes se han utilizado exportaciones e importaciones a archivos con formato CSV
-
-\end{itemize}	

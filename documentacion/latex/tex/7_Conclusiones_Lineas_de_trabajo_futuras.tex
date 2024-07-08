@@ -2,6 +2,11 @@
 
 \subsection{Conclusiones}
 
+
+Este proyecto ha implicado un trabajo intenso y dinámico, caracterizado por su constante evolución y los desafíos que he ido enfrentando y superando a lo largo del camino. 
+
+Ha requerido adaptarse a cambios continuos y resolver problemas de manera progresiva, lo cual ha enriquecido mi experiencia y habilidades en el proceso.
+
 \begin{itemize}
 	
 	\item
@@ -11,10 +16,31 @@
 	
 \imagen{memoria/TEST_comparador}{Ejemplo resultados Tasa de acierto primer experimento comparativo para subconjunto Test}{.9}	
 
+	Las filas corresponden a los conjuntos de datos comentados en Aspectos relevantes del proyecto, Conjuntos de datos a analizar:
+	
+	Segmento del 1 al 4 son conjuntos de datos individuales por sesión o condiciones experimentales.
+	
+	All Segmentos after es conjunto de datos que se crea después de haber sido escalados los segmentos individualmente y unificados en un solo conjunto de datos.
+
+	All Segmentos before es conjunto de datos que se crea escalando todo el conjunto de datos global sin haber escalado por separado los segmentos
+	
+	Las columnas de la tabla corresponden a los siguientes experimentos:
+	
+	KNN-TEST: Algoritmo de clasificación KNN y validación por Holdout.
+	
+	TREE-TEST: Algoritmo de clasificación por Arboles de decisión y validación por Holdout.
+
+	RANDOM-TEST: Algoritmo de clasificación por random forest y validación por Holdout.
+
+	MLP-TEST: Clasificación por red neuronal MLP.
+
+	RNN-TEST: Clasificación por red neuronal RNN.
+
+	LSTM-TEST: Clasificación por red neuronal LSTM.
 
 	Se puede ver a simple vista que los resultados para la métrica Tasa de acierto no han sido buenos para cualquiera de los modelos comparados.
 
-	Teniendo Tasas de acierto de hasta el 69,23 en uno de los segmentos individuales y de 36,76 en uno de los conjunto de datos completos.
+	Se han conseguido valores en Tasa de acierto de como máximo el 69,23 en uno de los segmentos individuales y del 36,76 en uno de los conjunto de datos completos.
 
 
 	\item
@@ -27,6 +53,11 @@
 	
 \imagen{memoria/TEST_sinteticos}{Ejemplo resultados Tasa de acierto experimento con aumento de datos a Test}{.6}
 
+	Las columnas de la tabla corresponden a los siguientes experimentos:
+
+	RNN-RS-TEST: Clasificación por red neuronal RNN con aumento de datos.
+
+	LSTM-RS-TEST: Clasificación por red neuronal LSTM con aumento de datos.
 
 	Estos resultados en comparación con los anteriores son un 10 por ciento mayores pero aun no son buenos resultados para la métrica Tasa de acierto.
 	
@@ -39,21 +70,45 @@
 \imagen{memoria/TEST_SW}{Ejemplo resultados Tasa de acierto experimento ventanas temporales a Test}{.6}
 
 \imagen{memoria/TEST_SW_RS}{Ejemplo resultados Tasa de acierto experimento ventanas temporales con aumento de datos a Test}{.6}
+
+
+
+	Las columnas de la tabla corresponden a los siguientes experimentos:
+
+	RNN-SW-TEST: Clasificación por red neuronal RNN con ventanas deslizantes.
+
+	LSTM-SW-TEST: Clasificación por red neuronal LSTM con ventanas deslizantes.
+
+	RNN-RS-SW-TEST: Clasificación por red neuronal RNN con ventanas deslizantes y aumento de datos.
+
+	LSTM-RS-SW-TEST: Clasificación por red neuronal LSTM con ventanas deslizantes y aumento de datos.
+
 	
-	El impacto combinado de las dos tecnicas para el analisis hacer que el aumneto en el porcentaje de la tasa de acierto, para el conjunto de datos estandarizado por segmentos y luego unificado en un solo conjunto de datos, alcanza has el 83.64 por ciento.
+	El impacto combinado de las dos técnicas para el análisis hace que el aumento en el porcentaje de la tasa de acierto, para el conjunto de datos estandarizado por segmentos y luego unificado en un solo conjunto de datos, alcanza hasta el 83.64 por ciento.
 	
 	
 	\item
 	\textbf{Validación de datos Sintéticos contra datos Reales:}
 
 
-	La comparación directa entre conjuntos con aumento de datos y subconjuntos Test de exclusivamente datos reales ha llegado a mostrar que los resultados  pueden llegar a superar significativamente el rendimiento de Tasa de acierto que de los que solo eran datos reales. 
+	La comparación directa entre conjuntos con aumento de datos y subconjuntos Test de exclusivamente datos reales ha llegado a mostrar que los resultados  pueden llegar a superar significativamente, el rendimiento de Tasa de acierto que de los que solo eran datos reales. 
 	
 	Esto sugiere que los datos sintéticos pueden capturar mejor la variabilidad inherente en las señales EEG y mejorar la capacidad de generalización de los modelos.
 	
-	Unificando de nuevo las tecnicas de aumento de datos y ventanas deslizantes se ha llegado hasta el 64,17 por ciento en Tasa de Acierto, algo esperanzador para futuras lineas de investigación puesto que mejora en un casi 30 por ciento de Tasa de acierto con los modelos comparativos con solo datos reales.
+	Unificando de nuevo las técnicas de aumento de datos y ventanas deslizantes se ha llegado hasta el 64,17 por ciento en Tasa de Acierto, algo esperanzador para futuras líneas de investigación puesto que mejora en un casi 30 por ciento de Tasa de acierto con los modelos comparativos con solo datos reales.
 
-\imagen{memoria/TEST_real}{Ejemplo resultados Tasa de acierto experimento aumento de datos a datos reales Test}{.9}
+\imagen{memoria/TEST_real}{Ejemplo resultados Tasa de acierto experimento aumento de datos a datos reales Test}{0.6}
+
+	Las columnas de la tabla corresponden a los siguientes experimentos:
+
+RNN-RS-TEST: Clasificación por red neuronal RNN con aumento de datos.
+
+LSTM-RS-TEST: Clasificación por red neuronal LSTM con aumento de datos.
+
+RNN-RS-SW-TEST: Clasificación por red neuronal RNN con ventanas deslizantes y aumento de datos.
+
+LSTM-RS-SW-TEST: Clasificación por red neuronal LSTM con ventanas deslizantes y aumento de datos.
+
 
 \end{itemize}
 
@@ -65,7 +120,7 @@
 	\item
 	\textbf{Ampliación del Conjunto de Datos:}
 	
-	Una de las lineas de trabajo futuras seria la de seguir ampliando el conjunto de datos con mas individuos voluntarios que colaboraran en realizar este tipo de experimentos para así poder formar un conjunto de datos mas extenso y representativo.
+	Una de las lineas de trabajo futuras sería la de seguir ampliando el conjunto de datos con más individuos voluntarios que colaboraran en realizar este tipo de experimentos para así poder formar un conjunto de datos mas extenso y representativo con el que poder seguir los análisis de clasificación.
 	
 	\item
 	\textbf{Exploración de Datos Sintéticos y Ventanas Temporales:}
@@ -79,5 +134,10 @@
 
 	La implementación de PCA puede proporcionar una visión más profunda de las características más relevantes en las señales EEG, facilitando así la interpretación y el análisis de los datos. 
 	Esto podría llevar a modelos más eficientes y comprensibles.	
+	
+	He creado un notebook llamado Preprocessing-Corr.ipynb que está junto al resto de los notebooks del proyecto, solo se puede ejecutar de manera Manual, he empezado a realizar análisis sobre la correlación de datos y creo que puede ser una buena linea que seguir.
+	
+\imagen{memoria/correlaciones}{Primeros pasos para lineas futuras de investigación en correlación}{.6}	
+	
 	
 \end{itemize}	

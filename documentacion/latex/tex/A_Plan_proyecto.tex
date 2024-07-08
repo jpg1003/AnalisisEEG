@@ -2,15 +2,12 @@
 
 \section{Introducción}
 
-La Universidad de Burgos, dentro del área de conocimiento de Ingeniería de Sistemas y Automática, dispone de un interfaz BCI (Brain Computer Interface) para la captación de señales cerebrales. 
-Empleando ese interfaz se han realizado diferentes experimentos que han permitido recoger información de la actividad cerebral mientras los usuarios ejecutaban diferentes tareas cotidianas. 
 
-Este Trabajo de Fin de Grado (TFG) tiene como objetivo principal el análisis de la información obtenida en esos experimentos. Se entrenarán diferentes algoritmos para clasificar la acción realizada por el usuario a partir de las señales generadas por el BCI. Con este propósito, se evaluarán diferentes algoritmos de procesado de señales y de machine/deep learning para la clasificación automática de señales.
+La ejecución de este proyecto se llevó a cabo siguiendo el método CRISP-DM (Cross-Industry Standard Process for Data Mining), un marco estructurado que guió todas las etapas del proceso. 
 
-El conjunto de datos para la realización del TFG son de tipo EEG (Electroencefalografía) referentes a experimentos basados en acciones sobre teclas de un teclado: arriba, abajo, izquierda, derecha.
+Desde la comprensión inicial del problema hasta la implementación final de la solución, cada fase fue cuidadosamente planificada y ejecutada.
 
-El análisis de estos datos y su evaluación en diferentes algoritmos está basada en predecir qué teclas del teclado se han pulsado según las señales captadas con la interfaz BCI.
-
+Para la realización del proyecto no ha habido una planificación como tal registrada en Github, pero sí una progresión definida en los commits de código generados durante la composición del TFG.
 
 
 \section{Planificación temporal}
@@ -18,10 +15,9 @@ El análisis de estos datos y su evaluación en diferentes algoritmos está basa
 
 En la reunión inicial con los tutores definimos utilizar Python como lenguaje de programación para escribir el código y una serie de cursos de aprendizaje básicos para poder acometer el TFG sin problemas.
 
-En las siguientes reuniones se definieron algoritmos y experimentos a realizar con los datos EEG recogidos.
+En las siguientes reuniones se definieron algoritmos y experimentos a realizar con los datos EEG aportados.
 
-
-Desde el inicio del proyecto se ha utilizado la herramienta GitHub para ir subiendo todo el código o documentación realizada vía commits al repositorio creado para el proyecto ~\cite{github:proyecto}, a continuación se muestra la linea temporal durante la elaboración del proyecto:
+Desde el principio del proyecto debido a circunstancias personales no se ha podido realizar metodología Scrum, pero siguiendo el método CRISP-DM (Cross-Industry Standard Process for Data Mining) se produjeron estas lineas temporales:
 
 \imagen{anexos/Commits1}{Commits realizados durante la realización del TFG}
 
@@ -30,141 +26,191 @@ Desde el inicio del proyecto se ha utilizado la herramienta GitHub para ir subie
 \imagen{anexos/Deletions1.png}{Deletions realizados durante la realización del TFG}
 
 
-El desarrollo de este proyecto siguió la metodología CRISP-DM (Cross Industry Standard Process for Data Mining) ~\cite{wiki:CRISP}, un enfoque estructurado y bien establecido para proyectos de minería de datos y análisis predictivo. 
+Se pueden dividir en 3 grandes etapas:
 
-A continuación, se detallan los aspectos más interesantes y relevantes de cada fase del ciclo de vida del proyecto según CRISP-DM.
-
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}	
+\begin{itemize}
+\tightlist
 \item
-\textbf{Comprensión del Negocio}
-
-El objetivo principal fue identificar los objetivos y requisitos del proyecto desde una perspectiva empresarial.
-
-Se llevaron a cabo reuniones con los tutores para entender los objetivos específicos del proyecto, como la detección y clasificación de acciones de movimiento (arriba, abajo, derecha, izquierda).
-
-Se establecieron metas claras y medibles para el sistema de análisis de señales EEG, incluyendo los modelos a utilizar.
-
-En esta fase se tomo la decisión de crear un modelo modular con un Notebook Principal que realizara llamadas al resto de Notebooks secundarios siguiendo los objetivos de negocio de poder ser escalables para futuras investigaciones.
-
-
+	\textbf{Fase de comprensión del Negocio y compresión de los datos: (Febrero a Marzo)}   	
 \item
-\textbf{Comprensión de los Datos}
+ 	\textbf{Fase de modelado y Fase de evaluación: (Abril a Mayo)} 
+\item
+	\textbf{Fase de Evaluación y despliegue: (Junio a Julio)} 
+\end{itemize}
 
-Unos de los objetivos principales fue familiarizarme con los datos disponibles y realizar un análisis preliminar.
 
-Hubo una exploración inicial donde se exploro los conjuntos de datos EEG para comprender su estructura, características y distribución.
 
-Se hizo uso de herramientas y visualizaciones para identificar patrones y posibles anomalías en los datos.
+\subsection{Fase de comprensión del Negocio y compresión de los datos: (Febrero a Marzo)}
 
-Se identificaron valores atípicos (outliners) que podrían afectar negativamente el rendimiento de los modelos.
 
-Se realizaron cursos online básicos propuestos en las reuniones de seguimiento:
+\imagen{anexos/Commits-Etapa1}{Commits-Etapa 1}
+
+
+\textbf{- Realización de cursos online:} 
+
+Se han realizado cursos online básicos propuestos en las reuniones de seguimiento:
 Tutorial de Inicio de Pandas~\cite{curso:a}, Visualización de Datos~\cite{curso:b}, Trabajo con series temporales.~\cite{curso:c}
 
-\item
-\textbf{Preparación de los Datos}
+\textbf{- Análisis del conjunto de datos}, en archivo csv, proporcionado por los tutores.
 
-El objetivo principal de esta fase es preprocesar y preparar los datos para su análisis en los diferentes modelos.
+\textbf{- Creación esqueleto para la estructura el TFG en Github.}
 
-En esta fase se crearon nuevos conjuntos de datos para luego realizar análisis sobre ellos. En total 6 como se ha descrito con anterioridad.
+\textbf{- Definición y creación de los primeros notebooks, principalmente análisis del conjunto de datos.}
 
-Se aplicación de técnicas de normalización y escalado, como StandardScaler y Z-Score, para estandarizar las señales EEG.
+\textbf{- Definición y creación de los primeros notebooks de machine learning}, al final de la etapa.
 
-Creación y utilización de ventanas deslizantes, agrupándolas por cada uno de los tipos de datos de cada conjunto de datos generado.
+\textbf{- Comentar código e imprimir comentarios en los notebooks.}
 
-Al final de la fase se propuso la generación de Datos Sintéticos para aumentar la cantidad y diversidad del conjunto de datos y abordar el análisis de los modelos desde otra perspectiva.
+Los principales problemas o obstáculos que me encontré fueron principalmente los siguientes:
 
-\item
-\textbf{Fase de Modelado}
+\textbf{- Tiempo invertido en la realización de los cursos.}
 
-El objetivo en esta fase fue seleccionar y aplicar técnicas de modelado adecuadas. Los que se han utilizado para el proyecto son los siguientes:
+\textbf{- Estructuración del código.} 
 
-	\begin{itemize}
-	
-	\item
-	\textbf{Algoritmos de Machine Learning:}
+Me tomo mucho tiempo poder llegar a definir como quería mostrar el código, me decidí por un notebook principal que realizara llamadas al resto de notebooks con códigos mas específicos para cada modelo o experimento a realizar.
 
-	K-Nearest Neighbors (KNN)
-	Árboles de Decisión
-	Random Forest
-
-	\textbf{Evaluación y Comparación:}
-	Uso de métricas como Tasa de acierto y loss para evaluar el rendimiento de estos modelos.
-
-	\textbf{Redes Neuronales:}
-	Multilayer Perceptron (MLP)
-	Redes Neuronales Recurrentes (RNN)
-	Long Short-Term Memory (LSTM)
-
-	\textbf{Optimización y Regularización:} 
-
-	Uso de técnicas como Dropout para mejorar la generalización de los modelos.
-	\end{itemize}
+\textbf{- Impresiones de gráficas y definiciones básicas como normalizar o escalar el conjunto de datos.}
 
 
-Las dificultades que se encontraron en esta etapa fueron:
+\subsection{Tabla de tiempos }
 
-\textbf{- Compilación de modelos de redes neuronales. }
 
-	Al ejecutar los primeros modelos de redes neuronales los datos normalizados me proporcionaban errores de compilación con modelos SRNN o LSTM, tuve que cambiar el escalado de los datos datos y shapear los modelos para que pudieran ejecutarse.
+\tablaSmallSinColores{Tabla de tiempos para las primeras fases}{l c}{Tabladetiempos1}
+{ \multicolumn{1}{l}{Actividad} & Estimación temporal \\}{ 
+Curso Tutorial de Inicio de Pandas & 6 horas\\
+Curso Visualización de Datos &  5 horas\\
+Curso Trabajo con series temporales & 5 horas\\
+Analisis datos & 25 horas \\
+Definir estructura notebooks & 5 horas\\
+Pruebas de impresión & 7 horas \\
+Inicio Preprocesado & 30 horas\\
+Inicio Machine Learning & 20 horas \\
+Total & 103 horas \\
+} 
 
-\textbf{- Utilización de ventanas temporales en los modelos de redes neuronales.} 
 
-	En esta etapa no supe identificar este requerimiento por parte de los tutores y estuve implementando varias formas de poder utilizar ventanas temporales en el código, esto hizo que tuviera un gran retraso en la finalización y aceptación del codigo.
+\subsection{Fase de modelado y Fase de evaluación: (Abril a Mayo)}
 
-\textbf{- Utilización de modelos de redes neuronales y callbacks.} 
 
-	El sobreajuste en los modelos predictivos era una constante y se implemento el uso de callbacks para evitar este sobreajuste.
+\imagen{anexos/Commits-Etapa2}{Commits-Etapa 2}
 
+\textbf{- Cambio de análisis del conjunto de datos, prepocessing.}
+
+\textbf{- Definición y creación notebooks de machine learning.}
+
+\textbf{- Definición y creación notebooks de deep learning.}
+
+
+Los problemas que me encontré en esta etapa fueron:
+
+\textbf{- Compilación modelos deep learning. }Al ejecutar los primeros modelos de deep learning los datos normalizados me proporcionaban errores de compilación con modelos SRNN o LSTM, cambiando a datos escalados y shapeando los modelos pudieron ejecutarse.
+
+\textbf{- Utilización de ventanas temporales en los modelos deep learning.} En esta etapa no supe identificar este requerimiento por parte de los tutores y estuve implementando varias formas de poder utilizar ventanas temporales en el código.
+
+\textbf{- Utilización de modelos deep learning y callbacks.} 
 
 \textbf{- Gráficas y definiciones básicas como normalizar o escalar el conjunto de datos.}
 
 
 
-\item
-\textbf{Evaluación}
 
 
-En esta fase se trata de poder evaluar el modelo para asegurar que cumple con los objetivos del negocio. Para ellos se utilizaran las siguientes técnicas:
-
-
-	\begin{itemize}
-	
-	\item
-	\textbf{Métricas de Evaluación:}
-
-Para todos los modelos se ha utilizado la evaluación mediante subconjuntos de datos de validación y prueba. (Val y Test)
-
-	\item
-	\textbf{Utilización de Callbacks y Técnicas de Monitorización:}
-
- Se ha hecho uso de EarlyStopping, ReduceLROnPlateau y ModelCheckpoint para evitar el sobreajuste y guardar el mejor modelo durante el entrenamiento.
-	\end{itemize}
-
-
-\item
-\textbf{Despliegue}
-
-En esta fase el objetivo es la implementacion del proyecto y para ello se empezó con la definición y creación de los primeros Jupyter Notebooks.
-
-
-\textbf{Jupyter Notebooks.} 
-
-Se han utilizado no solo para el desarrollo iterativo y la experimentación rápida, sino también para la implementación modular del proyecto. 
-
-La capacidad de crear, documentar y ejecutar celdas de código de manera interactiva permite a los usuarios finales poder ajustar y probar el proyecto en tiempo real, facilitando la depuración y el ajuste fino.
-
-La naturaleza modular de los Jupyter Notebooks ha permitido separar distintas fases del proceso, desde la carga y preprocesamiento de datos hasta el entrenamiento y evaluación del modelo. 
-
-Esta separación ha facilitado el mantenimiento y la actualización de cada componente sin afectar al resto del sistema.
-
-\end{enumerate}
+\tablaSmallSinColores{Tabla de tiempos para las segundas fases}{l c}{Tabladetiempos2}
+{ \multicolumn{1}{l}{Actividad} & Estimación temporal \\}{ 
+Cambio en el preprocesado & 20 horas\\
+Modelos Machine Learning &  25 horas\\
+Modelos Deep Learning & 52 horas\\
+Ventanas Temporales & 12 horas \\
+Callbacks & 6 horas\\
+Pruebas de impresión & 8 horas \\
+Total & 123 horas \\
+} 
 
 
 
+\subsection{Fase de Evaluación y despliegue: (Junio a Julio)}
 
+
+\imagen{anexos/Commits-Etapa3}{Commits-Etapa 3}
+
+\textbf{- Añado nuevos gráficos} en análisis del conjunto de datos, prepocessing.
+
+\textbf{- Definición y creación ventanas temporales acordadas con Bruno Baruque.}
+
+\textbf{- Definición y creación nuevos notebooks de deep learning}
+
+\textbf{- Definición y creación nuevos datos sintéticos a través de el aplicativo smote.}
+
+\textbf{- Continuar con el comentado del código e imprimir comentarios en los notebooks.}
+
+
+En la última etapa los problemas que se han acontecido son:
+
+\textbf{- - Utilización de ventanas temporales en los modelos deep learning.} Después de varias algunas reuniones con Bruno Baruque se llego a la definición correcta para las ventanas temporal en el conjunto de datos.
+
+\textbf{- Utilización de modelos deep learning y callbacks.}
+
+\textbf{- Utilización datos sintéticos.} Definir correctamente esta generación de datos y poder utilizarlos en los modelos deep learning correctamente.
+
+
+\tablaSmallSinColores{Tabla de tiempos para las ultimas fases}{l c}{Tabladetiempos3}
+{ \multicolumn{1}{l}{Actividad} & Estimación temporal \\}{ 
+Modelos Deep Learning & 40 horas\\
+Ventanas Temporales & 8 horas \\
+Datos sintéticos & 12 horas\\
+Pruebas de impresión & 3 horas \\
+Documentación & 72 horas \\
+Total & 135 horas \\
+} 
+
+
+\textbf{En este proyecto el tiempo dedicado ha sido de 361 horas.}
+
+
+\subsection{Releases}
+
+
+\subsection{Release 1.0}
+
+En esta primera release el codigo era funcional pero no se llego a un acuerdo para la utilizacion de ventanas temporales.
+
+El código consta de varias fases: Análisis de datos, Preprocessing de datos, Machine Learning y Deep Learning.
+En Deep Learning es donde no acabamos de aprobar un código para terminar de cerrarlo y poder entregarlo.
+
+Hasta ahora los datos aportados en Machine Learning son muy positivos dando tasas de acierto mayores de 90 por ciento (Esto luego se demostró que no era real), pero en cambio para Deep Learning lo máximo que aportan los modelos es de una tasa de acierto del 50 por ciento.
+
+Estamos conversando en como aplicar ventanas deslizantes en el análisis de los datos, pero puede que estos datos sean de una extensión muy pequeña para que los modelos LSTM o RNN puedan procesarlos correctamente y llegar a aprender y no memorizar datos, hasta ahora en los entrenamientos el modelo empieza a realizar sobreajuste a los pocos epochs de empezar el entrenamiento.
+
+Los siguientes pasos serian: poder cerrar el código, revisión y limpieza de código, conclusiones, crear la memoria con todos los cambios.
+
+\subsection{Release 2.0}
+
+En esta release se llegó a un acuerdo para el código entre los tutores y yo.
+
+El código consta de varias fases: Análisis de datos, Preprocessing de datos, Machine Learning y Deep Learning.
+En Deep Learning ya se llego al acuerdo de implementar Ventanas Temporal asociadas a solo un target por ventana y utilizando stratify.
+
+En la reunión también salió un nuevo experimento con datos sintéticos que ya están implementados en esta release.
+Los porcentajes aportados para tasa de acierto en Machine Learning y Deep Learning son inferiores al 50 por ciento pero con aumento de datos con smote podemos llegar a tasas de acierto mas esperanzadoras.
+
+Los siguientes pasos serian: revisar y seguir comentando lo que quede del nuevo código, limpieza de código, crear memoria y anexo con todos los cambios.
+
+\subsection{Release 3.0}
+
+En esta release se modifica el modelo MLP y se empieza a documentar la memoria y los anexos.
+
+Esta release contiene todos los apartados comentados en la releases anteriores.
+
+Esta igual que las otras releases es una version totalmente funcional.
+
+
+\subsection{Release 4.0}
+
+En esta ultima release se limpian los comentarios en los Notebooks y se completa la documentación en latex de los archivos memoria y anexos. También se realiza limpieza de código.
+
+Esta release contiene todos los apartados comentados en la releases anteriores.
+
+Esta release es la version definitiva.
 
 \section{Estudio de viabilidad}
 
@@ -196,8 +242,16 @@ La viabilidad económica evalúa la posibilidad de generar ingresos y recuperar 
 
 \end{itemize}
 
+\textbf{Costes del desarrollo del proyecto:}
 
 
+\tablaSmallSinColores{Costes del desarrollo}{l c}{Tabladetiempos3}
+{ \multicolumn{1}{l}{Concepto} & Tarifa en euros\\}{ 
+Personal & \\ 2500 euros
+Equipo informático & 2500 euros \\
+Infraestructura & 500 euros\\
+Total & 5500 euros \\
+} 
 
 \subsection{Viabilidad legal}
 
@@ -205,7 +259,7 @@ La viabilidad económica evalúa la posibilidad de generar ingresos y recuperar 
 Tipos de licencias para el sofware y bibliotecas instalado:
 
 \begin{itemize}
- \tightlist
+
   \item
    \textbf{BSD (Berkeley Software Distribution):} 
     
@@ -223,42 +277,66 @@ Tipos de licencias para el sofware y bibliotecas instalado:
 \end{itemize}
 
 
-
 El estudio de viabilidad ha demostrado que el desarrollo del software de análisis de datos EEG presenta una sólida oportunidad económica y cumple con los requisitos legales necesarios para su comercialización.
 
 La aplicación potencial del software a otros sistemas BCI y la flexibilidad del modelo de negocio basado en licencias ofrecen un camino claro hacia la monetización y la expansión del proyecto.
 
   A continuación se presenta una tabla con algunas de las principales bibliotecas y herramientas de software utilizadas en el proyecto, junto con el tipo de licencia y las restricciones asociadas:
- 
 
-\begin{table}[p]
-	\centering
-	\begin{tabularx}{\linewidth}{ p{0.3\columnwidth} p{0.3\columnwidth} p{\columnwidth}}
-		\toprule
-		\textbf{Software}    & \textbf{Licencia} & \textbf{Restricciones} \\
-		\toprule		
-		\textbf{Anaconda}              & Gratuita    & Uso personal.  \\
-		\toprule	
-		\textbf{Jupyter Notebook}              & Libre    & Código abierto \\
-		\toprule			
-		\textbf{Python}              & Libre permisiva    & BSD \\
-		\toprule		
-		\textbf{Numpy}              & Libre permisiva    & BSD \\
-		\toprule		
-		\textbf{Scipy}              & Libre permisiva    & BSD \\
-		\toprule		
-		\textbf{Pandas}               & Libre permisiva    & BSD \\
-		\toprule		
-		\textbf{Matplotlib}              & Libre permisiva    & BSD \\
-		\toprule		
-		\textbf{Seaborn}              & Libre permisiva    & BSD \\
-		\toprule		
-		\textbf{Sklearn}               & Libre permisiva    & BSD \\
-		\toprule		
-		\textbf{Tensorflow}              & Libre permisiva    & ASF \\
-		\toprule		
-		\textbf{Ipywidgets}              & Libre    & Código abierto \\
-		\bottomrule
-	\end{tabularx}
-	\caption{Licencias Software}
-\end{table}
+
+\tablaSmall{Licencias Software}{l c c}{LicenciasSoftware}
+{ \multicolumn{1}{l}{l}{Software} & Licencia & Restricciones \\}{ 	
+\textbf{Anaconda}              & Gratuita    & Uso personal.  \\
+\textbf{Jupyter Notebook}              & Libre    & Código abierto \\		
+\textbf{Python}              & Libre permisiva    & BSD \\	
+\textbf{Numpy}              & Libre permisiva    & BSD \\	
+\textbf{Scipy}              & Libre permisiva    & BSD \\		
+\textbf{Pandas}               & Libre permisiva    & BSD \\		
+\textbf{Matplotlib}              & Libre permisiva    & BSD \\		
+\textbf{Seaborn}              & Libre permisiva    & BSD \\		
+\textbf{Sklearn}               & Libre permisiva    & BSD \\		
+\textbf{Tensorflow}              & Libre permisiva    & ASF \\		
+\textbf{Ipywidgets}              & Libre    & Código abierto \\
+}
+
+
+Para recuperar la inversión estimada de 5500 euros y garantizar la viabilidad económica del proyecto, se puede optar por vender licencias de software con diferentes niveles de funcionalidad y soporte. 
+
+Esta sería una propuesta para estructurar las licencias y sus costes:
+
+\begin{itemize}
+
+  \item
+   \textbf{Licencia Básica:}
+
+Descripción: Incluye acceso al estudio con funcionalidades básicas de análisis de señales EEG.
+
+Soporte: Limitado a soporte por correo electrónico.
+
+Coste: 100 euros por licencia.
+
+
+  \item
+   \textbf{Licencia Profesional:}
+
+
+Descripción: Incluye todas las funcionalidades de la Licencia Básica, más características avanzadas de análisis y procesamiento de datos.
+
+Soporte: Soporte técnico por correo electrónico y acceso a actualizaciones menores.
+
+Coste: 500 euros por licencia.
+
+
+  \item
+   \textbf{Licencia Empresarial:}
+
+Descripción: Incluye todas las funcionalidades de la Licencia Profesional, integración con otros tipos de modelos que se quieran utilizar y soporte para proyectos a gran escala.
+
+Soporte: Soporte técnico completo, incluyendo asistencia telefónica y acceso a todas las actualizaciones.
+
+Coste: 2500 euros por licencia.
+
+
+Si se llega a publicitar correctamente este software podría ser altamente rentable si se llega a profesionalizar hacia licencias empresariales.
+
+\end{itemize}

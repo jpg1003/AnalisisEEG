@@ -7,7 +7,7 @@ A continuación se describen varios conceptos teóricos:
 
 \section{Electroencefalograma}
 
-El Electroencefalograma (EEG) es una técnica no invasiva utilizada para registrar la actividad eléctrica del cerebro.
+El Electroencefalograma (EEG) es una técnica no invasiva utilizada para registrar la actividad eléctrica del cerebro humano.
 
 Las señales EEG son capturadas mediante electrodos colocados en la cabeza, que detectan los cambios en el potencial eléctrico generados por la actividad neuronal. 
 
@@ -77,7 +77,6 @@ Estas ondas reflejan distintos estados de actividad cerebral y son las que se ut
 \end{itemize}
 
 
-
 \section{Conjunto de datos}
 
 	Un conjunto de datos es una colección de datos organizados en un formato estructurado, generalmente en forma de una tabla donde cada fila representa una observación o instancia, y cada columna representa una característica o variable.
@@ -102,18 +101,21 @@ Estas ondas reflejan distintos estados de actividad cerebral y son las que se ut
 
 	\imagen{memoria/Target}{Ejemplo conjunto de datos~\cite{dibujos:diagrams}}{.7}
 
-
 	\end{itemize}	
-
-
-
-
 
 
 
 \section{Preprocesado de datos}
 
-	El preprocesamiento de datos EEG es una fase crucial en el análisis de señales EEG, ya que asegura la calidad y la fiabilidad de los datos antes de su análisis y clasificación. A continuación se describen las técnicas específicas que se han aplicado en este proyecto para el preprocesamiento de los datos EEG:
+	El preprocesamiento de datos EEG es una fase crucial en el análisis de señales EEG, ya que asegura la calidad y la fiabilidad de los datos antes de su análisis y clasificación. 
+	
+	A continuación, se describen las técnicas específicas que se han aplicado en este proyecto para el preprocesamiento de los datos EEG:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+\textbf{Preprocesado de datos}
+
 
 \begin{itemize}
 
@@ -121,13 +123,13 @@ Estas ondas reflejan distintos estados de actividad cerebral y son las que se ut
 	\textbf{Modificación datos targets por perdida o unificación:}	
 	
 	
-	Se ha realizado una unificación de los datos targets, para esto se han identificado que valores únicos tenia esta característica del conjunto de datos y una vez identificado unificar los que indican los mismo pero con otro valor. Como ejemplo: Left y LButton, son diferentes pero indican mismo valor.
+	Se ha realizado una unificación de los datos targets, para esto se han identificado que valores únicos tenia esta característica del conjunto de datos y una vez identificados se unifican los que indican lo mismo pero con otro valor. Como ejemplo: Left y LButton, son diferentes pero indican mismo valor.
 
 	\imagen{anexos/Key}{Ejemplo valores de los datos target}{.7}
 
 
 	
-	Los datos perdidos en target son aquellos que no indican ningún movimiento. Aunque no indiquen movimiento alguno se les ha de aplicar un valor para que  el análisis de los datos sea correcto. 
+	Los datos perdidos en target son aquellos que no indican ningún movimiento. Aunque no indiquen movimiento alguno, se les ha de aplicar un valor para que  el análisis de los datos sea correcto. 
 	
 	\imagen{memoria/Missing}{Ejemplo valores perdidos en un conjunto de datos}{.7}
 
@@ -136,11 +138,11 @@ Estas ondas reflejan distintos estados de actividad cerebral y son las que se ut
 	\item
 	\textbf{Eliminación de señales del conjunto de datos:}
 	
-	Se eliminan señales que no son necesarias para el análisis porque no aportan información relevante sobre la actividad cerebral. 
+	Se eliminan señales que no son necesarias para el análisis, porque no aportan información relevante sobre la actividad cerebral. 
 
 	
 	\item
-	\textbf{Eliminación de outliners:}
+	\textbf{Eliminación de Outliers:}
 	
 	Los outliers son valores atípicos que pueden distorsionar los resultados del análisis de datos. En el contexto de EEG, los outliers pueden surgir debido a artefactos o errores en la adquisición de datos.
 	\begin{itemize}
@@ -151,7 +153,7 @@ Estas ondas reflejan distintos estados de actividad cerebral y son las que se ut
 	Se aplican técnicas estadísticas para identificar valores que se desvían significativamente del resto de los datos. 
 	
 	
-	El método utilizado ha sido z-core que mide la distancia de un valor desde la media del conjunto de datos en términos de desviación estándar.
+	El método utilizado ha sido \textbf{z-core}h que mide la distancia de un valor desde la media del conjunto de datos en términos de desviación estándar.
 	
 	\begin{equation*}
 	zcore = (dato - media.datos) / desviacion.estándar
@@ -170,7 +172,7 @@ Usando esta regla, se consideran outliers los datos que tienen un z-score mayor 
 	\item
 	\textbf{Escalado del conjunto de datos:}
 		
-	Con el escalado de datos se prepararan los datos EEG antes de aplicar algoritmos o modelos de aprendizaje automático. El objetivo es normalizar las amplitudes de las señales para que se encuentren dentro de un rango común, facilitando la comparación y el análisis.
+	Con el escalado de datos se prepararan los datos EEG antes de aplicar algoritmos o modelos de aprendizaje automático. El objetivo es normalizar las amplitudes de las señales para que se encuentren dentro de un rango común, facilitando así la comparación y el análisis de los datos.
 
 Se ha aplicado un escalado en rangos de -1 a 1 para que la escala sea uniforme.
 
@@ -186,9 +188,10 @@ Este proceso es muy beneficioso ya que asegura que todas las características co
  
 	\item
 	\textbf{Segmentación de Datos:}	
+	
 	Se ha realizado segmentación de datos para dividir las señales EGG del conjunto de datos en conjunto de datos mas pequeños, esto se basa en la característica TimeStamp, con la cual se pudo identificar que la linea temporal se repetía o solapaba en algunas instancias. 
 	
-	De esta manera se pueden realizar experimentos de análisis sobre datos de diferentes individuos independientemente unos de otros.
+	De esta manera, se pueden realizar experimentos de análisis sobre datos de diferentes individuos independientemente unos de otros.
 	
 	\imagen{memoria/Timestamp}{Datos Timestamp conjunto de datos}{.7}	
 	
@@ -196,19 +199,21 @@ Este proceso es muy beneficioso ya que asegura que todas las características co
 \end{itemize}
 
 
-\section{Partición de datos para el entrenamiento}
+\item
+\textbf{Partición de datos para el entrenamiento}
 
 En machine learning y redes neuronales, es fundamental dividir el conjunto de datos en tres subconjuntos: entrenamiento (train), validación (val) y prueba (test). 
 
 Cada uno de estos subconjuntos tiene un propósito específico y ayuda a garantizar que el modelo generalice bien a datos nuevos y no procesados con anterioridad en la ejecución del entrenamiento de los modelos. 
 
-Para lograr la división del conjunto de datos en subconjuntos he utilizado la función \textbf{train-test-split} de scikit-learn. Utilizándola en dos pasos.
+Para lograr la división del conjunto de datos en subconjuntos, he utilizado la función \textbf{train-test-split} de scikit-learn. La he realizado en dos pasos.
 
 1. División del conjunto de datos en Test y Train-intermedio. 90 por ciento para Train-intermedio.
+
 2. División de Train-intermedio en Val y Train. 90 por ciento para Train.
 
 Quedando la división aproximada en tanto por ciento, de la siguiente manera:
-80 para Train, 10 para Val, 10 para Test
+80 para Train, 10 para Val, 10 para Test.
 
 
 \imagen{memoria/particiones}{Ejemplo particiones del conjunto de datos~\cite{dibujos:diagrams}}{.7}
@@ -244,80 +249,38 @@ Quedando la división aproximada en tanto por ciento, de la siguiente manera:
 \end{itemize}
 
 
-
-\section{Sobreajuste (overfitting)}
-
-	El sobreajuste (overfitting) es un problema común en el aprendizaje automático y las redes neuronales, donde un modelo aprende demasiado bien los detalles y el ruido del conjunto de datos de entrenamiento, hasta el punto de que su rendimiento en datos nuevos y no vistos con anterioridad se deteriora. 
-	
-	El modelo se ajusta tan estrechamente a los datos de entrenamiento que pierde la capacidad de generalizar a otros conjuntos de datos.
-	
-
-\begin{itemize}	
 \item
-\textbf{Detección del sobreajuste:}
+\textbf{Generación de datos sintéticos:}
 
-	Una indicación clara de sobreajuste es cuando la tasa de acierto del modelo en el conjunto de entrenamiento sigue mejorando mientras que la tasa de acierto en el conjunto de validación se estanca o empeora.
+	La generación de datos sintéticos en un conjunto de datos se refiere al proceso de crear nuevos datos que imitan las características estadísticas y estructurales del conjunto de datos original. 
+	
+	Este enfoque es útil en diversas situaciones, como cuando se quiere aumentar el tamaño del conjunto de datos para entrenar modelos de aprendizaje automático o equilibrar clases desproporcionadas.
+	
+	El método utilizado es sobremuestreo (Oversampling), principalmente replica y ajusta datos existentes para crear nuevas muestras. No elimina las muestras los datos originales sino que crea nuevos datos.
+	
+	
+\item
+\textbf{Ventana Deslizante:}
 
-\textbf{Prevenir el sobreajuste:}
+	
+La ventana deslizante es una técnica que consiste en tomar un subconjunto de datos de un conjunto mayor, moviéndose a través del conjunto de datos por pasos fijos. Este subconjunto se llama "ventana". Cada vez que la ventana se desliza, se incluye un nueva ventana de datos que analizar. Para este proyecto se han creado ventanas deslizantes unificando temporalmente los datos por cada target, Key u objetivo.
 
-	\begin{itemize}
-	\item
-	\textbf{Dropout:}
-	En redes neuronales, se desactivan algunas neuronas durante el entrenamiento para evitar que el modelo dependa demasiado de características específicas.
-	
-	Se utiliza después de las capas de entrada y capas ocultas de las redes neuronales y los valores recomendados oscilan entre el 20 y 50 por ciento de neuronas desconectadas. De esta forma el aprendizaje no pueda tender al sobreajuste. 
-	
-	Para este proyecto utilizare como valor el 30 por ciento.
-	
-	\item
-	\textbf{Aumento de datos:}
-	Generar nuevas muestras de datos sintéticos a partir de las existentes mediante técnicas como la creación de ventanas deslizantes en series temporales o creación de nuevos datos sintéticos.
-	
-	\item
-	\textbf{Validaciones cruzadas:}
-	
-	Dividir los datos en subconjuntos y entrenar el modelo varias veces, utilizando subconjuntos para entrenamiento y validación en cada iteración.
-	
-	\item
-	\textbf{Uso de callbacks en redes neuronales:}
-	
-	Los callbacks permiten realizar acciones y monitorizar el entrenamiento en tiempo real, proporcionando una manera eficiente de controlar el modelo en su entrenamiento.
-	
-	Hay varios tipos de callback pero para el proyecto se utilizaran los siguientes:
-	
-		\begin{itemize}
-		\item
-		\textbf{EarlyStopping:}
-	
-	Este callback detiene el entrenamiento cuando una métrica monitoreada deja de mejorar. 
-	
-	En los modelos que se han implementado se utilizara la métrica \textbf{val-loss} (Pérdida (loss)) que es una medida de lo bien o mal que el modelo está haciendo sus predicciones en relación con los valores reales. 
-	
-	Es una función matemática que calcula la discrepancia entre las predicciones del modelo y las etiquetas verdaderas.
-	
-		\item
-		\textbf{ReduceLROnPlateau:}	
-	
-	Monitoriza la misma métrica \textbf{val-loss} y reduce la tasa de aprendizaje en un factor de 0.1 si no mejora después de 5 épocas o epochs.
-	
-	 \textbf{Época (epoch)} es una pasada completa por todo el conjunto de datos de entrenamiento. Durante una epoch, el modelo ve y procesa cada instancia del conjunto de datos una vez. En un modelo de red neuronal se definen el numero de epochs que va a tener el entrenamiento del modelo. Para este proyecto seria de 30 épocas.
-	 
-	 	 
-	
-		\item
-		\textbf{ModelCheckpoint:}		
-	
-	Guarda el mejor rendimiento que ha tenido durante las épocas el entrenamiento, este callback esta basado en la métrica \textbf{val-loss} y se guarda en un archivo .keras. para después poder ser utilizado al termino del entrenamiento.
-	
-
-		\end{itemize}	
-	
-	\end{itemize}
-
-\end{itemize}
+Esto ayuda a manejar y analizar datos secuenciales, permitiendo al modelo enfocarse en patrones locales en los datos mientras mantiene la referencia a un target, Key u objetivo constante. Esto generara varios conjunto de ventanas, uno por cada objetivo.
 
 
-\section{Machine Learning}
+\imagen{memoria/ventanas}{Ejemplo ventanas temporales sobre  targets.~\cite{dibujos:diagrams}}{0.95}		
+	
+	
+\end{enumerate}
+
+
+\section{Aprendizaje Automático}
+
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+\textbf{Machine Learning:}
 
 El uso de técnicas de machine learning en el análisis de datos EEG permite la detección y clasificación precisa de patrones en las señales cerebrales. En este proyecto, se han implementado diversos métodos de validación y algoritmos de clasificación para garantizar la robustez y fiabilidad de los modelos predictivos. 
 
@@ -377,7 +340,9 @@ A continuación, se describen las técnicas y algoritmos utilizadas:
 	
 	KNN es un algoritmo de clasificación basado en instancias que asigna una clase a una muestra en función de la mayoría de sus k vecinos más cercanos.
 	
-	La distancia entre muestras se calcula utilizando la distancia euclidiana.
+	La distancia entre muestras se calcula utilizando la distancia euclidiana: (longitud de línea recta que conecta dos puntos en un espacio bidimensional o tridimensional)
+	
+	
 	
 	\imagen{memoria/KNN}{Uso KNN.~\cite{knn:intuitivetutorial}}{.7}
 	
@@ -408,8 +373,8 @@ A continuación, se describen las técnicas y algoritmos utilizadas:
 	\end{itemize}
 \end{itemize}
 	
-
-\section{Redes neuronales}
+\item
+\textbf{Redes neuronales:}
 
 	
 	
@@ -436,9 +401,9 @@ En este proyecto, se han utilizado varios tipos de redes neuronales para el aná
 	\item
 	\textbf{Recurrent Neural Network (RNN):}
 
-	Una SRNN es un tipo de red neuronal en la que las conexiones entre las neuronas forman un ciclo, lo que permite que la información se mantenga a lo largo del tiempo.  Las neuronas de diferentes capas están conectadas hacia adelante o hacia atrás.
+	Una RNN es un tipo de red neuronal en la que las conexiones entre las neuronas forman un ciclo, lo que permite que la información se mantenga a lo largo del tiempo.  Las neuronas de diferentes capas están conectadas hacia adelante o hacia atrás.
 
-	Esta red tiene una capa de entrada, una o mas capas recurrentes ocultas y una capa de salida.
+	Esta red tiene una capa de entrada, una o más capas recurrentes ocultas y una capa de salida.
 	
 	
 	\imagen{memoria/RNN}{Red neuronal RNN.~\cite{dibujos:visual}}{.5}	
@@ -462,26 +427,84 @@ En este proyecto, se han utilizado varios tipos de redes neuronales para el aná
 \end{itemize}
 
 
-\section{Ventana Deslizante}
+\item
+\textbf{Sobreajuste (overfitting):}
 
+	El sobreajuste (overfitting) es un problema común en el aprendizaje automático y las redes neuronales, donde un modelo aprende demasiado bien los detalles y el ruido del conjunto de datos de entrenamiento, hasta el punto de que su rendimiento en datos nuevos y no vistos con anterioridad se deteriora. 
 	
-La ventana deslizante es una técnica que consiste en tomar un subconjunto de datos de un conjunto mayor, moviéndose a través del conjunto de datos por pasos fijos. Este subconjunto se llama "ventana". Cada vez que la ventana se desliza, se incluye un nueva ventana de datos que analizar. Para este proyecto se han creado ventanas deslizantes unificando temporalmente los datos por cada target, Key u objetivo.
-
-Esto ayuda a manejar y analizar datos secuenciales, permitiendo al modelo enfocarse en patrones locales en los datos mientras mantiene la referencia a un target, Key u objetivo constante. Esto generara varios conjunto de ventanas, uno por cada objetivo.
-
-
-\imagen{memoria/ventanas}{Ejemplo ventanas temporales sobre  targets.~\cite{dibujos:diagrams}}{0.95}		
+	El modelo se ajusta tan estrechamente a los datos de entrenamiento que pierde la capacidad de generalizar a otros conjuntos de datos.
 	
-	
-\section{Generación de datos sintéticos}
 
-	La generación de datos sintéticos en un conjunto de datos se refiere al proceso de crear nuevos datos que imitan las características estadísticas y estructurales del conjunto de datos original. 
-	
-	Este enfoque es útil en diversas situaciones, como cuando se quiere aumentar el tamaño del conjunto de datos para entrenar modelos de aprendizaje automático o equilibrar clases desproporcionadas.
-	
-	El método utilizado es sobremuestreo (Oversampling), principalmente replica y ajusta datos existentes para crear nuevas muestras. No elimina las muestras los datos originales sino que crea nuevos datos.
+\begin{itemize}	
+\item
+\textbf{Detección del sobreajuste:}
 
-\section{Matriz de confusión}
+	Una indicación clara de sobreajuste es cuando la tasa de acierto del modelo en el conjunto de entrenamiento sigue mejorando mientras que la tasa de acierto en el conjunto de validación se estanca o empeora.
+
+\textbf{Prevenir el sobreajuste:}
+
+	\begin{itemize}
+	\item
+	\textbf{Dropout:}
+	En redes neuronales, se desactivan algunas neuronas durante el entrenamiento para evitar que el modelo dependa demasiado de características específicas.
+	
+	Se utiliza después de las capas de entrada y capas ocultas de las redes neuronales y los valores recomendados oscilan entre el 20 y 50 por ciento de neuronas desconectadas. De esta forma el aprendizaje no pueda tender al sobreajuste. 
+	
+	Para este proyecto utilizare como valor el 30 por ciento.
+	
+	\item
+	\textbf{Aumento de datos:}
+	Generar nuevas muestras de datos sintéticos a partir de las existentes mediante técnicas como la creación de ventanas deslizantes en series temporales o creación de nuevos datos sintéticos.
+	
+	\item
+	\textbf{Validaciones cruzadas:}
+	
+	Dividir los datos en subconjuntos y entrenar el modelo varias veces, utilizando subconjuntos para entrenamiento y validación en cada iteración.
+	
+	De esta manera conseguimos que los datos se adapten de una manera más fidedigna.
+	
+	\item
+	\textbf{Uso de call backs en redes neuronales:}
+	
+	Los callbacks permiten realizar acciones y monitorizar el entrenamiento en tiempo real, proporcionando una manera eficiente de controlar el modelo en su entrenamiento.
+	
+	Hay varios tipos de call back pero para el proyecto se utilizaran los siguientes:
+	
+		\begin{itemize}
+		\item
+		\textbf{EarlyStopping:}
+	
+	Este callback detiene el entrenamiento cuando una métrica monitoreada deja de mejorar. 
+	
+	En los modelos que se han implementado se utilizara la métrica \textbf{val-loss} (Pérdida (loss)) que es una medida de lo bien o mal que el modelo está haciendo sus predicciones en relación con los valores reales. 
+	
+	Es una función matemática que calcula la discrepancia entre las predicciones del modelo y las etiquetas verdaderas.
+	
+		\item
+		\textbf{ReduceLROnPlateau:}	
+	
+	Monitoriza la misma métrica \textbf{val-loss} y reduce la tasa de aprendizaje en un factor de 0.1, si no mejora después de 5 épocas o epochs.
+	
+	 \textbf{Época (epoch)} es una pasada completa por todo el conjunto de datos de entrenamiento. Durante una epoch, el modelo ve y procesa cada instancia del conjunto de datos una vez. En un modelo de red neuronal se definen el numero de epochs que va a tener el entrenamiento del modelo. Para este proyecto seria de 30 épocas.
+	 
+	 	 
+	
+		\item
+		\textbf{ModelCheckpoint:}		
+	
+	Guarda el mejor rendimiento que ha tenido durante las épocas el entrenamiento, este callback esta basado en la métrica \textbf{val-loss} y se guarda en un archivo .keras. para después poder ser utilizado al termino del entrenamiento.
+	
+
+		\end{itemize}	
+	
+	\end{itemize}
+
+\end{itemize}
+
+
+
+\item
+\textbf{Matriz de confusión:}
 
 Una matriz de confusión es una herramienta en la evaluación de modelos de clasificación en aprendizaje automático. Proporciona una visualización de la calidad del rendimiento de un modelo al comparar las predicciones del modelo con los valores reales de los datos de prueba.
 
@@ -511,7 +534,8 @@ Una matriz de confusión es una herramienta en la evaluación de modelos de clas
 
 \imagen{memoria/matriz}{Matriz de confusión.~\cite{dibujos:diagrams}}{0.6}	
 
-\section{Tasa de acierto}
+\item
+\textbf{Tasa de acierto:}
 
 La tasa de acierto es una métrica que proporciona una visión general del rendimiento del modelo. Sin embargo, su interpretación debe realizarse con precaución, especialmente en casos donde las clases están desbalanceadas. Para este proyecto las clases están balanceadas.
 
@@ -522,3 +546,7 @@ La tasa de acierto es una métrica que proporciona una visión general del rendi
 	\end{equation*}
 	
 	Tasa de acierto es el número de predicciones correctas entre número total de predicciones.
+
+
+
+\end{enumerate}
