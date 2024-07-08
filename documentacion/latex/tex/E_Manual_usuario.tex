@@ -89,12 +89,73 @@ Con estos conocimientos y habilidades, los usuarios podrán utilizar efectivamen
 
 \section{Instalación}
 
-\textbf{Instalación de software requerido:} 
+La instalación se puede realizar manualmente o  través de una máquina virtual generada para el proyecto:
+
+
+
+\begin{itemize}
+
+
+\item
+\textbf{Instalación de software mediante máquina virtual:} 
+
+
+\textbf{Requisitos mínimos para ejecutar la máquina virtual:}
+
+4 vCPUs y 4GB de RAM (Se recuerda que estos recursos mínimos son para la máquina virtual, para el sistema operativo que albergue la máquina virtual se ha de reservar unos mínimos recursos de computo)
+
+Si se puede asignar más CPU y RAM a la máquina virtual las ejecuciones del sistema tardarán menos tiempo en ejecutarse. 
+
+Se ha generado una maquina virtual para evitar posibles problemas de incompatibilidad de versiones de software.
+
+Para crear la maquina he utilizado virtualbox. ~\cite{virtual:box}
+
+Para poder instalarla hay que tener instalado el software de virtualización VirtualBox 7.0, descargable desde la pagina web oficial de VirtualBox. ~\cite{virtual:box}
+
+Una vez instalado VirtualBox 7.0 se han de seguir los siguientes pasos:
+
+\begin{itemize}
+\item
+\textbf{Descarga archivo AnalisisEEG-TFG.ova:}
+
+Con este archivo de tipo ova, se puede general la máquina virtual todas las veces que se quiera.
+
+\item
+\textbf{Instalar la máquina virtual:}
+Hacer doble clic sobre el archivo .ova y seguir los siguientes pasos:
+
+\imagen{anexos/VirtualBox1}{Inicio instalación máquina virtual}
+
+
+Pulsar en Terminar y espere que acabe la importación:
+
+
+\imagen{anexos/VirtualBox2}{Importación máquina virtual}{.5}
+
+
+Una vez importada, ya se puede arrancar con el botón en forma de flecha verde (Iniciar):
+
+
+\imagen{anexos/VirtualBox3}{Arrancar máquina virtual}{.5}
+
+
+Una vez arrancada y con acceso al sistema operativo Windows de la máquina virtual las credenciales de la maquina virtual son los siguientes:
+
+\textbf{Usuario:} AnalisisEEG
+\textbf{Contraseña:} Por seguridad, se proporcionará en el enlace al archivo .ova
+
+\end{itemize}
+
+Una vez aprobadas las credenciales, ya se pueden seguir las indicaciones del Manual de usuario.
+
+
+\item
+\textbf{Instalación de software manualmente:} 
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
-\item Acceder al repositorio GitHub \href{https://github.com/jpg1003/GII_O_MA_23.37}{Acceso repositorio Github}
+\item Acceder al repositorio GitHub ~\cite{github:proyecto}.
 \item Pulsar en Code. (Botón verde)
 \item Y a continuación pulsar en Download zip.
 
@@ -115,7 +176,8 @@ Una vez descargado el repositorio en la carpeta del sistema operativo utilizado 
     \begin{itemize}
    \tightlist
    \item
-    Ir al sitio web oficial de Anaconda en \href{https://www.anaconda.com/download/success}{Enlace url Anaconda}. 
+    Ir al sitio web oficial de Anaconda. ~\cite{web:Anaconda}
+    
    \item
     Descargar la versión más reciente de Python 3.x. para el sistema operativo compatible.
    \item
@@ -124,10 +186,10 @@ Una vez descargado el repositorio en la carpeta del sistema operativo utilizado 
   \end{itemize}  
 
 
-Una vez instalado el paquete de aplicaciones Anaconda, en el sistema operativo aparecerá una aplicación llamada \textbf{Jupyter Notebook}:
+Una vez instalado el paquete de aplicaciones Anaconda, en el sistema operativo aparecerá una aplicación llamada \textbf{Jupyter Notebook}.
 
 
-
+\end{itemize}
 
 
 \section{Manual del usuario}
@@ -147,12 +209,15 @@ Ejecutar la aplicación \textbf{Jupyter Notebook}, una vez iniciada, se abrirá 
 Para ejecutar el proyecto de estudio de datos EEG se puede hacer de dos maneras:
 
   \begin{itemize}
-   \tightlist
+
    \item
     \textbf{Automática}: 
+    
+	\textbf{Importante: Esta ejecución dura una hora aproximadamente en ejecutarse, con los recursos mínimos para la maquina virtual.}    
+    
     \begin{itemize}
 
-   \tightlist
+
    \item
     Abrir el archivo 1.Main.ipynb a través de Jupyter Notebook y ejecutar una a una las celdas de este Notebook. No se deben ejecutar todas a la vez porque se necesita la interacción con el usuario para subir los datos de tipoEEG a analizar.
    \end{itemize}
